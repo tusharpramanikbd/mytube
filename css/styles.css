@@ -79,7 +79,7 @@ Navbar
 ===============
 */
 .navbar {
-  width: 100%;
+  width: 99.1%;
   min-height: 3.5rem;
   display: grid;
   grid-template-columns: 190px 1fr 225px;
@@ -192,7 +192,7 @@ Navbar
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-right: 2.75rem;
+  padding-right: 1.8rem;
 }
 .navbar-links {
   display: flex;
@@ -284,7 +284,18 @@ Sidebar
   z-index: 5;
   overflow-y: auto;
 }
+.section-menus::-webkit-scrollbar {
+  width: 0.75rem;
+}
+.section-menus::-webkit-scrollbar-track {
+  background: #3d3a3a;
+}
+.section-menus::-webkit-scrollbar-thumb {
+  background: rgb(214, 210, 210);
+  border-radius: 100vw;
+}
 .section-filter {
+  width: 98.9%;
   background: #2c2b2b;
   grid-area: b;
   display: flex;
@@ -292,9 +303,6 @@ Sidebar
   overflow-x: auto;
   border-top: 1px solid rgb(99, 98, 98);
   border-bottom: 1px solid rgb(99, 98, 98);
-  /* position: fixed;
-  top: 3.5rem;
-  left: 240px; */
   overflow-x: auto;
   height: 58px;
   opacity: 0.95;
@@ -313,14 +321,20 @@ Sidebar
   padding: 5rem;
   overflow-y: auto;
   height: 100vh;
-  /* position: absolute;
-  top: 10%;
-  left: 20%;
-  z-index: 5; */
   position: relative;
   top: -7.1rem;
   z-index: -1;
   padding-top: calc(3.5rem + 58px + 5rem);
+}
+.section-videos::-webkit-scrollbar {
+  width: 0.75rem;
+}
+.section-videos::-webkit-scrollbar-track {
+  background: #3d3a3a;
+}
+.section-videos::-webkit-scrollbar-thumb {
+  background: rgb(214, 210, 210);
+  border-radius: 100vw;
 }
 /*
 
