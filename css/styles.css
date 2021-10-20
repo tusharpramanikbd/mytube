@@ -290,6 +290,7 @@ Sidebar
 .section-videos {
   background: rgb(22, 22, 22);
   grid-area: c;
+  padding: 5rem;
 }
 /*
 
@@ -311,7 +312,13 @@ Section Menus
 .div-3 {
   width: 100%;
   height: 300px;
-  background: aqua;
+  background: brown;
+}
+.div-a {
+  width: 100%;
+  height: 200px;
+  background: chartreuse;
+  margin-bottom: 2rem;
 }
 
 /*
