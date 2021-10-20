@@ -34,6 +34,7 @@ html,
 body {
   max-width: 100%;
   overflow-x: hidden;
+  position: relative;
 }
 body {
   font-family: var(--ff-secondary);
@@ -87,6 +88,8 @@ Navbar
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1;
+  opacity: 0.9;
 }
 
 /* navbar left */
@@ -268,6 +271,9 @@ Sidebar
   grid-template-areas:
     "a b"
     "a c";
+  position: fixed;
+  top: 3.5rem;
+  left: 0;
 }
 .section-menus {
   background: #3d3a3a;
@@ -281,6 +287,12 @@ Sidebar
   overflow-x: auto;
   border-top: 1px solid rgb(99, 98, 98);
   border-bottom: 1px solid rgb(99, 98, 98);
+  /* position: fixed;
+  top: 3.5rem;
+  left: 240px; */
+  overflow-x: auto;
+  height: 58px;
+  opacity: 0.9;
 }
 .section-filter::-webkit-scrollbar {
   display: none;
@@ -294,6 +306,16 @@ Sidebar
   background: rgb(22, 22, 22);
   grid-area: c;
   padding: 5rem;
+  overflow-y: auto;
+  height: 100vh;
+  /* position: absolute;
+  top: 10%;
+  left: 20%;
+  z-index: 5; */
+  position: relative;
+  top: -7.1rem;
+  z-index: -1;
+  padding-top: calc(3.5rem + 58px + 5rem);
 }
 /*
 
