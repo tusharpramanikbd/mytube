@@ -84,6 +84,9 @@ Navbar
   grid-template-columns: 190px 1fr 225px;
   background: #3d3a3a;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 /* navbar left */
