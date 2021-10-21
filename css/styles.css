@@ -92,8 +92,11 @@ Navbar
   z-index: 1;
   opacity: 0.95;
 }
-
-/* navbar left */
+/*
+=============== 
+Navbar Left
+===============
+*/
 .navbar-left {
   display: flex;
   align-items: center;
@@ -143,8 +146,11 @@ Navbar
   font-size: 0.7rem;
   font-weight: lighter;
 }
-
-/* navbar middle */
+/*
+=============== 
+Navbar Middle
+===============
+*/
 .navbar-middle {
   display: flex;
   align-items: center;
@@ -187,8 +193,11 @@ Navbar
   cursor: pointer;
   margin-left: 0.5rem;
 }
-
-/* navbar right */
+/*
+=============== 
+Navbar Right
+===============
+*/
 .navbar-right {
   display: flex;
   align-items: center;
@@ -256,10 +265,9 @@ Navbar
     padding-left: 1rem;
   }
 }
-
 /*
 =============== 
-Sidebar
+Main Section
 ===============
 */
 .section-main {
@@ -276,6 +284,11 @@ Sidebar
   top: 3.5rem;
   left: 0;
 }
+/*
+======================= 
+Left navigation section
+=======================
+*/
 .section-menus {
   background: #3d3a3a;
   grid-area: a;
@@ -295,6 +308,26 @@ Sidebar
   background: rgb(214, 210, 210);
   border-radius: 100vw;
 }
+.div-1 {
+  width: 100%;
+  height: 300px;
+  background: aqua;
+}
+.div-2 {
+  width: 100%;
+  height: 300px;
+  background: blueviolet;
+}
+.div-3 {
+  width: 100%;
+  height: 300px;
+  background: brown;
+}
+/*
+===================== 
+Filter Button Section
+=====================
+*/
 .section-filter {
   width: 98.9%;
   background: #2c2b2b;
@@ -315,57 +348,6 @@ Sidebar
   margin-left: 2rem;
   border-radius: 30px;
 }
-.section-videos {
-  background: rgb(32, 28, 28);
-  grid-area: c;
-  padding: 5rem;
-  overflow-y: auto;
-  height: 100vh;
-  position: relative;
-  top: -7.1rem;
-  z-index: -1;
-  padding-top: calc(3.5rem + 58px + 5rem);
-}
-.section-videos::-webkit-scrollbar {
-  width: 0.75rem;
-}
-.section-videos::-webkit-scrollbar-track {
-  background: #3d3a3a;
-}
-.section-videos::-webkit-scrollbar-thumb {
-  background: rgb(214, 210, 210);
-  border-radius: 100vw;
-}
-/*
-
-/*
-=============== 
-Section Menus
-===============
-*/
-.div-1 {
-  width: 100%;
-  height: 300px;
-  background: aqua;
-}
-.div-2 {
-  width: 100%;
-  height: 300px;
-  background: blueviolet;
-}
-.div-3 {
-  width: 100%;
-  height: 300px;
-  background: brown;
-}
-.div-a {
-  width: 100%;
-  height: 200px;
-  background: chartreuse;
-  margin-bottom: 2rem;
-}
-
-/* Section Filter Button */
 .section-filter-btn-left-div {
   width: 60px;
   height: 56px;
@@ -395,64 +377,35 @@ Section Menus
   color: white;
   font-size: 2rem;
 }
-
 /*
-=============== 
-About
-===============
+================== 
+Main Video Section
+==================
 */
-/* section title added to globals */
-
-/*
-=============== 
-Services
-===============
-*/
-/* small screen layout setup */
-/* bg-grey in globals */
-
-/*
-=============== 
-Projects
-===============
-*/
-
-/*
-=============== 
-Connect
-===============
-*/
-
-/*
-=============== 
-Skills
-===============
-*/
-/*
-=============== 
-Timeline
-===============
-*/
-
-/*
-=============== 
-Blog
-===============
-*/
-
-/*
-=============== 
-Footer
-===============
-*/
-/*
-=============== 
-Single Page
-===============
-*/
-
-/*
-=============== 
-Products Page
-===============
-*/
+.section-videos {
+  background: rgb(32, 28, 28);
+  grid-area: c;
+  padding: 5rem;
+  overflow-y: auto;
+  height: 100vh;
+  position: relative;
+  top: -7.1rem;
+  z-index: -1;
+  padding-top: calc(3.5rem + 58px + 5rem);
+}
+.section-videos::-webkit-scrollbar {
+  width: 0.75rem;
+}
+.section-videos::-webkit-scrollbar-track {
+  background: #3d3a3a;
+}
+.section-videos::-webkit-scrollbar-thumb {
+  background: rgb(214, 210, 210);
+  border-radius: 100vw;
+}
+.div-a {
+  width: 100%;
+  height: 200px;
+  background: chartreuse;
+  margin-bottom: 2rem;
+}
