@@ -416,7 +416,7 @@ Filter Button Section
 Main Video Section
 ==================
 */
-.section-videos {
+.section-videos-container {
   background: rgb(32, 28, 28);
   grid-area: c;
   padding: 0 1.5rem 1.5rem 1.5rem;
@@ -426,20 +426,23 @@ Main Video Section
   top: -7.1rem;
   z-index: -1;
   padding-top: calc(3.5rem + 58px + 1.6rem);
+  display: grid;
+  /* grid-template-columns: repeat(auto-fill, minmax(253px, 1fr)); */
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 0.8rem;
 }
-.section-videos::-webkit-scrollbar {
+.section-videos-container::-webkit-scrollbar {
   width: 0.75rem;
 }
-.section-videos::-webkit-scrollbar-track {
+.section-videos-container::-webkit-scrollbar-track {
   background: #3d3a3a;
 }
-.section-videos::-webkit-scrollbar-thumb {
+.section-videos-container::-webkit-scrollbar-thumb {
   background: rgb(214, 210, 210);
   border-radius: 100vw;
 }
 /* Div Video Item */
 .div-video-item {
-  width: 253px;
   height: 235px;
   margin-bottom: 2rem;
 }
@@ -512,4 +515,19 @@ Main Video Section
 }
 .section-video-info-div-bottom-title span {
   text-transform: uppercase;
+}
+@media screen and (max-width: 1130px) {
+  .section-videos-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 870px) {
+  .section-videos-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 550px) {
+  .section-videos-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
