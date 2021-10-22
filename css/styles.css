@@ -47,6 +47,7 @@ ul {
 a {
   text-decoration: none;
 }
+p,
 h1,
 h2,
 h3,
@@ -253,7 +254,6 @@ Main Section
 .section-main {
   width: 100%;
   height: calc(100vh - 3.5rem);
-  background: red;
   display: grid;
   grid-template-columns: 240px 5fr;
   grid-template-rows: 58px 1fr;
@@ -419,13 +419,13 @@ Main Video Section
 .section-videos {
   background: rgb(32, 28, 28);
   grid-area: c;
-  padding: 5rem;
+  padding: 0 1.5rem 1.5rem 1.5rem;
   overflow-y: auto;
   height: 100vh;
   position: relative;
   top: -7.1rem;
   z-index: -1;
-  padding-top: calc(3.5rem + 58px + 5rem);
+  padding-top: calc(3.5rem + 58px + 1.6rem);
 }
 .section-videos::-webkit-scrollbar {
   width: 0.75rem;
@@ -437,9 +437,79 @@ Main Video Section
   background: rgb(214, 210, 210);
   border-radius: 100vw;
 }
-.div-a {
-  width: 100%;
-  height: 200px;
-  background: chartreuse;
+/* Div Video Item */
+.div-video-item {
+  width: 253px;
+  height: 235px;
   margin-bottom: 2rem;
+}
+.div-video-item:hover {
+  background: var(--clr-primary);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.section-video-img-div {
+  width: 100%;
+  height: 140px;
+  position: relative;
+}
+.section-video-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.section-video-img-div h5 {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  position: absolute;
+  padding: 0.1rem 0.5rem;
+  right: 5px;
+  bottom: 5px;
+  border-radius: 2px;
+}
+.section-video-info-div {
+  width: 100%;
+  height: calc(100% - 140px);
+}
+.section-video-info-div-top {
+  display: flex;
+  color: white;
+  align-items: center;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.section-video-info-avater {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.section-video-info-div-top h1 {
+  font-size: 0.9rem;
+  width: calc(100% - 38px);
+  height: 38px;
+  margin-left: 0.9rem;
+  overflow: hidden;
+}
+.section-video-info-div-middle {
+  display: flex;
+  color: rgb(180, 180, 180);
+  align-items: center;
+}
+.section-video-info-div-middle p {
+  font-size: 0.9rem;
+  margin-left: calc(36px + 0.9rem);
+}
+.section-video-info-div-middle i {
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+.section-video-info-div-bottom-title {
+  color: rgb(180, 180, 180);
+  font-size: 0.9rem;
+  margin-left: calc(36px + 0.9rem);
+  text-transform: lowercase;
+}
+.section-video-info-div-bottom-title span {
+  text-transform: uppercase;
 }
