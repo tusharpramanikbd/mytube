@@ -270,8 +270,8 @@ Left navigation section
 =======================
 */
 .section-menus {
-  /* background: #3d3a3a; */
   background: var(--clr-primary);
+  height: calc(100vh - 3.5rem);
   grid-area: a;
   position: sticky;
   top: 3.5rem;
@@ -291,25 +291,37 @@ Left navigation section
 }
 .section-menus-div-1 {
   width: 100%;
+  /* height: auto; */
   padding-top: 0.7rem;
   padding-bottom: 0.7rem;
 }
 .section-menus-div-2 {
   width: 100%;
+  /* height: auto; */
   padding-top: 0.7rem;
   padding-bottom: 0.7rem;
   border-top: 1px solid #3d3a3a;
 }
 .section-menus-div-3 {
   width: 100%;
-  height: 300px;
-  background: brown;
+  /* height: auto; */
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  border-top: 1px solid #3d3a3a;
+}
+.subscription-title {
+  color: rgb(165, 165, 165);
+  margin-left: 1.5rem;
+  margin-bottom: 0.7rem;
+  font-size: 0.9rem;
+  font-weight: lighter;
+  text-transform: uppercase;
 }
 .menu-div {
   display: flex;
   align-items: center;
   color: white;
-  height: 40px;
+  height: 42px;
 }
 .menu-div i {
   font-size: 1.2rem;
@@ -323,6 +335,25 @@ Left navigation section
   background: #3d3a3a;
 }
 .menu-div:hover {
+  background: #3d3a3a;
+  cursor: pointer;
+}
+.div-subscription {
+  display: flex;
+  align-items: center;
+  color: white;
+  height: 44px;
+}
+.div-subscription img {
+  width: 30px;
+  height: 30px;
+  margin-left: 1.5rem;
+}
+.div-subscription h1 {
+  font-size: 0.9rem;
+  margin-left: 1.2rem;
+}
+.div-subscription:hover {
   background: #3d3a3a;
   cursor: pointer;
 }
