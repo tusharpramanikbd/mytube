@@ -10,6 +10,7 @@ Variables
 ===============
 */
 :root {
+  --clr-primary: #2c2b2b;
   --ff-primary: "Roboto", sans-serif;
   --ff-secondary: "Open Sans", sans-serif;
   --transition: all 0.3s linear;
@@ -53,27 +54,6 @@ h4 {
   text-transform: capitalize;
   font-family: var(--ff-primary);
 }
-/*  global classes */
-.btn {
-  text-transform: uppercase;
-  background: var(--clr-primary-5);
-  color: var(--clr-primary-1);
-  padding: 0.375rem 0.75rem;
-  letter-spacing: var(--spacing);
-  display: inline-block;
-  font-weight: 700;
-  -webkit-transition: var(--transition);
-  transition: var(--transition);
-  font-size: 0.875rem;
-  border: 2px solid transparent;
-  cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  border-radius: var(--radius);
-}
-.btn:hover {
-  color: var(--clr-primary-1);
-  background: var(--clr-primary-7);
-}
 /*
 =============== 
 Navbar
@@ -84,7 +64,7 @@ Navbar
   min-height: 3.5rem;
   display: grid;
   grid-template-columns: 190px 1fr 225px;
-  background: #2c2b2b;
+  background: var(--clr-primary);
   justify-content: space-between;
   position: fixed;
   top: 0;
@@ -290,7 +270,8 @@ Left navigation section
 =======================
 */
 .section-menus {
-  background: #3d3a3a;
+  /* background: #3d3a3a; */
+  background: var(--clr-primary);
   grid-area: a;
   position: sticky;
   top: 3.5rem;
@@ -308,20 +289,42 @@ Left navigation section
   background: rgb(214, 210, 210);
   border-radius: 100vw;
 }
-.div-1 {
+.section-menus-div-1 {
   width: 100%;
-  height: 300px;
-  background: aqua;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
 }
-.div-2 {
+.section-menus-div-2 {
   width: 100%;
-  height: 300px;
-  background: blueviolet;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  border-top: 1px solid #3d3a3a;
 }
-.div-3 {
+.section-menus-div-3 {
   width: 100%;
   height: 300px;
   background: brown;
+}
+.menu-div {
+  display: flex;
+  align-items: center;
+  color: white;
+  height: 40px;
+}
+.menu-div i {
+  font-size: 1.2rem;
+  margin-left: 1.5rem;
+}
+.menu-div h1 {
+  font-size: 0.9rem;
+  margin-left: 1.5rem;
+}
+.menu-selected {
+  background: #3d3a3a;
+}
+.menu-div:hover {
+  background: #3d3a3a;
+  cursor: pointer;
 }
 /*
 ===================== 
@@ -330,7 +333,7 @@ Filter Button Section
 */
 .section-filter {
   width: 98.9%;
-  background: #2c2b2b;
+  background: var(--clr-primary);
   grid-area: b;
   display: flex;
   align-items: center;
