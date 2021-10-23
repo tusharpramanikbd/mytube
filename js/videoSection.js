@@ -4,7 +4,7 @@ const navbar = getElement(".navbar");
 const sectionVideos = getElement(".section-videos");
 
 navbar.addEventListener("wheel", (event) => {
-  event.preventDefault();
+  //event.preventDefault();
 
   sectionVideos.scrollBy({
     top: event.deltaY < 0 ? -300 : 300,

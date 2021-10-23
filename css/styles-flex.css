@@ -1,0 +1,97 @@
+/*
+=============== 
+Fonts
+===============
+*/
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
+/*
+=============== 
+Variables
+===============
+*/
+:root {
+  --clr-primary: #2c2b2b;
+  --clr-body: rgb(32, 28, 28);
+  --ff-primary: "Roboto", sans-serif;
+  --ff-secondary: "Open Sans", sans-serif;
+  --transition: all 0.3s linear;
+  --spacing: 0.25rem;
+  --radius: 0.5rem;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+/*
+=============== 
+Global Styles
+===============
+*/
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--ff-secondary);
+  background: var(--clr-primary);
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+p,
+h1,
+h2,
+h3,
+h4 {
+  text-transform: capitalize;
+  font-family: var(--ff-primary);
+}
+/*
+=============== 
+Main Section
+===============
+*/
+.section-main {
+  height: 100vh;
+  background: green;
+}
+.section-top {
+  width: 100%;
+  height: 9vh;
+  background: cadetblue;
+  opacity: 0.5;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.section-menus {
+  width: 17.5vw;
+  min-height: 91vh;
+  background: red;
+  position: fixed;
+  top: 9vh;
+  left: 0;
+}
+.section-video-filter {
+  width: calc(100vw - 17.5vw);
+  height: 9vh;
+  background: black;
+  opacity: 0.5;
+  position: fixed;
+  top: 9vh;
+  margin-left: 17.5vw;
+}
+.section-bottom {
+  width: 100%;
+  background: yellowgreen;
+  padding: 21.7vh 1.7vw 0 19.3vw;
+}
+.section-bottom p {
+  height: 200px;
+  background: brown;
+  margin-bottom: 5rem;
+}
