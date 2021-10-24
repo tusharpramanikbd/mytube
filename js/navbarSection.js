@@ -1,4 +1,4 @@
-import { getElement } from "./utils.js";
+import { getElement, changeColor } from "./utils.js";
 import {
   toggleLeftMenusSection,
   changeLeftMenusSectionOnWindowResize,
@@ -14,10 +14,3 @@ navbarToggleBtn.addEventListener("click", () => {
 window.onresize = () => {
   changeLeftMenusSectionOnWindowResize();
 };
-
-function changeColor(element) {
-  element.style.backgroundColor = "#5f5e5e";
-  setTimeout(() => {
-    element.style.backgroundColor = "transparent";
-  }, 400);
-}

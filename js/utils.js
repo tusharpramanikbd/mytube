@@ -24,4 +24,11 @@ function getWidth() {
   );
 }
 
-export { getElement, getElementAll, getWidth };
+function changeColor(element) {
+  element.style.backgroundColor = "#5f5e5e";
+  setTimeout(() => {
+    element.style.backgroundColor = "transparent";
+  }, 400);
+}
+
+export { getElement, getElementAll, getWidth, changeColor };
