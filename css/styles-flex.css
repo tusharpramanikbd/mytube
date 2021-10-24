@@ -336,12 +336,40 @@ Section Menus Small
 .section-menus-small {
   width: 4.5rem;
   min-height: 91vh;
-  background: black;
+  background: var(--clr-primary);
   position: fixed;
   top: 3.5rem;
   left: 0;
   display: none;
+  padding-top: 0.25rem;
 }
+.menu-small-div {
+  width: 100%;
+  height: 4.5rem;
+  text-align: center;
+  padding: auto 0;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.6rem;
+  color: white;
+}
+.menu-small-div i {
+  font-size: 1.25rem;
+}
+.menu-small-div p {
+  font-size: 0.6rem;
+}
+.menu-small-div:hover {
+  background: #3d3a3a;
+  cursor: pointer;
+}
+/* 
+====================
+Section Video Filter
+====================
+*/
 .section-video-filter {
   width: calc(100% - 15.75rem);
   height: 3.5rem;
