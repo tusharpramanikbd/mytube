@@ -57,8 +57,6 @@ Main Section
 */
 .section-main {
   height: 100vh;
-  /* height: 100%; */
-  /* overflow: hidden; */
   overflow-y: auto;
 }
 .section-main::-webkit-scrollbar {
@@ -94,12 +92,16 @@ Section Navbar
   justify-content: center;
 }
 .navbar-toggle-btn {
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
   background: transparent;
   border-color: transparent;
   color: white;
   font-size: 1.2rem;
   cursor: pointer;
   margin-left: 1.2rem;
+  transition: var(--transition);
 }
 .navbar-logo-container {
   display: flex;
@@ -249,6 +251,7 @@ Section Menus
   left: 0;
   overflow: hidden;
   overflow-y: scroll;
+  display: block;
 }
 .section-menus::-webkit-scrollbar {
   width: 0.75rem;
@@ -366,6 +369,74 @@ Section Menus Small
   cursor: pointer;
 }
 /* 
+===================
+Section Menus Small
+===================
+*/
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.hide-overlay {
+  display: none;
+}
+.section-menus-overlay {
+  width: 15rem;
+  height: 100vh;
+  background: var(--clr-primary);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: var(--transition);
+}
+.show-menus-overlay {
+  transform: translateX(0);
+  transition: var(--transition);
+}
+.section-menus-overlay-top {
+  width: 100%;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.overlay-toggle-btn {
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
+  background: transparent;
+  border-color: transparent;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 1.2rem;
+  transition: var(--transition);
+}
+.section-menus-overlay-bottom {
+  width: 100%;
+  flex: 1;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.section-menus-overlay-bottom::-webkit-scrollbar {
+  width: 0.75rem;
+}
+.section-menus-overlay-bottom::-webkit-scrollbar-track {
+  background: #3d3a3a;
+}
+.section-menus-overlay-bottom::-webkit-scrollbar-thumb {
+  background: rgb(214, 210, 210);
+  border-radius: 100vw;
+}
+/* 
 ====================
 Section Video Filter
 ====================
@@ -393,10 +464,10 @@ Section Video Filter
     display: none;
   }
   .section-menus-small {
-    display: inline;
+    display: block;
   }
   .section-video-filter {
-    width: calc(100% - 4.5rem);
+    width: calc(100% - 5.25rem);
     left: 4.5rem;
   }
   .section-video-container {
