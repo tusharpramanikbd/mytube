@@ -369,9 +369,9 @@ Section Menus Small
   cursor: pointer;
 }
 /* 
-===================
-Section Menus Small
-===================
+=====================
+Section Menus Overlay
+=====================
 */
 .overlay {
   width: 100vw;
@@ -444,11 +444,73 @@ Section Video Filter
 .section-video-filter {
   width: calc(100% - 15.75rem);
   height: 3.5rem;
-  background: black;
+  background: var(--clr-primary);
   position: fixed;
   top: 3.5rem;
   left: 15rem;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  border-top: 1px solid rgb(99, 98, 98);
+  border-bottom: 1px solid rgb(99, 98, 98);
+  opacity: 0.95;
 }
+.section-video-filter::-webkit-scrollbar {
+  display: none;
+}
+.btn-filter-container {
+  display: flex;
+  align-items: center;
+}
+.btn-filter {
+  padding: 0.5rem 2rem;
+  margin-left: 2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  border: transparent;
+  background: #3d3a3a;
+  color: white;
+  border: 1px solid rgb(99, 98, 98);
+}
+.active-btn-filter {
+  background: white;
+  color: black;
+  transition: var(--transition);
+}
+.section-video-filter-btn-left-div {
+  width: 60px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(rgba(32, 28, 28, 1), rgba(32, 28, 28, 0.8));
+  position: fixed;
+}
+.section-video-filter-btn-left {
+  background: transparent;
+  border: transparent;
+  color: white;
+  font-size: 2rem;
+}
+.section-video-filter-btn-right-div {
+  width: 60px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(rgba(32, 28, 28, 1), rgba(32, 28, 28, 0.8));
+  position: fixed;
+  right: 0.75rem;
+}
+.section-video-filter-btn-right {
+  background: transparent;
+  border: transparent;
+  color: white;
+  font-size: 2rem;
+}
+/* 
+=======================
+Section Video container
+=======================
+*/
 .section-video-container {
   width: 100%;
   background: yellowgreen;
