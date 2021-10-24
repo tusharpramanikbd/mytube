@@ -301,7 +301,7 @@ Section Menus
   font-size: 1.2rem;
   margin-left: 1.5rem;
 }
-.menu-div h1 {
+.menu-div p {
   font-size: 0.9rem;
   margin-left: 1.5rem;
 }
@@ -323,7 +323,7 @@ Section Menus
   height: 30px;
   margin-left: 1.5rem;
 }
-.div-subscription h1 {
+.div-subscription p {
   font-size: 0.9rem;
   margin-left: 1.2rem;
 }
