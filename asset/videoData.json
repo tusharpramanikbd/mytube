@@ -2,7 +2,7 @@
   {
     "id": 1,
     "image": "https://picsum.photos/id/10/200/300",
-    "duration": "300",
+    "duration": "3000",
     "title": "8 Videos About javascript That'll Make You Cry",
     "avater": "https://randomuser.me/api/portraits/men/1.jpg",
     "views": "11.2k",
@@ -22,7 +22,7 @@
   {
     "id": 3,
     "image": "https://picsum.photos/id/30/200/300",
-    "duration": "150",
+    "duration": "1500",
     "title": "20 Trailblazers Leading the Way in javascript",
     "avater": "https://randomuser.me/api/portraits/men/3.jpg",
     "views": "11.2k",
@@ -32,7 +32,7 @@
   {
     "id": 4,
     "image": "https://picsum.photos/id/40/200/300",
-    "duration": "421",
+    "duration": "42",
     "title": "10 Meetups About javascript You Should Attend",
     "avater": "https://randomuser.me/api/portraits/men/4.jpg",
     "views": "11.2k",
@@ -42,7 +42,7 @@
   {
     "id": 5,
     "image": "https://picsum.photos/id/50/200/300",
-    "duration": "333",
+    "duration": "3330",
     "title": "What 10 Studies Say About javascript",
     "avater": "https://randomuser.me/api/portraits/men/5.jpg",
     "views": "11.2k",
@@ -52,7 +52,7 @@
   {
     "id": 6,
     "image": "https://picsum.photos/id/60/200/300",
-    "duration": "121",
+    "duration": "1210",
     "title": "Is it immoral to javascript?",
     "avater": "https://randomuser.me/api/portraits/men/6.jpg",
     "views": "11.2k",
@@ -62,7 +62,7 @@
   {
     "id": 7,
     "image": "https://picsum.photos/id/70/200/300",
-    "duration": "250",
+    "duration": "2500",
     "title": "10 Of The Most Critical Elements Of A javascript",
     "avater": "https://randomuser.me/api/portraits/men/7.jpg",
     "views": "11.2k",
@@ -72,7 +72,7 @@
   {
     "id": 8,
     "image": "https://picsum.photos/id/80/200/300",
-    "duration": "222",
+    "duration": "2220",
     "title": "A Beginner's Guide to javascript",
     "avater": "https://randomuser.me/api/portraits/men/8.jpg",
     "views": "11.2k",
@@ -82,7 +82,7 @@
   {
     "id": 9,
     "image": "https://picsum.photos/id/90/200/300",
-    "duration": "111",
+    "duration": "1110",
     "title": "10 Things Everyone Hates About javascript",
     "avater": "https://randomuser.me/api/portraits/men/9.jpg",
     "views": "11.2k",
@@ -92,7 +92,7 @@
   {
     "id": 10,
     "image": "https://picsum.photos/id/100/200/300",
-    "duration": "333",
+    "duration": "3330",
     "title": "Javascript Poll of the Day",
     "avater": "https://randomuser.me/api/portraits/men/10.jpg",
     "views": "11.2k",
