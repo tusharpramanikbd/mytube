@@ -46,7 +46,7 @@ function showSectionMenuBig() {
   sectionMenusSmall.style.display = "none";
   sectionVideoFilter.style.width = "calc(100% - 15.75rem)";
   sectionVideoFilter.style.left = "15rem";
-  sectionVideoContainer.style.padding = "8.5rem 1.5rem 2rem 16.5rem";
+  sectionVideoContainer.style.padding = "4.5rem 1.5rem 2rem 16.5rem";
 }
 
 function showSectionMenuSmall() {
@@ -54,7 +54,7 @@ function showSectionMenuSmall() {
   sectionMenusSmall.style.display = "block";
   sectionVideoFilter.style.width = "calc(100% - 5.25rem)";
   sectionVideoFilter.style.left = "4.5rem";
-  sectionVideoContainer.style.padding = "8.5rem 1.5rem 2rem 6rem";
+  sectionVideoContainer.style.padding = "4.5rem 1.5rem 2rem 6rem";
 }
 
 function hideOverlay() {
