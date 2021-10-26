@@ -624,9 +624,9 @@ Section Video container
   margin-left: calc(36px + 0.9rem);
   text-transform: lowercase;
 }
-.section-video-info-div-bottom-title span {
+/* .section-video-info-div-bottom-title span {
   text-transform: uppercase;
-}
+} */
 @media screen and (max-width: 1130px) {
   .section-video-container {
     grid-template-columns: repeat(3, 1fr);

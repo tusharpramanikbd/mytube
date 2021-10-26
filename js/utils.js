@@ -104,12 +104,26 @@ function convertHMS(sec) {
 function calculateCreationDate(time) {
   const timeArray = time.split(":");
   if (time.length < 8) {
+    let arr = new Array(...timeArray[0]);
+    if (arr[0] === "0") {
+      if (arr[1] === "0") {
+        return `now`;
+      }
+      if (arr[1] === "1") {
+        return `${arr[1]} minute ago`;
+      }
+      return `${arr[1]} minutes ago`;
+    }
     return `${timeArray[0]} minutes ago`;
   } else {
     if (timeArray[0] > 24) {
       const days = timeArray[0] / 24;
-      if (Math.floor(days) < 30) return `${Math.floor(days)} days ago`;
-      else {
+      if (Math.floor(days) < 30) {
+        if (Math.floor(days) === 1) {
+          return `${Math.floor(days)} day ago`;
+        }
+        return `${Math.floor(days)} days ago`;
+      } else {
         const months = days / 30;
         if (Math.floor(months) < 12) return `${Math.floor(months)} months ago`;
         else {
@@ -118,6 +132,13 @@ function calculateCreationDate(time) {
         }
       }
     } else {
+      let arr = new Array(...timeArray[0]);
+      if (arr[0] === "0") {
+        if (arr[1] === "1") {
+          return `${arr[1]} hour ago`;
+        }
+        return `${arr[1]} hours ago`;
+      }
       return `${timeArray[0]} hours ago`;
     }
   }

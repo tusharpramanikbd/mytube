@@ -1,16 +1,27 @@
-import { getElement, convertHMS, calculateCreationDate } from "./utils.js";
+import {
+  getElement,
+  getElementAll,
+  convertHMS,
+  calculateCreationDate,
+} from "./utils.js";
 import { fetchJson } from "./fetch.js";
 
 const sectionVideos = getElement(".section-video-container");
+let savedVideoCreatedTimeList;
+let refreshTimeIntervalInSeconds = 120;
 
 await fetchJson()
   .then((result) => setVideoData(result))
   .catch((error) => console.log(error));
 
 function setVideoData(videoList) {
+  savedVideoCreatedTimeList = videoList.map((item) => {
+    return { id: item.id, created: item.created };
+  });
   const videoListHtml = videoList
     .map((video) => {
       const {
+        id,
         name,
         image: img,
         duration,
@@ -41,9 +52,9 @@ function setVideoData(videoList) {
               <p>${name}</p>
               <i class="fas fa-check-circle"></i>
             </div>
-            <p class="section-video-info-div-bottom-title">${views} views &middot; ${calculateTimeFromDate(
+            <p class="section-video-info-div-bottom-title">${views} views &middot; <span class="created-time" data-id="${id}">${calculateTimeFromDate(
         created
-      )}
+      )}</span>
             </p>
           </div>
         </div>`;
@@ -51,6 +62,7 @@ function setVideoData(videoList) {
     .join("");
 
   sectionVideos.innerHTML = videoListHtml;
+  startTimeCalculation();
 }
 
 function calculateTimeFromDate(creationDate) {
@@ -60,4 +72,18 @@ function calculateTimeFromDate(creationDate) {
   const timeInSecons = Math.floor(timeDifferenceInMilliseconds / 1000);
 
   return calculateCreationDate(convertHMS(timeInSecons));
+}
+
+function startTimeCalculation() {
+  const createdTimeList = [...getElementAll(".created-time")];
+  console.log("started refreshing");
+  setInterval(() => {
+    createdTimeList.map((item) => {
+      savedVideoCreatedTimeList.forEach((videoItem) => {
+        if (item.dataset.id === videoItem.id.toString()) {
+          item.textContent = calculateTimeFromDate(videoItem.created);
+        }
+      });
+    });
+  }, refreshTimeIntervalInSeconds * 1000);
 }
