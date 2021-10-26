@@ -83,6 +83,7 @@ function convertHMS(sec) {
   let hours = Math.floor(sec / 3600);
   let minutes = Math.floor((sec - hours * 3600) / 60);
   let seconds = sec - hours * 3600 - minutes * 60;
+
   if (hours < 10) {
     hours = "0" + hours;
   }
@@ -100,6 +101,28 @@ function convertHMS(sec) {
   }
 }
 
+function calculateCreationDate(time) {
+  const timeArray = time.split(":");
+  if (time.length < 8) {
+    return `${timeArray[0]} minutes ago`;
+  } else {
+    if (timeArray[0] > 24) {
+      const days = timeArray[0] / 24;
+      if (Math.floor(days) < 30) return `${Math.floor(days)} days ago`;
+      else {
+        const months = days / 30;
+        if (Math.floor(months) < 12) return `${Math.floor(months)} months ago`;
+        else {
+          const years = months / 12;
+          return `${Math.floor(years)} years ago`;
+        }
+      }
+    } else {
+      return `${timeArray[0]} hours ago`;
+    }
+  }
+}
+
 export {
   getElement,
   getElementAll,
@@ -108,4 +131,5 @@ export {
   changeColorFast,
   isVisible,
   convertHMS,
+  calculateCreationDate,
 };

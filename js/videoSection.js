@@ -1,4 +1,4 @@
-import { getElement, convertHMS } from "./utils.js";
+import { getElement, convertHMS, calculateCreationDate } from "./utils.js";
 import { fetchJson } from "./fetch.js";
 
 const sectionVideos = getElement(".section-video-container");
@@ -41,7 +41,9 @@ function setVideoData(videoList) {
               <p>${name}</p>
               <i class="fas fa-check-circle"></i>
             </div>
-            <p class="section-video-info-div-bottom-title">${views} views &middot; ${created}
+            <p class="section-video-info-div-bottom-title">${views} views &middot; ${calculateTimeFromDate(
+        created
+      )}
             </p>
           </div>
         </div>`;
@@ -49,4 +51,13 @@ function setVideoData(videoList) {
     .join("");
 
   sectionVideos.innerHTML = videoListHtml;
+}
+
+function calculateTimeFromDate(creationDate) {
+  const date = new Date(creationDate);
+  const timeDifferenceInMilliseconds = Date.now() - date.getTime();
+
+  const timeInSecons = Math.floor(timeDifferenceInMilliseconds / 1000);
+
+  return calculateCreationDate(convertHMS(timeInSecons));
 }
