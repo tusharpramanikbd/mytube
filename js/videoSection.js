@@ -216,7 +216,10 @@ function mouseOverEventHandler(event) {
   }
 
   // watch later hover event listener
-  if (event.target.classList.contains("video-item-overlay-icon-watchlater")) {
+  if (
+    event.target.classList.contains("video-item-overlay-icon-watchlater") ||
+    event.target.classList.contains("show-watch-later")
+  ) {
     const watchlaterBanner = getElementFromElement(item, ".hide-watch-later");
     if (!watchlaterBanner.classList.contains("show-watch-later")) {
       watchlaterBanner.classList.add("show-watch-later");
@@ -229,7 +232,10 @@ function mouseOverEventHandler(event) {
   }
 
   // add to queue hover event listener
-  if (event.target.classList.contains("video-item-overlay-icon-queue")) {
+  if (
+    event.target.classList.contains("video-item-overlay-icon-queue") ||
+    event.target.classList.contains("show-add-to-queue")
+  ) {
     const addToQueueBanner = getElementFromElement(item, ".hide-add-to-queue");
     if (!addToQueueBanner.classList.contains("show-add-to-queue")) {
       addToQueueBanner.classList.add("show-add-to-queue");
