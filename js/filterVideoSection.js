@@ -1,4 +1,10 @@
-import { getElement, getElementAll, changeColor, isVisible } from "./utils.js";
+import {
+  getElement,
+  getElementAll,
+  changeColor,
+  isVisible,
+  changeColorFast,
+} from "./utils.js";
 
 const leftBtnDiv = getElement(".section-video-filter-btn-left-div");
 const rightBtnDiv = getElement(".section-video-filter-btn-right-div");
@@ -12,20 +18,24 @@ const btnFilterContainer = getElement(".btn-filter-container");
 const btnFilterList = [...getElementAll(".btn-filter")];
 
 btnFilterList.forEach((btnFilter) => {
-  btnFilter.addEventListener("click", () => {
+  btnFilter.addEventListener("click", (event) => {
+    // removing all the active button
     btnFilterList.map((item) => {
       if (item.classList.contains("active-btn-filter")) {
         item.classList.remove("active-btn-filter");
       }
-      if (btnFilter.dataset.id === item.dataset.id) {
-        item.classList.add("active-btn-filter");
-      }
     });
+
+    // setting the clicked button as active
+    const item = event.target;
+    if (btnFilter.dataset.id === item.dataset.id) {
+      item.classList.add("active-btn-filter");
+    }
   });
 });
 
 leftBtnDiv.addEventListener("click", () => {
-  changeColor(leftBtn);
+  changeColorFast(leftBtn);
   filterContainer.scrollBy({
     left: -200,
     behavior: "smooth",
@@ -39,7 +49,7 @@ leftBtnDiv.addEventListener("click", () => {
 });
 
 rightBtnDiv.addEventListener("click", () => {
-  changeColor(rightBtn);
+  changeColorFast(rightBtn);
   filterContainer.scrollBy({
     left: 200,
     behavior: "smooth",

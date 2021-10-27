@@ -581,6 +581,7 @@ Section Video container
   bottom: 5px;
   border-radius: 2px;
 }
+
 .section-video-info-div {
   width: 100%;
   height: calc(100% - 140px);
@@ -591,6 +592,7 @@ Section Video container
   align-items: center;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  position: relative;
 }
 .section-video-info-avater {
   width: 38px;
@@ -600,10 +602,27 @@ Section Video container
 }
 .section-video-info-div-top h1 {
   font-size: 0.9rem;
-  width: calc(100% - 38px);
+  width: calc(100% - 74px);
   height: 38px;
   margin-left: 0.9rem;
   overflow: hidden;
+}
+.video-option-menu {
+  font-size: 1rem;
+  align-self: flex-start;
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
+  background: transparent;
+  border: transparent;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: 5px;
+  right: -12px;
+  color: rgb(211, 211, 211);
+  cursor: pointer;
+  display: none;
 }
 .section-video-info-div-middle {
   display: flex;
@@ -624,9 +643,83 @@ Section Video container
   margin-left: calc(36px + 0.9rem);
   text-transform: lowercase;
 }
-/* .section-video-info-div-bottom-title span {
-  text-transform: uppercase;
-} */
+.video-item-overlay-icon-watchlater {
+  height: 28px;
+  width: 28px;
+  background: rgba(0, 0, 0, 0.6);
+  border: transparent;
+  color: white;
+  position: absolute;
+  border-radius: 2px;
+  top: 4px;
+  right: 4px;
+  font-size: 1.2rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  display: none;
+}
+.video-item-overlay-icon-queue {
+  height: 28px;
+  width: 28px;
+  background: rgba(0, 0, 0, 0.6);
+  border: transparent;
+  color: white;
+  position: absolute;
+  border-radius: 2px;
+  top: 36px;
+  right: 4px;
+  font-size: 1.2rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  display: none;
+}
+.hide-add-to-queue {
+  height: 28px;
+  width: 110px;
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  position: absolute;
+  top: 36px;
+  right: 32px;
+  border-radius: 2px;
+  display: grid;
+  place-items: center;
+  padding: 0 0.5rem;
+  transition: all 0.2s linear;
+  transform-origin: right;
+  transform: scaleX(0);
+}
+.show-add-to-queue {
+  transition: all 0.1s linear;
+  transform-origin: right;
+  transform: scaleX(1);
+}
+.hide-watch-later {
+  height: 28px;
+  width: 110px;
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  position: absolute;
+  top: 4px;
+  right: 32px;
+  border-radius: 2px;
+  display: grid;
+  place-items: center;
+  padding: 0 0.5rem;
+  transition: all 0.2s linear;
+  transform-origin: right;
+  transform: scaleX(0);
+}
+.show-watch-later {
+  transition: all 0.1s linear;
+  transform-origin: right;
+  transform: scaleX(1);
+}
+
 @media screen and (max-width: 1130px) {
   .section-video-container {
     grid-template-columns: repeat(3, 1fr);

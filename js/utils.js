@@ -6,6 +6,22 @@ const getElement = (selection) => {
   );
 };
 
+const getElementFromElement = (element, selection) => {
+  const childElement = element.querySelector(selection);
+  if (childElement) return childElement;
+  throw new Error(
+    `Please check "${selection}" selector, no such element exist`
+  );
+};
+
+const getAllElementFromElement = (element, selection) => {
+  const childElement = element.querySelectorAll(selection);
+  if (childElement) return childElement;
+  throw new Error(
+    `Please check "${selection}" selector, no such element exist`
+  );
+};
+
 const getElementAll = (selection) => {
   const element = document.querySelectorAll(selection);
   if (element) return element;
@@ -153,4 +169,6 @@ export {
   isVisible,
   convertHMS,
   calculateCreationDate,
+  getElementFromElement,
+  getAllElementFromElement,
 };
