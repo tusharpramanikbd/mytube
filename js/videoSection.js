@@ -1,31 +1,31 @@
+// Importing the functions from other modules
 import {
   getElement,
   getElementAll,
   convertHMS,
   calculateCreationDate,
-  changeColor,
   changeColorFast,
   getElementFromElement,
-  getAllElementFromElement,
 } from "./utils.js";
 import { fetchJson } from "./fetch.js";
 
-const sectionVideos = getElement(".section-video-container");
-let savedVideoCreatedTimeList;
+// creating some global variable
 let refreshTimeIntervalInSeconds = 120;
+let videoOptionMenuId = -1;
+let previousVideoOptionMenuDiv = null;
+let savedVideoOptionMenuBtn = null;
 
-// setDynamicVideoData();
-// initialAddToQueueBannar();
-// initialWatchLaterBanner();
-
+// ===============================================
+// fetching all the video item data from JSON file
+// ===============================================
 await fetchJson()
   .then((result) => setVideoData(result))
   .catch((error) => console.log(error));
 
+// ===========================
+// display all the video items
+// ===========================
 function setVideoData(videoList) {
-  savedVideoCreatedTimeList = videoList.map((item) => {
-    return { id: item.id, created: item.created };
-  });
   const videoListHtml = videoList
     .map((video) => {
       const {
@@ -38,7 +38,7 @@ function setVideoData(videoList) {
         views,
         created,
       } = video;
-      return `<div class="div-video-item">
+      return `<div class="div-video-item" data-id="${id}">
           <div class="section-video-img-div">
             <img
               src="${img}"
@@ -81,34 +81,137 @@ function setVideoData(videoList) {
     })
     .join("");
 
+  const sectionVideos = getElement(".section-video-container");
   sectionVideos.innerHTML = videoListHtml;
-  startTimeCalculation();
-  setDynamicVideoData();
+  // calculate and display video created time
+  // start refreshing time mechanism
+  startTimeCalculation(
+    videoList.map((item) => {
+      return { id: item.id, created: item.created };
+    })
+  );
+  initializeEventListeners();
 }
 
 /* 
-========================================
-Dynamic Video Data Related functionality
-========================================
- */
-function setDynamicVideoData() {
+==================================
+Initialize all the event listeners
+==================================
+*/
+function initializeEventListeners() {
   const videoItemList = [...getElementAll(".div-video-item")];
 
   videoItemList.forEach((videoItem) => {
     videoItem.addEventListener("mouseover", mouseOverEventHandler, false);
     videoItem.addEventListener("mouseleave", mouseLeaveEventHandler, false);
-    videoItem.addEventListener("click", clickEventHandler, false);
+    videoItem.addEventListener("click", videoItemClickEventHandler, false);
+    getElement(".section-main").addEventListener(
+      "click",
+      windowClickEventHandlaer,
+      false
+    );
   });
 }
 
+// This method add the prevent default functionality to the element
+function addPreventDefault(evt){
+  evt.preventDefault();
+}
+
+// This method handle the click event of the whole window
+function windowClickEventHandlaer(event){
+  // it's checking if the clicked element is video option menu or not, if not then proceed
+  if (!event.target.classList.contains("video-option-menu")) {
+    // it's checking if the clicked element is video option menu div or not, if not then proceed
+    if(!event.target.classList.contains("video-option-menu-div")){
+      const mainSection = getElement(".section-main");
+      // here its removing the prevent default
+      mainSection.removeEventListener("wheel", addPreventDefault);
+      if (previousVideoOptionMenuDiv) {
+        savedVideoOptionMenuBtn.style.display = "none";
+        removeVideoOptionMenu(previousVideoOptionMenuDiv);
+        savedVideoOptionMenuBtn = null;
+      }
+    }
+  } 
+}
+
+// ===============================
 // Video Item Click event listener
-function clickEventHandler(event) {
-  if (event.target.classList.contains("video-option-menu")) {
+// ===============================
+function videoItemClickEventHandler(event) {
+    const elem = getElement(".section-video-container");
+    const mainSection = getElement(".section-main");
+    
+    mainSection.addEventListener("wheel", addPreventDefault);
+
+    // calculating the height and width of clicked position
+    const widthDifference = elem.offsetWidth - event.clientX;
+    const heightDifference = elem.offsetHeight - event.clientY;
+
+    createDynamicVideoOptionMenu(event, widthDifference, heightDifference);
+}
+
+// ================================
+// Create Dynamic Video Option Menu
+// ================================
+function createDynamicVideoOptionMenu(event, widthDifference, heightDifference) {
+  const videoOptionMenuBtn = event.target;
+  let videoItemDiv = event.currentTarget;
+  const priviousVideoOptionMenuDiv = document.querySelector(".video-option-menu-div");
+
+  if (priviousVideoOptionMenuDiv && priviousVideoOptionMenuDiv.dataset.id === videoItemDiv.dataset.id) {
+    if(!event.target.classList.contains("video-option-menu-div")){
+      changeColorFast(event.target);
+      removeVideoOptionMenu(videoOptionMenuBtn);
+    }
+  } 
+  else {
     changeColorFast(event.target);
+    if (previousVideoOptionMenuDiv !== null) {
+      removeVideoOptionMenu(previousVideoOptionMenuDiv);
+    }
+
+    // create new div
+    const videoOptionMenuDiv = document.createElement("div");
+    videoOptionMenuDiv.classList.add("video-option-menu-div");
+    videoOptionMenuDiv.setAttribute("data-id", `${videoItemDiv.dataset.id}`);
+
+    if (heightDifference < 100) {
+      videoOptionMenuDiv.style.top = `-100px`;
+    } else {
+      videoOptionMenuDiv.style.top = `35px`;
+    }
+
+    if (widthDifference < 100) {
+      videoOptionMenuDiv.style.left = `-100px`;
+    } else {
+      videoOptionMenuDiv.style.left = `0`;
+    }
+
+    if(savedVideoOptionMenuBtn){
+      savedVideoOptionMenuBtn.style.display = "none";
+    }
+
+    // append to video option menu
+    videoOptionMenuBtn.appendChild(videoOptionMenuDiv);
+    previousVideoOptionMenuDiv = videoOptionMenuBtn;
+    videoOptionMenuId = videoItemDiv.dataset.id;
+    savedVideoOptionMenuBtn = event.target;
   }
 }
 
+// this method remove the created video option menu div
+function removeVideoOptionMenu(videoOptionMenuBtn) {
+  const child = getElement(".video-option-menu-div");
+  videoOptionMenuBtn.removeChild(child);
+  previousVideoOptionMenuDiv = null;
+  videoOptionMenuId = -1;
+}
+
+// ==========================
 // Mouse leave event listener
+// ==========================
 function mouseLeaveEventHandler(event) {
   const item = event.currentTarget;
 
@@ -123,7 +226,6 @@ function mouseLeaveEventHandler(event) {
     childElementsOfVideoItemTop,
     ".video-item-overlay-icon-watchlater"
   );
-
   if (watchLaterBtn.style.display === "grid") {
     watchLaterBtn.style.display = "none";
   }
@@ -133,7 +235,6 @@ function mouseLeaveEventHandler(event) {
     childElementsOfVideoItemTop,
     ".video-item-overlay-icon-queue"
   );
-
   if (addToQueueBtn.style.display === "grid") {
     addToQueueBtn.style.display = "none";
   }
@@ -144,18 +245,19 @@ function mouseLeaveEventHandler(event) {
     ".section-video-info-div"
   );
 
-  // watch latter btn
+  // video option menu icon
   const VideoOptionMenuBtn = getElementFromElement(
     childElementsOfVideoItemBottom,
     ".video-option-menu"
   );
 
-  if (VideoOptionMenuBtn.style.display === "grid") {
+  if (videoOptionMenuId === item.dataset.id) {
+    VideoOptionMenuBtn.style.display = "grid";
+  } else {
     VideoOptionMenuBtn.style.display = "none";
   }
-
+  
   // remove watch later and add to queue banner on mouse leave
-
   const watchlaterBanner = getElementFromElement(item, ".hide-watch-later");
   if (watchlaterBanner.classList.contains("show-watch-later")) {
     watchlaterBanner.classList.remove("show-watch-later");
@@ -166,7 +268,9 @@ function mouseLeaveEventHandler(event) {
   }
 }
 
+// =========================
 // Mouse over event listener
+// =========================
 function mouseOverEventHandler(event) {
   const item = event.currentTarget;
 
@@ -253,16 +357,7 @@ function mouseOverEventHandler(event) {
 Video Create Time Related functionality
 =======================================
  */
-function calculateTimeFromDate(creationDate) {
-  const date = new Date(creationDate);
-  const timeDifferenceInMilliseconds = Date.now() - date.getTime();
-
-  const timeInSecons = Math.floor(timeDifferenceInMilliseconds / 1000);
-
-  return calculateCreationDate(convertHMS(timeInSecons));
-}
-
-function startTimeCalculation() {
+function startTimeCalculation(savedVideoCreatedTimeList) {
   const createdTimeList = [...getElementAll(".created-time")];
   console.log("started refreshing");
   setInterval(() => {
@@ -274,4 +369,11 @@ function startTimeCalculation() {
       });
     });
   }, refreshTimeIntervalInSeconds * 1000);
+}
+
+function calculateTimeFromDate(creationDate) {
+  const date = new Date(creationDate);
+  const timeDifferenceInMilliseconds = Date.now() - date.getTime();
+  const timeInSecons = Math.floor(timeDifferenceInMilliseconds / 1000);
+  return calculateCreationDate(convertHMS(timeInSecons));
 }
