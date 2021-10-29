@@ -95,6 +95,11 @@ function isVisible(elem) {
   return false;
 }
 
+// This method add the prevent default functionality to the element
+function addPreventDefault(evt) {
+  evt.preventDefault();
+}
+
 export {
   getElement,
   getElementAll,
@@ -104,4 +109,5 @@ export {
   isVisible,
   getElementFromElement,
   getAllElementFromElement,
+  addPreventDefault,
 };

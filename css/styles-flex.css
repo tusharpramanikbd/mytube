@@ -248,7 +248,7 @@ Section Navbar
     grid-template-columns: 195px 1fr 195px;
   }
   .navbar-logo-container p {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     margin-left: 0.1rem;
   }
 }
