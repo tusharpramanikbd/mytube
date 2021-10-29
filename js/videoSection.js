@@ -114,18 +114,15 @@ function initializeEventListeners() {
 }
 
 // This method add the prevent default functionality to the element
-function addPreventDefault(evt){
+function addPreventDefault(evt) {
   evt.preventDefault();
 }
 
 // This method handle the click event of the whole window
-function windowClickEventHandlaer(event){
-  // it's checking if the clicked element is video option menu or not, if not then proceed
+function windowClickEventHandlaer(event) {
   if (!event.target.classList.contains("video-option-menu")) {
-    // it's checking if the clicked element is video option menu div or not, if not then proceed
-    if(!event.target.classList.contains("video-option-menu-div")){
+    if (!event.target.classList.contains("video-option-menu-div")) {
       const mainSection = getElement(".section-main");
-      // here its removing the prevent default
       mainSection.removeEventListener("wheel", addPreventDefault);
       if (previousVideoOptionMenuDiv) {
         savedVideoOptionMenuBtn.style.display = "none";
@@ -133,71 +130,84 @@ function windowClickEventHandlaer(event){
         savedVideoOptionMenuBtn = null;
       }
     }
-  } 
+  }
 }
 
 // ===============================
 // Video Item Click event listener
 // ===============================
 function videoItemClickEventHandler(event) {
-    const elem = getElement(".section-video-container");
-    const mainSection = getElement(".section-main");
-    
-    mainSection.addEventListener("wheel", addPreventDefault);
+  const elem = getElement(".section-video-container");
+  const mainSection = getElement(".section-main");
 
-    // calculating the height and width of clicked position
-    const widthDifference = elem.offsetWidth - event.clientX;
-    const heightDifference = elem.offsetHeight - event.clientY;
+  mainSection.addEventListener("wheel", addPreventDefault);
 
-    createDynamicVideoOptionMenu(event, widthDifference, heightDifference);
+  // calculating the height and width of clicked position
+  const widthDifference = elem.offsetWidth - event.clientX;
+  const heightDifference = elem.offsetHeight - event.clientY;
+
+  createDynamicVideoOptionMenu(event, widthDifference, heightDifference);
 }
 
 // ================================
 // Create Dynamic Video Option Menu
 // ================================
-function createDynamicVideoOptionMenu(event, widthDifference, heightDifference) {
-  const videoOptionMenuBtn = event.target;
-  let videoItemDiv = event.currentTarget;
-  const priviousVideoOptionMenuDiv = document.querySelector(".video-option-menu-div");
+function createDynamicVideoOptionMenu(
+  event,
+  widthDifference,
+  heightDifference
+) {
+  if (event.target.classList.contains("video-option-menu")) {
+    const videoOptionMenuBtn = event.target;
+    let videoItemDiv = event.currentTarget;
+    const priviousVideoOptionMenuDiv = document.querySelector(
+      ".video-option-menu-div"
+    );
 
-  if (priviousVideoOptionMenuDiv && priviousVideoOptionMenuDiv.dataset.id === videoItemDiv.dataset.id) {
-    if(!event.target.classList.contains("video-option-menu-div")){
+    if (
+      priviousVideoOptionMenuDiv &&
+      priviousVideoOptionMenuDiv.dataset.id === videoItemDiv.dataset.id
+    ) {
+      if (!event.target.classList.contains("video-option-menu-div")) {
+        changeColorFast(event.target);
+        removeVideoOptionMenu(videoOptionMenuBtn);
+        const mainSection = getElement(".section-main");
+        // here its removing the prevent default
+        mainSection.removeEventListener("wheel", addPreventDefault);
+      }
+    } else {
       changeColorFast(event.target);
-      removeVideoOptionMenu(videoOptionMenuBtn);
-    }
-  } 
-  else {
-    changeColorFast(event.target);
-    if (previousVideoOptionMenuDiv !== null) {
-      removeVideoOptionMenu(previousVideoOptionMenuDiv);
-    }
+      if (previousVideoOptionMenuDiv !== null) {
+        removeVideoOptionMenu(previousVideoOptionMenuDiv);
+      }
 
-    // create new div
-    const videoOptionMenuDiv = document.createElement("div");
-    videoOptionMenuDiv.classList.add("video-option-menu-div");
-    videoOptionMenuDiv.setAttribute("data-id", `${videoItemDiv.dataset.id}`);
+      // create new div
+      const videoOptionMenuDiv = document.createElement("div");
+      videoOptionMenuDiv.classList.add("video-option-menu-div");
+      videoOptionMenuDiv.setAttribute("data-id", `${videoItemDiv.dataset.id}`);
 
-    if (heightDifference < 100) {
-      videoOptionMenuDiv.style.top = `-100px`;
-    } else {
-      videoOptionMenuDiv.style.top = `35px`;
+      if (heightDifference < 250) {
+        videoOptionMenuDiv.style.top = `-260px`;
+      } else {
+        videoOptionMenuDiv.style.top = `35px`;
+      }
+
+      if (widthDifference < 150) {
+        videoOptionMenuDiv.style.left = `-260px`;
+      } else {
+        videoOptionMenuDiv.style.left = `0`;
+      }
+
+      if (savedVideoOptionMenuBtn) {
+        savedVideoOptionMenuBtn.style.display = "none";
+      }
+
+      // append to video option menu
+      videoOptionMenuBtn.appendChild(videoOptionMenuDiv);
+      previousVideoOptionMenuDiv = videoOptionMenuBtn;
+      videoOptionMenuId = videoItemDiv.dataset.id;
+      savedVideoOptionMenuBtn = event.target;
     }
-
-    if (widthDifference < 100) {
-      videoOptionMenuDiv.style.left = `-100px`;
-    } else {
-      videoOptionMenuDiv.style.left = `0`;
-    }
-
-    if(savedVideoOptionMenuBtn){
-      savedVideoOptionMenuBtn.style.display = "none";
-    }
-
-    // append to video option menu
-    videoOptionMenuBtn.appendChild(videoOptionMenuDiv);
-    previousVideoOptionMenuDiv = videoOptionMenuBtn;
-    videoOptionMenuId = videoItemDiv.dataset.id;
-    savedVideoOptionMenuBtn = event.target;
   }
 }
 
@@ -256,7 +266,7 @@ function mouseLeaveEventHandler(event) {
   } else {
     VideoOptionMenuBtn.style.display = "none";
   }
-  
+
   // remove watch later and add to queue banner on mouse leave
   const watchlaterBanner = getElementFromElement(item, ".hide-watch-later");
   if (watchlaterBanner.classList.contains("show-watch-later")) {

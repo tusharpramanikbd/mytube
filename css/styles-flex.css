@@ -59,10 +59,6 @@ Main Section
   height: 100vh;
   overflow-y: auto;
 }
-.no-scroll {
-  top: -100px;
-  overflow-y: hidden;
-}
 .section-main::-webkit-scrollbar {
   width: 0.75rem;
 }
@@ -724,12 +720,13 @@ Section Video container
   transform: scaleX(1);
 }
 
-.video-option-menu-div{
-  height: 100px;
-  width: 100px;
+.video-option-menu-div {
+  width: 260px;
+  height: 250px;
   background: red;
   position: absolute;
   z-index: 6;
+  border-radius: 5px;
 }
 
 @media screen and (max-width: 1130px) {
