@@ -2,15 +2,17 @@
 import {
   getElement,
   getElementAll,
-  convertHMS,
-  calculateCreationDate,
   changeColorFast,
   getElementFromElement,
 } from "./utils.js";
+import {
+  convertHMS,
+  startTimeCalculation,
+  calculateTimeFromDate,
+} from "./timeDateCalculation.js";
 import { fetchJson } from "./fetch.js";
 
 // creating some global variable
-let refreshTimeIntervalInSeconds = 120;
 let videoOptionMenuId = -1;
 let previousVideoOptionMenuDiv = null;
 let savedVideoOptionMenuBtn = null;
@@ -360,30 +362,4 @@ function mouseOverEventHandler(event) {
       addToQueueBanner.classList.remove("show-add-to-queue");
     }
   }
-}
-
-/* 
-=======================================
-Video Create Time Related functionality
-=======================================
- */
-function startTimeCalculation(savedVideoCreatedTimeList) {
-  const createdTimeList = [...getElementAll(".created-time")];
-  console.log("started refreshing");
-  setInterval(() => {
-    createdTimeList.map((item) => {
-      savedVideoCreatedTimeList.forEach((videoItem) => {
-        if (item.dataset.id === videoItem.id.toString()) {
-          item.textContent = calculateTimeFromDate(videoItem.created);
-        }
-      });
-    });
-  }, refreshTimeIntervalInSeconds * 1000);
-}
-
-function calculateTimeFromDate(creationDate) {
-  const date = new Date(creationDate);
-  const timeDifferenceInMilliseconds = Date.now() - date.getTime();
-  const timeInSecons = Math.floor(timeDifferenceInMilliseconds / 1000);
-  return calculateCreationDate(convertHMS(timeInSecons));
 }
