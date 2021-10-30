@@ -12,6 +12,10 @@ import {
   calculateTimeFromDate,
 } from "./timeDateCalculation.js";
 import { fetchJson } from "./fetch.js";
+import {
+  videoOptionMenuItemDataTop,
+  videoOptionMenuItemDataBottom,
+} from "../asset/videoOptionMenuItemData.js";
 
 // creating some global variable
 let videoOptionMenuId = -1;
@@ -131,6 +135,10 @@ function windowClickEventHandlaer(event) {
       const mainSection = getElement(".section-main");
       mainSection.removeEventListener("wheel", addPreventDefault);
       if (previousVideoOptionMenuDiv) {
+        // removing video option menu item mouse down event listener
+        [...getElementAll(".video-option-menu-item")].forEach((item) => {
+          item.removeEventListener("mousedown", () => {});
+        });
         savedVideoOptionMenuBtn.style.display = "none";
         removeVideoOptionMenuDiv(previousVideoOptionMenuDiv);
         savedVideoOptionMenuBtn = null;
@@ -372,6 +380,7 @@ function createVideoOptionMenuDiv(
 
   // append to video option menu
   videoOptionMenuBtn.appendChild(videoOptionMenuDiv);
+  displayVideoOptionMenuData(videoOptionMenuDiv);
 }
 
 // ============================
@@ -382,4 +391,54 @@ function removeVideoOptionMenuDiv(videoOptionMenuBtn) {
   videoOptionMenuBtn.removeChild(child);
   previousVideoOptionMenuDiv = null;
   videoOptionMenuId = -1;
+}
+
+// ==============================
+// Display Video Option Menu Data
+// ==============================
+function displayVideoOptionMenuData(videoOptionMenuDiv) {
+  // create top div
+  const videoOptionMenuDivTop = document.createElement("div");
+  videoOptionMenuDivTop.classList.add("video-option-menu-div-item-top");
+  // create top div menu item
+  const topData = videoOptionMenuItemDataTop
+    .map((item) => {
+      return `<div class="video-option-menu-item" data-id="${item.id}">
+    <i class="${item.logo}"></i>
+    <p>${item.text}</p>
+    </div>`;
+    })
+    .join("");
+
+  // append to top div
+  videoOptionMenuDivTop.innerHTML = topData;
+  // create bottom div
+  const videoOptionMenuDivBottom = document.createElement("div");
+  videoOptionMenuDivBottom.classList.add("video-option-menu-div-item-bottom");
+  // create bottom div menu item
+  const bottomData = videoOptionMenuItemDataBottom
+    .map((item) => {
+      return `<div class="video-option-menu-item" data-id="${item.id}">
+    <i class="${item.logo}"></i>
+    <p>${item.text}</p>
+    </div>`;
+    })
+    .join("");
+
+  // append to top div
+  videoOptionMenuDivBottom.innerHTML = bottomData;
+  // append to video option menu div
+  videoOptionMenuDiv.appendChild(videoOptionMenuDivTop);
+  videoOptionMenuDiv.appendChild(videoOptionMenuDivBottom);
+
+  // initializing video option menu item mouse down event listener
+  [...getElementAll(".video-option-menu-item")].forEach((item) => {
+    item.addEventListener("mousedown", (event) => {
+      if (
+        event.target.parentElement.classList.contains("video-option-menu-item")
+      ) {
+        event.target.parentElement.style.backgroundColor = "rgb(109, 109, 109)";
+      }
+    });
+  });
 }

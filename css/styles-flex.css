@@ -722,11 +722,40 @@ Section Video container
 
 .video-option-menu-div {
   width: 260px;
-  height: 250px;
-  background: red;
+  background: var(--clr-primary);
   position: absolute;
   z-index: 6;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.video-option-menu-div-item-top {
+  width: 100%;
+  padding: 0.5rem 0;
+}
+.video-option-menu-div-item-bottom {
+  width: 100%;
+  border-top: 0.5px solid rgb(77, 77, 77);
+  padding: 0.5rem 0;
+}
+.video-option-menu-item {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  color: white;
+  padding-left: 1rem;
+}
+.video-option-menu-item:hover {
+  background: rgb(77, 77, 77);
+  /* background: rgb(109, 109, 109); */
+}
+.video-option-menu-item p {
+  padding-left: 1rem;
+  font-size: 0.9rem;
+  font-weight: lighter;
 }
 
 @media screen and (max-width: 1130px) {
