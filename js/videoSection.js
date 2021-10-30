@@ -1,26 +1,17 @@
 // Importing the functions from other modules
-import {
-  getElement,
-  getElementAll,
-  changeColorFast,
-  getElementFromElement,
-  addPreventDefault,
-} from "./utils.js";
+import { getElement, getElementAll, addPreventDefault } from "./utils.js";
 import {
   convertHMS,
   startTimeCalculation,
   calculateTimeFromDate,
 } from "./timeDateCalculation.js";
 import { fetchJson } from "./fetch.js";
-import {
-  videoOptionMenuItemDataTop,
-  videoOptionMenuItemDataBottom,
-} from "../asset/videoOptionMenuItemData.js";
 
-// creating some global variable
-let videoOptionMenuId = -1;
-let previousVideoOptionMenuDiv = null;
-let savedVideoOptionMenuBtn = null;
+import {
+  initializeVideoItemEvenListeners,
+  removeVideoOptionMenuDiv,
+} from "./videoItem.js";
+import { MyStaticClass } from "./myStaticClass.js";
 
 // ===============================================
 // fetching all the video item data from JSON file
@@ -106,18 +97,12 @@ Initialize all the event listeners
 ==================================
 */
 function initializeEventListeners() {
-  const videoItemList = [...getElementAll(".div-video-item")];
-
-  videoItemList.forEach((videoItem) => {
-    videoItem.addEventListener("mouseover", mouseOverEventHandler, false);
-    videoItem.addEventListener("mouseleave", mouseLeaveEventHandler, false);
-    videoItem.addEventListener("click", videoItemClickEventHandler, false);
-    getElement(".section-main").addEventListener(
-      "click",
-      windowClickEventHandlaer,
-      false
-    );
-  });
+  getElement(".section-main").addEventListener(
+    "click",
+    windowClickEventHandlaer,
+    false
+  );
+  initializeVideoItemEvenListeners();
 }
 
 // ++++++++++++++++++++++++++++++++++++
@@ -134,311 +119,11 @@ function windowClickEventHandlaer(event) {
     if (!event.target.classList.contains("video-option-menu-div")) {
       const mainSection = getElement(".section-main");
       mainSection.removeEventListener("wheel", addPreventDefault);
-      if (previousVideoOptionMenuDiv) {
-        // removing video option menu item mouse down event listener
-        [...getElementAll(".video-option-menu-item")].forEach((item) => {
-          item.removeEventListener("mousedown", () => {});
-        });
-        savedVideoOptionMenuBtn.style.display = "none";
-        removeVideoOptionMenuDiv(previousVideoOptionMenuDiv);
-        savedVideoOptionMenuBtn = null;
+      if (MyStaticClass.getPreviousVideoOptionMenuDiv()) {
+        MyStaticClass.getSavedVideoOptionMenuBtn().style.display = "none";
+        removeVideoOptionMenuDiv(MyStaticClass.getPreviousVideoOptionMenuDiv());
+        MyStaticClass.setSavedVideoOptionMenuBtn(null);
       }
     }
   }
-}
-
-// ===============================
-// Video Item Click event listener
-// ===============================
-function videoItemClickEventHandler(event) {
-  const elem = getElement(".section-video-container");
-  const mainSection = getElement(".section-main");
-
-  mainSection.addEventListener("wheel", addPreventDefault);
-
-  // calculating the height and width of clicked position
-  const widthDifference = elem.offsetWidth - event.clientX;
-  const heightDifference = elem.offsetHeight - event.clientY;
-
-  setupDynamicVideoOptionMenu(event, widthDifference, heightDifference);
-}
-
-// =========================
-// Mouse over event listener
-// =========================
-function mouseOverEventHandler(event) {
-  const item = event.currentTarget;
-
-  // Video item top area
-  const childElementsOfVideoItemTop = getElementFromElement(
-    item,
-    ".section-video-img-div"
-  );
-
-  // watch latter btn
-  const watchLaterBtn = getElementFromElement(
-    childElementsOfVideoItemTop,
-    ".video-item-overlay-icon-watchlater"
-  );
-
-  if (!watchLaterBtn.style.display || watchLaterBtn.style.display === "none") {
-    watchLaterBtn.style.display = "grid";
-  }
-
-  // Add to queue btn
-  const addToQueueBtn = getElementFromElement(
-    childElementsOfVideoItemTop,
-    ".video-item-overlay-icon-queue"
-  );
-
-  if (!addToQueueBtn.style.display || addToQueueBtn.style.display === "none") {
-    addToQueueBtn.style.display = "grid";
-  }
-
-  // video item bottom area
-  const childElementsOfVideoItemBottom = getElementFromElement(
-    item,
-    ".section-video-info-div"
-  );
-
-  // watch latter btn
-  const VideoOptionMenuBtn = getElementFromElement(
-    childElementsOfVideoItemBottom,
-    ".video-option-menu"
-  );
-
-  if (
-    !VideoOptionMenuBtn.style.display ||
-    VideoOptionMenuBtn.style.display === "none"
-  ) {
-    VideoOptionMenuBtn.style.display = "grid";
-  }
-
-  // watch later hover event listener
-  if (
-    event.target.classList.contains("video-item-overlay-icon-watchlater") ||
-    event.target.classList.contains("show-watch-later")
-  ) {
-    const watchlaterBanner = getElementFromElement(item, ".hide-watch-later");
-    if (!watchlaterBanner.classList.contains("show-watch-later")) {
-      watchlaterBanner.classList.add("show-watch-later");
-    }
-  } else {
-    const watchlaterBanner = getElementFromElement(item, ".hide-watch-later");
-    if (watchlaterBanner.classList.contains("show-watch-later")) {
-      watchlaterBanner.classList.remove("show-watch-later");
-    }
-  }
-
-  // add to queue hover event listener
-  if (
-    event.target.classList.contains("video-item-overlay-icon-queue") ||
-    event.target.classList.contains("show-add-to-queue")
-  ) {
-    const addToQueueBanner = getElementFromElement(item, ".hide-add-to-queue");
-    if (!addToQueueBanner.classList.contains("show-add-to-queue")) {
-      addToQueueBanner.classList.add("show-add-to-queue");
-    }
-  } else {
-    const addToQueueBanner = getElementFromElement(item, ".hide-add-to-queue");
-    if (addToQueueBanner.classList.contains("show-add-to-queue")) {
-      addToQueueBanner.classList.remove("show-add-to-queue");
-    }
-  }
-}
-
-// ==========================
-// Mouse leave event listener
-// ==========================
-function mouseLeaveEventHandler(event) {
-  const item = event.currentTarget;
-
-  // Video item top area
-  const childElementsOfVideoItemTop = getElementFromElement(
-    item,
-    ".section-video-img-div"
-  );
-
-  // watch latter btn
-  const watchLaterBtn = getElementFromElement(
-    childElementsOfVideoItemTop,
-    ".video-item-overlay-icon-watchlater"
-  );
-  if (watchLaterBtn.style.display === "grid") {
-    watchLaterBtn.style.display = "none";
-  }
-
-  // Add to queue btn
-  const addToQueueBtn = getElementFromElement(
-    childElementsOfVideoItemTop,
-    ".video-item-overlay-icon-queue"
-  );
-  if (addToQueueBtn.style.display === "grid") {
-    addToQueueBtn.style.display = "none";
-  }
-
-  // video item bottom area
-  const childElementsOfVideoItemBottom = getElementFromElement(
-    item,
-    ".section-video-info-div"
-  );
-
-  // video option menu icon
-  const VideoOptionMenuBtn = getElementFromElement(
-    childElementsOfVideoItemBottom,
-    ".video-option-menu"
-  );
-
-  if (videoOptionMenuId === item.dataset.id) {
-    VideoOptionMenuBtn.style.display = "grid";
-  } else {
-    VideoOptionMenuBtn.style.display = "none";
-  }
-
-  // remove watch later and add to queue banner on mouse leave
-  const watchlaterBanner = getElementFromElement(item, ".hide-watch-later");
-  if (watchlaterBanner.classList.contains("show-watch-later")) {
-    watchlaterBanner.classList.remove("show-watch-later");
-  }
-  const addToQueueBanner = getElementFromElement(item, ".hide-add-to-queue");
-  if (addToQueueBanner.classList.contains("show-add-to-queue")) {
-    addToQueueBanner.classList.remove("show-add-to-queue");
-  }
-}
-
-// ================================
-// Setup Dynamic Video Option Menu
-// ================================
-function setupDynamicVideoOptionMenu(event, widthDifference, heightDifference) {
-  if (event.target.classList.contains("video-option-menu")) {
-    const videoOptionMenuBtn = event.target;
-    let videoItemDiv = event.currentTarget;
-    const priviousVideoOptionMenuDiv = document.querySelector(
-      ".video-option-menu-div"
-    );
-
-    if (
-      priviousVideoOptionMenuDiv &&
-      priviousVideoOptionMenuDiv.dataset.id === videoItemDiv.dataset.id
-    ) {
-      if (!event.target.classList.contains("video-option-menu-div")) {
-        changeColorFast(event.target);
-        removeVideoOptionMenuDiv(videoOptionMenuBtn);
-        const mainSection = getElement(".section-main");
-        // here its removing the prevent default
-        mainSection.removeEventListener("wheel", addPreventDefault);
-      }
-    } else {
-      changeColorFast(event.target);
-      if (previousVideoOptionMenuDiv !== null) {
-        removeVideoOptionMenuDiv(previousVideoOptionMenuDiv);
-      }
-
-      // create new Video Option Menu div
-      createVideoOptionMenuDiv(
-        videoOptionMenuBtn,
-        videoItemDiv,
-        heightDifference,
-        widthDifference
-      );
-
-      if (savedVideoOptionMenuBtn) {
-        savedVideoOptionMenuBtn.style.display = "none";
-      }
-
-      previousVideoOptionMenuDiv = videoOptionMenuBtn;
-      videoOptionMenuId = videoItemDiv.dataset.id;
-      savedVideoOptionMenuBtn = event.target;
-    }
-  }
-}
-
-// ============================
-// Create Video Option Menu Div
-// ============================
-function createVideoOptionMenuDiv(
-  videoOptionMenuBtn,
-  videoItemDiv,
-  heightDifference,
-  widthDifference
-) {
-  const videoOptionMenuDiv = document.createElement("div");
-  videoOptionMenuDiv.classList.add("video-option-menu-div");
-  videoOptionMenuDiv.setAttribute("data-id", `${videoItemDiv.dataset.id}`);
-
-  if (heightDifference < 250) {
-    videoOptionMenuDiv.style.top = `-260px`;
-  } else {
-    videoOptionMenuDiv.style.top = `35px`;
-  }
-
-  if (widthDifference < 150) {
-    videoOptionMenuDiv.style.left = `-260px`;
-  } else {
-    videoOptionMenuDiv.style.left = `0`;
-  }
-
-  // append to video option menu
-  videoOptionMenuBtn.appendChild(videoOptionMenuDiv);
-  displayVideoOptionMenuData(videoOptionMenuDiv);
-}
-
-// ============================
-// Remove video option menu div
-// ============================
-function removeVideoOptionMenuDiv(videoOptionMenuBtn) {
-  const child = getElement(".video-option-menu-div");
-  videoOptionMenuBtn.removeChild(child);
-  previousVideoOptionMenuDiv = null;
-  videoOptionMenuId = -1;
-}
-
-// ==============================
-// Display Video Option Menu Data
-// ==============================
-function displayVideoOptionMenuData(videoOptionMenuDiv) {
-  // create top div
-  const videoOptionMenuDivTop = document.createElement("div");
-  videoOptionMenuDivTop.classList.add("video-option-menu-div-item-top");
-  // create top div menu item
-  const topData = videoOptionMenuItemDataTop
-    .map((item) => {
-      return `<div class="video-option-menu-item" data-id="${item.id}">
-    <i class="${item.logo}"></i>
-    <p>${item.text}</p>
-    </div>`;
-    })
-    .join("");
-
-  // append to top div
-  videoOptionMenuDivTop.innerHTML = topData;
-  // create bottom div
-  const videoOptionMenuDivBottom = document.createElement("div");
-  videoOptionMenuDivBottom.classList.add("video-option-menu-div-item-bottom");
-  // create bottom div menu item
-  const bottomData = videoOptionMenuItemDataBottom
-    .map((item) => {
-      return `<div class="video-option-menu-item" data-id="${item.id}">
-    <i class="${item.logo}"></i>
-    <p>${item.text}</p>
-    </div>`;
-    })
-    .join("");
-
-  // append to top div
-  videoOptionMenuDivBottom.innerHTML = bottomData;
-  // append to video option menu div
-  videoOptionMenuDiv.appendChild(videoOptionMenuDivTop);
-  videoOptionMenuDiv.appendChild(videoOptionMenuDivBottom);
-
-  // initializing video option menu item mouse down event listener
-  [...getElementAll(".video-option-menu-item")].forEach((item) => {
-    item.addEventListener("mousedown", (event) => {
-      if (
-        event.target.parentElement.classList.contains("video-option-menu-item")
-      ) {
-        event.target.parentElement.style.backgroundColor = "rgb(109, 109, 109)";
-      }
-    });
-  });
 }
