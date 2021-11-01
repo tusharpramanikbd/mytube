@@ -16,7 +16,7 @@ const getElementFromElement = (element, selection) => {
 
 const getAllElementFromElement = (element, selection) => {
   const childElement = element.querySelectorAll(selection);
-  if (childElement) return childElement;
+  if (childElement) return [...childElement];
   throw new Error(
     `Please check "${selection}" selector, no such element exist`
   );
