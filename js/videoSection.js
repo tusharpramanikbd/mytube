@@ -13,10 +13,12 @@ import {
 } from "./videoItem.js";
 import { MyStaticClass } from "./myStaticClass.js";
 
+const url = "../asset/videoData.json";
+
 // ===============================================
 // fetching all the video item data from JSON file
 // ===============================================
-await fetchJson()
+await fetchJson(url)
   .then((result) => setVideoData(result))
   .catch((error) => console.log(error));
 
@@ -127,3 +129,5 @@ function windowClickEventHandlaer(event) {
     }
   }
 }
+
+export { setVideoData };

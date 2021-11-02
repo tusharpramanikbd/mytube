@@ -1,12 +1,9 @@
-const url = "../asset/videoData.json";
-let response;
-
-export const fetchJson = async () => {
+export const fetchJson = async (url) => {
   try {
-    const data = await fetch(url,{
-  credentials: "include"
-});
-    response = await data.json();
+    const data = await fetch(url, {
+      credentials: "include",
+    });
+    const response = await data.json();
     return response;
   } catch (error) {
     console.log(error);

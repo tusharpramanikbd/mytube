@@ -7,7 +7,8 @@
     "avater": "https://randomuser.me/api/portraits/men/1.jpg",
     "views": "2k",
     "created": "2021-10-26 10:44:00",
-    "name": "tushar pramanik"
+    "name": "tushar pramanik",
+    "tag": "javascript"
   },
   {
     "id": 2,
@@ -17,7 +18,8 @@
     "avater": "https://randomuser.me/api/portraits/men/2.jpg",
     "views": "5.5k",
     "created": "2021-10-25 14:00:11",
-    "name": "mampy chowdhury"
+    "name": "mampy chowdhury",
+    "tag": "java"
   },
   {
     "id": 3,
@@ -27,7 +29,8 @@
     "avater": "https://randomuser.me/api/portraits/men/3.jpg",
     "views": "11.2k",
     "created": "2018-03-04 22:58:57",
-    "name": "soma pramanik"
+    "name": "soma pramanik",
+    "tag": "php"
   },
   {
     "id": 4,
@@ -37,7 +40,8 @@
     "avater": "https://randomuser.me/api/portraits/men/4.jpg",
     "views": "0.9k",
     "created": "2017-06-21 08:28:00",
-    "name": "tanmoy saha"
+    "name": "tanmoy saha",
+    "tag": "c++"
   },
   {
     "id": 5,
@@ -47,7 +51,8 @@
     "avater": "https://randomuser.me/api/portraits/men/5.jpg",
     "views": "128k",
     "created": "2019-07-16 11:46:03",
-    "name": "nahid hasan"
+    "name": "nahid hasan",
+    "tag": "android"
   },
   {
     "id": 6,
@@ -57,7 +62,8 @@
     "avater": "https://randomuser.me/api/portraits/men/6.jpg",
     "views": "190k",
     "created": "2017-03-02 07:05:58",
-    "name": "taufiqur rahman"
+    "name": "taufiqur rahman",
+    "tag": "javascript"
   },
   {
     "id": 7,
@@ -67,7 +73,8 @@
     "avater": "https://randomuser.me/api/portraits/men/7.jpg",
     "views": "500k",
     "created": "2020-11-13 02:35:14",
-    "name": "saleque rahman"
+    "name": "saleque rahman",
+    "tag": "javascript"
   },
   {
     "id": 8,
@@ -77,7 +84,8 @@
     "avater": "https://randomuser.me/api/portraits/men/8.jpg",
     "views": "3.3k",
     "created": "2016-01-27 06:06:29",
-    "name": "antor roy"
+    "name": "antor roy",
+    "tag": "java"
   },
   {
     "id": 9,
@@ -87,7 +95,8 @@
     "avater": "https://randomuser.me/api/portraits/men/9.jpg",
     "views": "12k",
     "created": "2016-07-02 16:50:11",
-    "name": "anupom dey"
+    "name": "anupom dey",
+    "tag": "javascript"
   },
   {
     "id": 10,
@@ -97,7 +106,8 @@
     "avater": "https://randomuser.me/api/portraits/men/10.jpg",
     "views": "11k",
     "created": "2018-01-27 04:06:49",
-    "name": "shuvro chowdhury"
+    "name": "shuvro chowdhury",
+    "tag": "php"
   },
   {
     "id": 11,
@@ -107,7 +117,8 @@
     "avater": "https://randomuser.me/api/portraits/men/10.jpg",
     "views": "11k",
     "created": "2018-01-27 04:06:49",
-    "name": "shuvro chowdhury"
+    "name": "shuvro chowdhury",
+    "tag": "c++"
   },
   {
     "id": 12,
@@ -117,7 +128,8 @@
     "avater": "https://randomuser.me/api/portraits/men/10.jpg",
     "views": "11k",
     "created": "2018-01-27 04:06:49",
-    "name": "shuvro chowdhury"
+    "name": "shuvro chowdhury",
+    "tag": "java"
   },
   {
     "id": 13,
@@ -127,7 +139,8 @@
     "avater": "https://randomuser.me/api/portraits/men/10.jpg",
     "views": "11k",
     "created": "2018-01-27 04:06:49",
-    "name": "shuvro chowdhury"
+    "name": "shuvro chowdhury",
+    "tag": "java"
   },
   {
     "id": 14,
@@ -137,7 +150,8 @@
     "avater": "https://randomuser.me/api/portraits/men/10.jpg",
     "views": "11k",
     "created": "2018-01-27 04:06:49",
-    "name": "shuvro chowdhury"
+    "name": "shuvro chowdhury",
+    "tag": "laravel"
   },
   {
     "id": 15,
@@ -147,8 +161,10 @@
     "avater": "https://randomuser.me/api/portraits/men/10.jpg",
     "views": "11k",
     "created": "2018-01-27 04:06:49",
-    "name": "shuvro chowdhury"
-  },{
+    "name": "shuvro chowdhury",
+    "tag": "javascript"
+  },
+  {
     "id": 16,
     "image": "https://picsum.photos/id/160/200/300",
     "duration": "3330",
@@ -156,6 +172,7 @@
     "avater": "https://randomuser.me/api/portraits/men/10.jpg",
     "views": "11k",
     "created": "2018-01-27 04:06:49",
-    "name": "shuvro chowdhury"
+    "name": "shuvro chowdhury",
+    "tag": "c++"
   }
 ]
