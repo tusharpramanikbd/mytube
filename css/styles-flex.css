@@ -123,8 +123,8 @@ Section Navbar
   content: "";
   background: white;
   font-size: 1.7rem;
-  margin-top: 0.3rem;
-  margin-left: 0.3rem;
+  margin-top: 0.4rem;
+  margin-left: 0.4rem;
   width: 15px;
   height: 15px;
   position: absolute;
@@ -134,7 +134,7 @@ Section Navbar
   color: white;
   font-weight: bold;
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   margin-left: 0.1rem;
 }
 .navbar-logo-container sup {
@@ -147,11 +147,14 @@ Section Navbar
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-right: 0.5rem;
 }
 .navbar-middle-form {
-  width: 63%;
+  /* width: 63%; */
+  flex: 0.7;
   height: 2.5rem;
   margin-left: 0.5rem;
+  position: relative;
 }
 .navbar-search {
   padding: 0.375rem 0.75rem;
@@ -164,17 +167,28 @@ Section Navbar
   background: #202020;
   border: 1px solid #494949;
   color: white;
+  padding-right: 2.5rem;
 }
 .navbar-search:focus {
   outline: none;
   border: 1px solid rgb(4, 159, 248);
 }
+.btn-cross {
+  color: white;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.7rem;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
 .navbar-btn-search {
-  padding: 0.5rem 1.25rem;
+  padding: 0 1.25rem;
   border-color: transparent;
   background: #494949;
   height: 2.5rem;
   cursor: pointer;
+  display: grid;
+  place-items: center;
 }
 .navbar-btn-search i {
   font-size: 1.2rem;
@@ -182,8 +196,8 @@ Section Navbar
   cursor: pointer;
 }
 .navbar-btn-microphone {
-  height: 40px;
-  width: 40px;
+  height: 2.5rem;
+  width: 2.5rem;
   border-color: transparent;
   border-radius: 50%;
   background: #202020;
@@ -231,8 +245,8 @@ Section Navbar
     display: none;
   }
   .navbar-btn-search {
-    height: 40px;
-    width: 40px;
+    height: 2.5rem;
+    width: 2.5rem;
     border-color: transparent;
     border-radius: 50%;
     background: #202020;
@@ -251,7 +265,45 @@ Section Navbar
     font-size: 1.1rem;
     margin-left: 0.1rem;
   }
+  .navbar-middle {
+    padding-right: 0.05rem;
+    padding-left: 0.95rem;
+  }
 }
+.show-navbar-middle-form {
+  display: block;
+  margin-right: 0.5rem;
+}
+.changed-section-navbar {
+  grid-template-columns: 10% 1fr;
+  transition: var(--transition);
+}
+.hide-element {
+  display: none;
+}
+.btn-back {
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+.back-arrow-div {
+  display: grid;
+  place-items: center;
+  display: none;
+}
+.show-element {
+  display: grid;
+}
+.changed-navbar-middle-form {
+  flex: 1;
+  margin-left: 0;
+}
+
 /*
 =============== 
 Section Menus
