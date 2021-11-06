@@ -9,6 +9,7 @@ const sectionMenus = getElement(".section-menus");
 const sectionMenusSmall = getElement(".section-menus-small");
 const overlay = getElement(".overlay");
 const overlayToggleBtn = getElement(".overlay-toggle-btn");
+const noDataFound = getElement(".no-data-found");
 let menuDivList = null;
 
 // implement middle menu section dynamically
@@ -125,11 +126,39 @@ export function changeLeftMenusSectionOnWindowResize() {
     hideOverlay();
     if (sectionMenus.style.display !== "block") {
       showSectionMenuBig();
+      changeNoDataFoundPosition();
     }
   } else {
-    if (sectionMenusSmall.style.display !== "block") {
-      showSectionMenuSmall();
+    showSectionMenuSmall();
+    changeNoDataFoundPosition();
+  }
+}
+
+export function changeNoDataFoundPosition() {
+  if (getWidth() < 1312) {
+    if (getWidth() > 950) {
+      noDataFound.style.left = "40%";
+    } else {
+      if (getWidth() > 870) {
+        noDataFound.style.left = "35%";
+      } else {
+        if (getWidth() > 750) {
+          noDataFound.style.left = "32%";
+        } else {
+          if (getWidth() > 600) {
+            noDataFound.style.left = "28%";
+          } else {
+            if (getWidth() > 550) {
+              noDataFound.style.left = "23%";
+            } else {
+              noDataFound.style.left = "18%";
+            }
+          }
+        }
+      }
     }
+  } else {
+    noDataFound.style.left = "45%";
   }
 }
 
@@ -138,15 +167,27 @@ function showSectionMenuBig() {
   sectionMenusSmall.style.display = "none";
   sectionVideoFilter.style.width = "calc(100% - 15.75rem)";
   sectionVideoFilter.style.left = "15rem";
-  sectionVideoContainer.style.padding = "4.5rem 1.5rem 2rem 16.5rem";
+  sectionVideoContainer.style.padding = "5rem 1.5rem 2rem 16.5rem";
 }
 
-function showSectionMenuSmall() {
+export function showSectionMenuSmall() {
   sectionMenus.style.display = "none";
-  sectionMenusSmall.style.display = "block";
-  sectionVideoFilter.style.width = "calc(100% - 5.25rem)";
-  sectionVideoFilter.style.left = "4.5rem";
-  sectionVideoContainer.style.padding = "4.5rem 1.5rem 2rem 6rem";
+
+  if (getWidth() <= 870) {
+    if (getWidth() > 580) {
+      sectionVideoContainer.style.padding = "5rem 4rem 2rem 4rem";
+    } else {
+      sectionVideoContainer.style.padding = "5rem 5rem 2rem 5rem";
+    }
+    sectionMenusSmall.style.display = "none";
+    sectionVideoFilter.style.width = "calc(100% - 0.75rem)";
+    sectionVideoFilter.style.left = "0";
+  } else {
+    sectionMenusSmall.style.display = "block";
+    sectionVideoFilter.style.width = "calc(100% - 5.25rem)";
+    sectionVideoFilter.style.left = "4.5rem";
+    sectionVideoContainer.style.padding = "5rem 1.5rem 2rem 6rem";
+  }
 }
 
 function hideOverlay() {

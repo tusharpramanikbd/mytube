@@ -58,6 +58,7 @@ Main Section
 .section-main {
   height: 100vh;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 .section-main::-webkit-scrollbar {
   width: 0.75rem;
@@ -321,6 +322,9 @@ Section Menus
   display: block;
   z-index: 5;
 }
+.hide-section-menus {
+  display: none;
+}
 .section-menus::-webkit-scrollbar {
   width: 0.75rem;
 }
@@ -511,7 +515,7 @@ Section Video Filter
 */
 .section-video-filter {
   width: calc(100% - 15.75rem);
-  height: 3.5rem;
+  height: 3.6rem;
   background: var(--clr-primary);
   position: fixed;
   top: 3.5rem;
@@ -600,11 +604,11 @@ Section Video container
 .section-video-container {
   width: 100%;
   height: 100%;
-  padding: 4.5rem 1.5rem 0 16.5rem;
+  padding: 5rem 1.5rem 0 16.5rem;
   position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  column-gap: 0.8rem;
+  column-gap: 1.2rem;
 }
 /* Div Video Item */
 .div-video-item {
@@ -829,15 +833,25 @@ Section Video container
   .section-video-container {
     grid-template-columns: repeat(3, 1fr);
   }
+  .div-video-item {
+    height: 275px;
+  }
+  .section-video-img-div {
+    height: 175px;
+  }
 }
 @media screen and (max-width: 870px) {
   .section-video-container {
     grid-template-columns: repeat(2, 1fr);
+    padding-left: 8.3rem;
+    padding-right: 4rem;
   }
 }
 @media screen and (max-width: 550px) {
   .section-video-container {
     grid-template-columns: repeat(1, 1fr);
+    padding-left: 8.3rem;
+    padding-right: 4rem;
   }
 }
 
@@ -851,8 +865,5 @@ Section Video container
   .section-video-filter {
     width: calc(100% - 5.25rem);
     left: 4.5rem;
-  }
-  .section-video-container {
-    padding: 4.5rem 1.5rem 2rem 6rem;
   }
 }

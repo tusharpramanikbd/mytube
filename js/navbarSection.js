@@ -8,6 +8,7 @@ import {
 import {
   toggleLeftMenusSection,
   changeLeftMenusSectionOnWindowResize,
+  showSectionMenuSmall,
 } from "./leftMenusSection.js";
 
 const navbarToggleBtn = getElement(".navbar-toggle-btn");
@@ -25,6 +26,15 @@ const btnBack = getElement(".btn-back");
 navbarToggleBtn.addEventListener("click", () => {
   changeColor(navbarToggleBtn);
   toggleLeftMenusSection();
+});
+
+window.addEventListener("DOMContentLoaded", (event) => {
+  if (getWidth() < 1312) {
+    showSectionMenuSmall();
+    if (getWidth() <= 870) {
+      changeLeftMenusSectionOnWindowResize();
+    }
+  }
 });
 
 window.onresize = () => {
