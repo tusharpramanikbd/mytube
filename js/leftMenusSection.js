@@ -150,7 +150,7 @@ export function showSectionMenuSmall() {
   });
 }
 
-function hideOverlay() {
+export function hideOverlay() {
   overlay.classList.add("hide-overlay");
   sectionMenusOverlay.classList.remove("show-menus-overlay");
 }

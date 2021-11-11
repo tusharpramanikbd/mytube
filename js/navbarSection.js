@@ -5,7 +5,7 @@ import {
   changeColorFast,
   getWidth,
 } from "./utils.js";
-import { toggleLeftMenusSection } from "./leftMenusSection.js";
+import { hideOverlay, toggleLeftMenusSection } from "./leftMenusSection.js";
 
 const navbarToggleBtn = getElement(".navbar-toggle-btn");
 const navbarBtnMicrophone = getElement(".navbar-btn-microphone");
@@ -25,6 +25,9 @@ navbarToggleBtn.addEventListener("click", () => {
 
 window.onresize = () => {
   changeMiddleNavbar();
+  if (getWidth() > 1312) {
+    hideOverlay();
+  }
 };
 
 allNavbarIcons.forEach((icon) => {
@@ -37,7 +40,7 @@ navbarBtnMicrophone.addEventListener("click", () => {
   changeColorFast(navbarBtnMicrophone, "#202020");
 });
 
-navbarBtnSearch.addEventListener("click", (event) => {
+navbarBtnSearch.addEventListener("click", () => {
   const inputDisplay = window.getComputedStyle(navbarMiddleForm).display;
 
   if (getWidth() <= 800 && inputDisplay === "none") {
