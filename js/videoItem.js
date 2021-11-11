@@ -60,7 +60,7 @@ function mouseOverEventHandler(event) {
     ".video-item-overlay-icon-watchlater"
   );
 
-  if (!watchLaterBtn.style.display || watchLaterBtn.style.display === "none") {
+  if (window.getComputedStyle(watchLaterBtn).display === "none") {
     watchLaterBtn.style.display = "grid";
   }
 
@@ -70,7 +70,7 @@ function mouseOverEventHandler(event) {
     ".video-item-overlay-icon-queue"
   );
 
-  if (!addToQueueBtn.style.display || addToQueueBtn.style.display === "none") {
+  if (window.getComputedStyle(addToQueueBtn).display === "none") {
     addToQueueBtn.style.display = "grid";
   }
 
@@ -86,11 +86,8 @@ function mouseOverEventHandler(event) {
     ".video-option-menu"
   );
 
-  if (
-    !VideoOptionMenuBtn.style.display ||
-    VideoOptionMenuBtn.style.display === "none"
-  ) {
-    VideoOptionMenuBtn.style.display = "grid";
+  if (window.getComputedStyle(VideoOptionMenuBtn).display === "none") {
+    VideoOptionMenuBtn.classList.add("video-option-menu-show");
   }
 
   // watch later hover event listener
@@ -143,7 +140,7 @@ function mouseLeaveEventHandler(event) {
     childElementsOfVideoItemTop,
     ".video-item-overlay-icon-watchlater"
   );
-  if (watchLaterBtn.style.display === "grid") {
+  if (window.getComputedStyle(watchLaterBtn).display === "grid") {
     watchLaterBtn.style.display = "none";
   }
 
@@ -152,7 +149,7 @@ function mouseLeaveEventHandler(event) {
     childElementsOfVideoItemTop,
     ".video-item-overlay-icon-queue"
   );
-  if (addToQueueBtn.style.display === "grid") {
+  if (window.getComputedStyle(addToQueueBtn).display === "grid") {
     addToQueueBtn.style.display = "none";
   }
 
@@ -169,9 +166,9 @@ function mouseLeaveEventHandler(event) {
   );
 
   if (videoOptionMenuId === item.dataset.id) {
-    VideoOptionMenuBtn.style.display = "grid";
+    VideoOptionMenuBtn.classList.add("video-option-menu-show");
   } else {
-    VideoOptionMenuBtn.style.display = "none";
+    VideoOptionMenuBtn.classList.remove("video-option-menu-show");
   }
 
   // remove watch later and add to queue banner on mouse leave
@@ -222,7 +219,9 @@ function setupDynamicVideoOptionMenu(event, widthDifference, heightDifference) {
       );
 
       if (MyStaticClass.getSavedVideoOptionMenuBtn()) {
-        MyStaticClass.getSavedVideoOptionMenuBtn().style.display = "none";
+        MyStaticClass.getSavedVideoOptionMenuBtn().classList.remove(
+          "video-option-menu-show"
+        );
       }
 
       MyStaticClass.setPreviousVideoOptionMenuDiv(videoOptionMenuBtn);

@@ -64,11 +64,11 @@ function setVideoData(videoList) {
                 alt="${name}"
               />
               <h1>${title}</h1>
-              <i class="fas fa-ellipsis-v video-option-menu"></i>
+              <i class="fas fa-ellipsis-v fa-fw video-option-menu"></i>
             </div>
             <div class="section-video-info-div-middle">
               <p>${name}</p>
-              <i class="fas fa-check-circle"></i>
+              <i class="fas fa-check-circle fa-fw"></i>
             </div>
             <p class="section-video-info-div-bottom-title">
               ${views} views &middot;

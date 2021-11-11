@@ -111,10 +111,8 @@ function seeLessClickEventHandler(event) {
 
 export function toggleLeftMenusSection() {
   if (getWidth() > 1312) {
-    if (sectionMenus.style.display === "none") {
+    if (window.getComputedStyle(sectionMenus).display === "none") {
       showSectionMenuBig();
-    } else {
-      showSectionMenuSmall();
     }
   } else {
     showOverlay();
@@ -124,12 +122,12 @@ export function toggleLeftMenusSection() {
 export function changeLeftMenusSectionOnWindowResize() {
   if (getWidth() > 1312) {
     hideOverlay();
-    if (sectionMenus.style.display !== "block") {
-      showSectionMenuBig();
+    if (window.getComputedStyle(sectionMenus).display !== "block") {
+      // showSectionMenuBig();
       changeNoDataFoundPosition();
     }
   } else {
-    showSectionMenuSmall();
+    // showSectionMenuSmall();
     changeNoDataFoundPosition();
   }
 }
@@ -162,33 +160,34 @@ export function changeNoDataFoundPosition() {
   }
 }
 
-function showSectionMenuBig() {
-  sectionMenus.style.display = "block";
-  sectionMenusSmall.style.display = "none";
-  sectionVideoFilter.style.width = "calc(100% - 15.75rem)";
-  sectionVideoFilter.style.left = "15rem";
-  sectionVideoContainer.style.padding = "5rem 1.5rem 2rem 16.5rem";
-}
+// function showSectionMenuBig() {
+//   sectionMenus.classList.remove("hide-element");
 
-export function showSectionMenuSmall() {
-  sectionMenus.style.display = "none";
+//   sectionMenusSmall.style.display = "none";
+//   sectionVideoFilter.style.width = "calc(100% - 15.75rem)";
+//   sectionVideoFilter.style.left = "15rem";
+//   sectionVideoContainer.style.padding = "5rem 1.5rem 2rem 16.5rem";
+// }
 
-  if (getWidth() <= 870) {
-    if (getWidth() > 580) {
-      sectionVideoContainer.style.padding = "5rem 4rem 2rem 4rem";
-    } else {
-      sectionVideoContainer.style.padding = "5rem 5rem 2rem 5rem";
-    }
-    sectionMenusSmall.style.display = "none";
-    sectionVideoFilter.style.width = "calc(100% - 0.75rem)";
-    sectionVideoFilter.style.left = "0";
-  } else {
-    sectionMenusSmall.style.display = "block";
-    sectionVideoFilter.style.width = "calc(100% - 5.25rem)";
-    sectionVideoFilter.style.left = "4.5rem";
-    sectionVideoContainer.style.padding = "5rem 1.5rem 2rem 6rem";
-  }
-}
+// export function showSectionMenuSmall() {
+//   sectionMenus.classList.add("hide-element");
+
+//   // if (getWidth() <= 870) {
+//   //   if (getWidth() > 580) {
+//   //     sectionVideoContainer.style.padding = "5rem 4rem 2rem 4rem";
+//   //   } else {
+//   //     sectionVideoContainer.style.padding = "5rem 5rem 2rem 5rem";
+//   //   }
+//   //   sectionMenusSmall.style.display = "none";
+//   //   sectionVideoFilter.style.width = "calc(100% - 0.75rem)";
+//   //   sectionVideoFilter.style.left = "0";
+//   // } else {
+//   //   sectionMenusSmall.style.display = "block";
+//   //   sectionVideoFilter.style.width = "calc(100% - 5.25rem)";
+//   //   sectionVideoFilter.style.left = "4.5rem";
+//   //   sectionVideoContainer.style.padding = "5rem 1.5rem 2rem 6rem";
+//   // }
+// }
 
 function hideOverlay() {
   overlay.classList.add("hide-overlay");
