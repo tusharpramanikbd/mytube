@@ -109,7 +109,7 @@ Section Navbar
 .navbar-logo-container {
   display: flex;
   align-items: center;
-  margin-left: 1.5rem;
+  margin-left: 1.2rem;
 }
 .navbar-icon {
   background: transparent;
@@ -488,7 +488,6 @@ Section Menus Overlay
   color: white;
   font-size: 1.2rem;
   cursor: pointer;
-  margin-left: 1.2rem;
   transition: var(--transition);
 }
 .section-menus-overlay-bottom {
@@ -823,18 +822,18 @@ Section Video container
   font-size: 0.9rem;
   font-weight: lighter;
 }
-
 .no-data-found {
-  display: grid;
-  place-items: center;
+  display: block;
   position: absolute;
+  left: 48%;
   top: 55%;
-  left: 45%;
   display: none;
 }
 .no-data-found p {
   color: white;
   font-size: 2rem;
+  display: grid;
+  justify-content: center;
 }
 /* Used css classes on event */
 .increase-video-filter-width {
@@ -849,6 +848,9 @@ Section Video container
 }
 .increase-div-video-item {
   max-height: 17rem;
+}
+.change-no-data-found-position {
+  left: 42%;
 }
 @media screen and (max-width: 1320px) {
   .section-menus {
@@ -866,6 +868,14 @@ Section Video container
   }
   .div-video-item {
     max-height: 16.5rem;
+  }
+  .no-data-found {
+    left: 42%;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .no-data-found {
+    left: 41%;
   }
 }
 @media screen and (max-width: 1140px) {
@@ -901,10 +911,22 @@ Section Video container
   .section-video-info-div-bottom-title {
     font-size: 0.8rem;
   }
+  .no-data-found {
+    left: 41%;
+  }
+  .no-data-found p {
+    font-size: 1.9rem;
+  }
 }
 @media screen and (max-width: 1100px) {
   .div-video-item {
     max-height: 16.5rem;
+  }
+  .no-data-found {
+    left: 41%;
+  }
+  .no-data-found p {
+    font-size: 1.8rem;
   }
 }
 @media screen and (max-width: 1050px) {
@@ -916,6 +938,12 @@ Section Video container
   .div-video-item {
     max-height: 15.5rem;
   }
+  .no-data-found {
+    left: 40%;
+  }
+  .no-data-found p {
+    font-size: 1.7rem;
+  }
 }
 @media screen and (max-width: 950px) {
   .div-video-item {
@@ -925,6 +953,9 @@ Section Video container
 @media screen and (max-width: 900px) {
   .div-video-item {
     max-height: 14.5rem;
+  }
+  .no-data-found p {
+    font-size: 1.6rem;
   }
 }
 @media screen and (max-width: 850px) {
@@ -959,6 +990,9 @@ Section Video container
   .section-video-container {
     padding: 5rem 3.5rem 0 3.5rem;
   }
+  .no-data-found {
+    left: 35%;
+  }
 }
 @media screen and (max-width: 740px) {
   .div-video-item {
@@ -968,6 +1002,12 @@ Section Video container
 @media screen and (max-width: 700px) {
   .div-video-item {
     max-height: 16.5rem;
+  }
+  .no-data-found {
+    left: 32%;
+  }
+  .no-data-found p {
+    font-size: 1.6rem;
   }
 }
 @media screen and (max-width: 650px) {
@@ -981,6 +1021,9 @@ Section Video container
 @media screen and (max-width: 600px) {
   .div-video-item {
     max-height: 15.5rem;
+  }
+  .no-data-found p {
+    font-size: 1.5rem;
   }
 }
 @media screen and (max-width: 550px) {
@@ -1002,5 +1045,11 @@ Section Video container
   .div-video-item {
     max-height: 17.5rem;
     margin-bottom: 1rem;
+  }
+  .no-data-found {
+    left: 29%;
+  }
+  .no-data-found p {
+    font-size: 1.4rem;
   }
 }

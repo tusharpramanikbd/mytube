@@ -1,7 +1,6 @@
 import {
   getElement,
   getElementAll,
-  changeColor,
   isVisible,
   changeColorFast,
 } from "./utils.js";
@@ -9,8 +8,6 @@ import {
 import { fetchJson } from "./fetch.js";
 
 import { setVideoData } from "./videoSection.js";
-
-import { changeNoDataFoundPosition } from "./leftMenusSection.js";
 
 const leftBtnDiv = getElement(".section-video-filter-btn-left-div");
 const rightBtnDiv = getElement(".section-video-filter-btn-right-div");
@@ -67,7 +64,6 @@ function initialEventListener() {
       if (btnFilter.dataset.id === item.dataset.id) {
         item.classList.add("active-btn-filter");
         initializeUpdatingVideoItemData(item);
-        changeNoDataFoundPosition();
       }
     });
   });
@@ -154,7 +150,7 @@ function updateVideoData(result, item) {
   }
 
   if (dataList.length === 0) {
-    noDataFound.style.display = "grid";
+    noDataFound.style.display = "block";
   } else {
     noDataFound.style.display = "none";
   }

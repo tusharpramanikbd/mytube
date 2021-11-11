@@ -15,7 +15,6 @@ const sectionMenusSmall = getElement(".section-menus-small");
 const overlay = getElement(".overlay");
 const overlayToggleBtn = getElement(".overlay-toggle-btn");
 const noDataFound = getElement(".no-data-found");
-// const videoItem = getElement(".div-video-item");
 let menuDivList = null;
 
 // implement middle menu section dynamically
@@ -127,50 +126,12 @@ export function toggleLeftMenusSection() {
   }
 }
 
-export function changeLeftMenusSectionOnWindowResize() {
-  if (getWidth() > 1312) {
-    hideOverlay();
-    if (window.getComputedStyle(sectionMenus).display !== "block") {
-      changeNoDataFoundPosition();
-    }
-  } else {
-    changeNoDataFoundPosition();
-  }
-}
-
-export function changeNoDataFoundPosition() {
-  if (getWidth() < 1312) {
-    if (getWidth() > 950) {
-      noDataFound.style.left = "40%";
-    } else {
-      if (getWidth() > 870) {
-        noDataFound.style.left = "35%";
-      } else {
-        if (getWidth() > 750) {
-          noDataFound.style.left = "32%";
-        } else {
-          if (getWidth() > 600) {
-            noDataFound.style.left = "28%";
-          } else {
-            if (getWidth() > 550) {
-              noDataFound.style.left = "23%";
-            } else {
-              noDataFound.style.left = "18%";
-            }
-          }
-        }
-      }
-    }
-  } else {
-    noDataFound.style.left = "45%";
-  }
-}
-
 function showSectionMenuBig() {
   sectionMenus.classList.remove("hide-element");
   sectionVideoFilter.classList.remove("increase-video-filter-width");
   sectionVideoContainer.classList.remove("increase-video-container-width");
   sectionMenusSmall.classList.remove("show-section-menu-small");
+  noDataFound.classList.remove("change-no-data-found-position");
 
   [...getElementAll(".div-video-item")].forEach((videoItem) => {
     videoItem.classList.remove("increase-div-video-item");
@@ -182,6 +143,7 @@ export function showSectionMenuSmall() {
   sectionVideoFilter.classList.add("increase-video-filter-width");
   sectionVideoContainer.classList.add("increase-video-container-width");
   sectionMenusSmall.classList.add("show-section-menu-small");
+  noDataFound.classList.add("change-no-data-found-position");
 
   [...getElementAll(".div-video-item")].forEach((videoItem) => {
     videoItem.classList.add("increase-div-video-item");

@@ -5,10 +5,7 @@ import {
   changeColorFast,
   getWidth,
 } from "./utils.js";
-import {
-  toggleLeftMenusSection,
-  changeLeftMenusSectionOnWindowResize,
-} from "./leftMenusSection.js";
+import { toggleLeftMenusSection } from "./leftMenusSection.js";
 
 const navbarToggleBtn = getElement(".navbar-toggle-btn");
 const navbarBtnMicrophone = getElement(".navbar-btn-microphone");
@@ -19,7 +16,6 @@ const sectionNavbar = getElement(".section-navbar");
 const navbarLeft = getElement(".navbar-left");
 const navbarRight = getElement(".navbar-right");
 const backBtnDiv = getElement(".back-arrow-div");
-const navbarMiddle = getElement(".navbar-middle");
 const btnBack = getElement(".btn-back");
 
 navbarToggleBtn.addEventListener("click", () => {
@@ -27,17 +23,7 @@ navbarToggleBtn.addEventListener("click", () => {
   toggleLeftMenusSection();
 });
 
-window.addEventListener("DOMContentLoaded", (event) => {
-  if (getWidth() < 1312) {
-    // showSectionMenuSmall();
-    if (getWidth() <= 870) {
-      changeLeftMenusSectionOnWindowResize();
-    }
-  }
-});
-
 window.onresize = () => {
-  changeLeftMenusSectionOnWindowResize();
   changeMiddleNavbar();
 };
 
