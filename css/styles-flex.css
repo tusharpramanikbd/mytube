@@ -836,6 +836,20 @@ Section Video container
   color: white;
   font-size: 2rem;
 }
+/* Used css classes on event */
+.increase-video-filter-width {
+  width: calc(100% - 5.25rem);
+  left: 4.5rem;
+}
+.increase-video-container-width {
+  padding: 5rem 1.5rem 2rem 6rem;
+}
+.show-section-menu-small {
+  display: block;
+}
+.increase-div-video-item {
+  max-height: 17rem;
+}
 @media screen and (max-width: 1320px) {
   .section-menus {
     display: none;

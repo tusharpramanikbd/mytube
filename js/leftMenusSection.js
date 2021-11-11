@@ -1,4 +1,9 @@
-import { getElement, getWidth, getAllElementFromElement } from "./utils.js";
+import {
+  getElement,
+  getElementAll,
+  getWidth,
+  getAllElementFromElement,
+} from "./utils.js";
 import { navigationMenusList } from "../asset/navigationMenus.js";
 import { subscriptionList } from "../asset/subscriptionList.js";
 
@@ -10,6 +15,7 @@ const sectionMenusSmall = getElement(".section-menus-small");
 const overlay = getElement(".overlay");
 const overlayToggleBtn = getElement(".overlay-toggle-btn");
 const noDataFound = getElement(".no-data-found");
+// const videoItem = getElement(".div-video-item");
 let menuDivList = null;
 
 // implement middle menu section dynamically
@@ -113,6 +119,8 @@ export function toggleLeftMenusSection() {
   if (getWidth() > 1312) {
     if (window.getComputedStyle(sectionMenus).display === "none") {
       showSectionMenuBig();
+    } else {
+      showSectionMenuSmall();
     }
   } else {
     showOverlay();
@@ -123,11 +131,9 @@ export function changeLeftMenusSectionOnWindowResize() {
   if (getWidth() > 1312) {
     hideOverlay();
     if (window.getComputedStyle(sectionMenus).display !== "block") {
-      // showSectionMenuBig();
       changeNoDataFoundPosition();
     }
   } else {
-    // showSectionMenuSmall();
     changeNoDataFoundPosition();
   }
 }
@@ -160,34 +166,27 @@ export function changeNoDataFoundPosition() {
   }
 }
 
-// function showSectionMenuBig() {
-//   sectionMenus.classList.remove("hide-element");
+function showSectionMenuBig() {
+  sectionMenus.classList.remove("hide-element");
+  sectionVideoFilter.classList.remove("increase-video-filter-width");
+  sectionVideoContainer.classList.remove("increase-video-container-width");
+  sectionMenusSmall.classList.remove("show-section-menu-small");
 
-//   sectionMenusSmall.style.display = "none";
-//   sectionVideoFilter.style.width = "calc(100% - 15.75rem)";
-//   sectionVideoFilter.style.left = "15rem";
-//   sectionVideoContainer.style.padding = "5rem 1.5rem 2rem 16.5rem";
-// }
+  [...getElementAll(".div-video-item")].forEach((videoItem) => {
+    videoItem.classList.remove("increase-div-video-item");
+  });
+}
 
-// export function showSectionMenuSmall() {
-//   sectionMenus.classList.add("hide-element");
+export function showSectionMenuSmall() {
+  sectionMenus.classList.add("hide-element");
+  sectionVideoFilter.classList.add("increase-video-filter-width");
+  sectionVideoContainer.classList.add("increase-video-container-width");
+  sectionMenusSmall.classList.add("show-section-menu-small");
 
-//   // if (getWidth() <= 870) {
-//   //   if (getWidth() > 580) {
-//   //     sectionVideoContainer.style.padding = "5rem 4rem 2rem 4rem";
-//   //   } else {
-//   //     sectionVideoContainer.style.padding = "5rem 5rem 2rem 5rem";
-//   //   }
-//   //   sectionMenusSmall.style.display = "none";
-//   //   sectionVideoFilter.style.width = "calc(100% - 0.75rem)";
-//   //   sectionVideoFilter.style.left = "0";
-//   // } else {
-//   //   sectionMenusSmall.style.display = "block";
-//   //   sectionVideoFilter.style.width = "calc(100% - 5.25rem)";
-//   //   sectionVideoFilter.style.left = "4.5rem";
-//   //   sectionVideoContainer.style.padding = "5rem 1.5rem 2rem 6rem";
-//   // }
-// }
+  [...getElementAll(".div-video-item")].forEach((videoItem) => {
+    videoItem.classList.add("increase-div-video-item");
+  });
+}
 
 function hideOverlay() {
   overlay.classList.add("hide-overlay");
