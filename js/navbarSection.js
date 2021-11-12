@@ -5,7 +5,10 @@ import {
   changeColorFast,
   getWidth,
 } from "./utils.js";
-import { hideOverlay, toggleLeftMenusSection } from "./leftMenusSection.js";
+import {
+  hideSectionMenusOverlay,
+  toggleLeftMenusSection,
+} from "./leftMenusSection.js";
 
 const navbarToggleBtn = getElement(".navbar-toggle-btn");
 const navbarBtnMicrophone = getElement(".navbar-btn-microphone");
@@ -26,7 +29,7 @@ navbarToggleBtn.addEventListener("click", () => {
 window.onresize = () => {
   changeMiddleNavbar();
   if (getWidth() > 1312) {
-    hideOverlay();
+    hideSectionMenusOverlay();
   }
 };
 

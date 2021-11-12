@@ -334,18 +334,21 @@ Section Menus
   background: rgb(214, 210, 210);
   border-radius: 100vw;
 }
-.section-menus-div-1 {
+.section-menus-div-1,
+.section-menus-overlay-div-1 {
   width: 100%;
   padding-top: 0.7rem;
   padding-bottom: 0.7rem;
 }
-.section-menus-div-2 {
+.section-menus-div-2,
+.section-menus-overlay-div-2 {
   width: 100%;
   padding-top: 0.7rem;
   padding-bottom: 0.7rem;
   border-top: 1px solid #3d3a3a;
 }
-.section-menus-div-3 {
+.section-menus-div-3,
+.section-menus-overlay-div-3 {
   width: 100%;
   padding-top: 0.7rem;
   padding-bottom: 0.7rem;
