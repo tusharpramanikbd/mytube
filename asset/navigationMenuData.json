@@ -1,0 +1,70 @@
+{
+  "navigationMenusList": [
+    {
+      "id": 1,
+      "logo": "fas fa-home fa-fw",
+      "text": "home",
+      "status": "menu-selected"
+    },
+    {
+      "id": 2,
+      "logo": "far fa-compass fa-fw",
+      "text": "explore",
+      "status": ""
+    },
+    {
+      "id": 3,
+      "logo": "far fa-images fa-fw",
+      "text": "subscription",
+      "status": ""
+    },
+    {
+      "id": 4,
+      "logo": "fas fa-photo-video fa-fw",
+      "text": "library",
+      "status": ""
+    },
+    {
+      "id": 5,
+      "logo": "fas fa-history fa-fw",
+      "text": "history",
+      "status": ""
+    },
+    {
+      "id": 6,
+      "logo": "far fa-image fa-fw",
+      "text": "your videos",
+      "status": ""
+    },
+    {
+      "id": 7,
+      "logo": "far fa-clock fa-fw",
+      "text": "watch later",
+      "status": ""
+    },
+    {
+      "id": 8,
+      "logo": "fas fa-chevron-down fa-fw",
+      "text": "see more",
+      "status": ""
+    },
+    {
+      "id": 9,
+      "logo": "far fa-thumbs-up fa-fw",
+      "text": "liked videos",
+      "status": ""
+    },
+    {
+      "id": 10,
+      "logo": "fab fa-gratipay fa-fw",
+      "text": "favorite videos",
+      "status": ""
+    },
+    {
+      "id": 11,
+      "logo": "fas fa-chevron-up fa-fw",
+      "text": "see less",
+      "status": ""
+    }
+  ]
+}
