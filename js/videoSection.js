@@ -12,6 +12,7 @@ import {
   removeVideoOptionMenuDiv,
 } from "./videoItem.js";
 import { MyStaticClass } from "./myStaticClass.js";
+import { removeUserElement } from "./navbarSection.js";
 
 const url = "../asset/videoData.json";
 
@@ -128,6 +129,21 @@ function windowClickEventHandlaer(event) {
       }
     }
   }
+
+  // if the clicked element is not user element and avater img
+  // then remove user element
+  const userElement = event.target.parentElement.parentElement.parentElement.parentElement;
+  if(userElement){
+    if(!userElement.classList.contains("user")){
+      if(!event.target.classList.contains("avater-img")){
+        removeUserElement();
+      }
+    }
+  }
+  else{
+    removeUserElement();
+  }
+  
 }
 
 export { setVideoData };

@@ -10,6 +10,7 @@ import {
   toggleLeftMenusSection,
 } from "./leftMenusSection.js";
 
+const sectionMain = getElement(".section-main");
 const navbarToggleBtn = getElement(".navbar-toggle-btn");
 const navbarBtnMicrophone = getElement(".navbar-btn-microphone");
 const allNavbarIcons = [...getElementAll(".icon")];
@@ -20,11 +21,27 @@ const navbarLeft = getElement(".navbar-left");
 const navbarRight = getElement(".navbar-right");
 const backBtnDiv = getElement(".back-arrow-div");
 const btnBack = getElement(".btn-back");
+const userImg = getElement(".avater-img");
+const user = getElement(".user");
 
-navbarToggleBtn.addEventListener("click", () => {
-  changeColor(navbarToggleBtn);
-  toggleLeftMenusSection();
-});
+
+userImg.addEventListener("click", (event)=>{
+  changeUserImgBorder(event.currentTarget);
+  user.classList.toggle("show-user");
+})
+
+export function removeUserElement(){
+  user.classList.remove("show-user");
+}
+
+function changeUserImgBorder(element){
+  element.style.border = "2px solid var(--clr-blueish)";
+  setTimeout(()=>{
+    element.style.border = "2px solid transparent";
+  }, 100);
+}
+
+
 
 window.onresize = () => {
   changeMiddleNavbar();
@@ -32,6 +49,14 @@ window.onresize = () => {
     hideSectionMenusOverlay();
   }
 };
+
+// ===============================
+// Event Listeners
+// ===============================
+navbarToggleBtn.addEventListener("click", () => {
+  changeColor(navbarToggleBtn);
+  toggleLeftMenusSection();
+});
 
 allNavbarIcons.forEach((icon) => {
   icon.addEventListener("click", () => {
@@ -65,12 +90,18 @@ btnBack.addEventListener("click", () => {
   }, 100);
 });
 
+// ========================
+// Business Logic Functions
+// ========================
+
+// This function remove the added classes on less than 800px window width
 function changeMiddleNavbar() {
   if (getWidth() > 800) {
     removeAddedClasses();
   }
 }
 
+// Remove the added classes
 function removeAddedClasses() {
   navbarMiddleForm.classList.remove(
     "show-navbar-middle-form",
