@@ -36,16 +36,17 @@
         </div>
         <!-- navbar middle -->
         <div class="navbar-middle">
-          <label class="navbar-middle-form">
+          <form class="navbar-middle-form">
             <input
               type="text"
               name="text"
               id="search"
               class="navbar-search"
               placeholder="Search"
+              size="100"
             />
             <i class="fas fa-times fa-fw btn-cross"></i>
-          </label>
+          </form>
           <button class="navbar-btn-search">
             <i class="fas fa-search fa-fw"></i>
           </button>
@@ -200,7 +201,7 @@
           </div>
           <div class="user-section-div user-main-section-div-2">
             <!-- menu item -->
-            <div class="user-menu-item">
+            <div class="user-menu-item" data-id="appearance">
               <i class="fas fa-moon fa-fw"></i>
               <p>apperence: dark</p>
               <i class="fas fa-chevron-right right-arrow"></i>
@@ -261,7 +262,32 @@
           </div>
         </div>
         <!-- end of user header -->
-        <div class="user-main"></div>
+      </section>
+      <!-- Appearance overlay -->
+      <section class="appearance">
+        <div class="appearance-header">
+          <i class="fas fa-arrow-left btn-left-arrow"></i>
+          <p>appearance</p>
+        </div>
+        <div class="appearance-main">
+          <div class="appearance-top">
+            <p>settings applied to this browser only</p>
+          </div>
+          <div class="appearance-bottom">
+          <!-- menu item -->
+          <div class="appearance-theme-item btn-dark-theme">
+            <i class="fas fa-check fa-fw tick-dark"></i>
+            <p>dark theme</p>
+          </div>
+          <!-- end of menu item -->
+          <!-- menu item -->
+          <div class="appearance-theme-item btn-light-theme">
+            <i class="fas fa-check fa-fw tick-light hide-tick-mark"></i>
+            <p>light theme</p>
+          </div>
+          <!-- end of menu item -->
+          </div>
+        </div>
       </section>
     </div>
     <script type="module" src="./js/app-flex.js"></script>

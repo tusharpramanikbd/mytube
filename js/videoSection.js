@@ -15,72 +15,82 @@ import { MyStaticClass } from "./myStaticClass.js";
 import { removeUserElement } from "./navbarSection.js";
 
 const url = "../asset/videoData.json";
+const noDataFound = getElement(".no-data-found");
 
 // ===============================================
 // fetching all the video item data from JSON file
 // ===============================================
-await fetchJson(url)
+fetchVideoData(url);
+
+async function fetchVideoData(url){
+  await fetchJson(url)
   .then((result) => setVideoData(result))
   .catch((error) => console.log(error));
-
+}
 // ===========================
 // display all the video items
 // ===========================
 function setVideoData(videoList) {
+  if(videoList.length === 0){
+    noDataFound.style.display = "block";
+  }
+  else{
+    noDataFound.style.display = "none";
+  }
   const videoListHtml = videoList
-    .map((video) => {
-      const {
-        id,
-        name,
-        image: img,
-        duration,
-        title,
-        avater,
-        views,
-        created,
-      } = video;
-      return `<div class="div-video-item" data-id="${id}">
-          <div class="section-video-img-div">
+  .map((video) => {
+    const {
+      id,
+      name,
+      image: img,
+      duration,
+      title,
+      avater,
+      views,
+      created,
+    } = video;
+    return `<div class="div-video-item" data-id="${id}">
+        <div class="section-video-img-div">
+          <img
+            src="${img}"
+            class="section-video-img"
+            alt="${name}"
+          />
+          <h5>${convertHMS(duration)}</h5>
+
+          <i
+            class="far fa-clock fa-fw video-item-overlay-icon-watchlater"
+          ></i>
+
+          <i class="fas fa-list-ul fa-fw video-item-overlay-icon-queue"></i>
+
+          <h4 class="hide-add-to-queue">add to queue</h4>
+          <h4 class="hide-watch-later">watch later</h4>
+        </div>
+        <div class="section-video-info-div">
+          <div class="section-video-info-div-top">
             <img
-              src="${img}"
-              class="section-video-img"
+              src="${avater}"
+              class="section-video-info-avater"
               alt="${name}"
             />
-            <h5>${convertHMS(duration)}</h5>
-
-            <i
-              class="far fa-clock fa-fw video-item-overlay-icon-watchlater"
-            ></i>
-
-            <i class="fas fa-list-ul fa-fw video-item-overlay-icon-queue"></i>
-
-            <h4 class="hide-add-to-queue">add to queue</h4>
-            <h4 class="hide-watch-later">watch later</h4>
+            <h1>${title}</h1>
+            <i class="fas fa-ellipsis-v fa-fw video-option-menu"></i>
           </div>
-          <div class="section-video-info-div">
-            <div class="section-video-info-div-top">
-              <img
-                src="${avater}"
-                class="section-video-info-avater"
-                alt="${name}"
-              />
-              <h1>${title}</h1>
-              <i class="fas fa-ellipsis-v fa-fw video-option-menu"></i>
-            </div>
-            <div class="section-video-info-div-middle">
-              <p>${name}</p>
-              <i class="fas fa-check-circle fa-fw"></i>
-            </div>
-            <p class="section-video-info-div-bottom-title">
-              ${views} views &middot;
-              <span class="created-time" data-id="${id}">${calculateTimeFromDate(
-        created
-      )}</span>
-            </p>
+          <div class="section-video-info-div-middle">
+            <p>${name}</p>
+            <i class="fas fa-check-circle fa-fw"></i>
           </div>
-        </div>`;
-    })
-    .join("");
+          <p class="section-video-info-div-bottom-title">
+            ${views} views &middot;
+            <span class="created-time" data-id="${id}">${calculateTimeFromDate(
+      created
+    )}</span>
+          </p>
+        </div>
+      </div>`;
+  })
+  .join("");
 
   const sectionVideos = getElement(".section-video-container");
   sectionVideos.innerHTML = videoListHtml;
@@ -133,9 +143,11 @@ function windowClickEventHandlaer(event) {
   // if the clicked element is not user element and avater img
   // then remove user element
   const userElement = event.target.parentElement.parentElement.parentElement.parentElement;
+  const btnBackArrow = event.target.parentElement.parentElement;
   if(userElement){
     if(!userElement.classList.contains("user")){
       if(!event.target.classList.contains("avater-img")){
+        if(!btnBackArrow.classList.contains("appearance"))
         removeUserElement();
       }
     }
@@ -146,4 +158,4 @@ function windowClickEventHandlaer(event) {
   
 }
 
-export { setVideoData };
+export { setVideoData, fetchVideoData };

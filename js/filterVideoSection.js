@@ -149,13 +149,8 @@ function updateVideoData(result, item) {
     });
   }
 
-  if (dataList.length === 0) {
-    noDataFound.style.display = "block";
-  } else {
-    noDataFound.style.display = "none";
-  }
-
   setVideoData(dataList);
+  
 }
 
 function setButtonDisplay(btn) {
