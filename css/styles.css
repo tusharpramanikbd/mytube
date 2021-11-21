@@ -33,6 +33,7 @@ Variables
   --mycolor-hover-lighter-2-darkTheme: #d8d8d8;
   --mycolor-border-darktheme: #373737;
   --mycolor-border-lighter-darktheme: #9c9c9c;
+  --mycolor-border-lighter-2-darktheme: #686868;
   --mycolor-primary-lightTheme: #ffffff;
   --mycolor-secondary-lightTheme: #F0F0F0;
   --mycolor-secondary-lighter-lightTheme: #d8d8d8;
@@ -78,8 +79,10 @@ Main Section
 */
 .section-main {
   height: 100vh;
+  width: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
+  position: relative;
 }
 .section-main::-webkit-scrollbar {
   width: 0.75rem;
@@ -301,7 +304,7 @@ Navbar Right
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
-  transition: border 0.2s ease-in;
+  transition: border 0.3s ease-in;
 }
 .avater-img-click-effect{
   border: 2px solid var(--clr-blueish);
@@ -316,12 +319,6 @@ Navbar Right
   cursor: pointer;
   display: grid;
   place-items: center;
-}
-.icon-mousedown-effect{
-  background: var(--mycolor-hover-lighter-darkTheme);
-}
-.icon-mouseup-effect{
-  animation: mouseup-effect 1s ease-out;
 }
 @keyframes mouseup-effect {
   0%{
@@ -617,18 +614,25 @@ Section Video Filter
 .section-video-filter {
   width: calc(100% - 15.75rem);
   height: 3.6rem;
-  background: var(--clr-primary);
+  background: var(--mycolor-primary-darkTheme);
   position: fixed;
   top: 3.5rem;
   left: 15rem;
   display: flex;
   align-items: center;
   overflow-x: auto;
-  border-top: 1px solid var(--clr-border);
-  border-bottom: 1px solid var(--clr-border);
+  border-top: 1px solid var(--mycolor-border-darktheme);
+  border-bottom: 1px solid var(--mycolor-border-darktheme);
   opacity: 0.99;
   z-index: 5;
+  color: var(--mycolor-primary-lightTheme);
 }
+.section-video-filter-light-theme{
+  background: var(--mycolor-primary-lightTheme);
+  color: var(--mycolor-primary-darkTheme);
+  border: 1px solid var(--mycolor-border-lighter-darktheme);
+}
+
 .section-video-filter::-webkit-scrollbar {
   display: none;
 }
@@ -643,24 +647,39 @@ Section Video Filter
   border-radius: 30px;
   cursor: pointer;
   border: transparent;
-  background: #3d3a3a;
-  color: white;
-  border: 1px solid var(--clr-border);
+  background: var(--mycolor-border-darktheme);
+  color: var(--mycolor-primary-lightTheme);
+  border: 1px solid var(--mycolor-border-lighter-2-darktheme);
   text-transform: capitalize;
+  transition: transform 0.3s linear, background 0.3s linear, color 0.3s linear;
+}
+.btn-filter-light-theme{
+  background: var(--mycolor-secondary-lighter-lightTheme);
+  color: var(--mycolor-primary-darkTheme);
+  border: 1px solid var(--mycolor-border-lighter-darktheme);
 }
 .active-btn-filter {
-  background: white;
-  color: black;
-  transition: var(--transition);
+  background: var(--mycolor-primary-lightTheme);
+  color: var(--mycolor-primary-darkTheme);
+  transform: scale(1.1);
+}
+.active-btn-filter-light-theme{
+  background: var(--mycolor-border-darktheme);
+  color: var(--mycolor-primary-lightTheme);
+  border: 1px solid var(--mycolor-border-lighter-darktheme);
+  border: 1px solid black;
+  transform: scale(1.1);
 }
 .section-video-filter-btn-left-div {
   width: 60px;
   height: 56px;
-  display: grid;
   place-items: center;
-  background: linear-gradient(rgba(32, 28, 28, 1), rgba(32, 28, 28, 0.8));
+  background: linear-gradient(to right, rgba(32, 32, 32, 1), rgba(32, 32, 32, 0.99), rgba(32, 32, 32, 0.1));
   position: fixed;
   display: none;
+}
+.section-video-filter-btn-left-div-light-theme{
+  background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.99), rgba(255, 255, 255, 0.1));
 }
 .btn-visible {
   display: grid;
@@ -670,7 +689,7 @@ Section Video Filter
   width: 34px;
   background: transparent;
   border: transparent;
-  color: white;
+  color: var(--mycolor-primary-lightTheme);
   font-size: 1.2rem;
   cursor: pointer;
   border-radius: 50%;
@@ -679,23 +698,38 @@ Section Video Filter
 .section-video-filter-btn-right-div {
   width: 60px;
   height: 56px;
-  display: grid;
   place-items: center;
-  background: linear-gradient(rgba(32, 28, 28, 1), rgba(32, 28, 28, 0.8));
+  background: linear-gradient(to left, rgba(32, 32, 32, 1), rgba(32, 32, 32, 0.99), rgba(32, 32, 32, 0.1));
   position: fixed;
   right: 0.75rem;
   display: none;
+}
+
+.section-video-filter-btn-right-div-light-theme{
+  background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.99), rgba(255, 255, 255, 0.1));
 }
 .section-video-filter-btn-right {
   height: 34px;
   width: 34px;
   background: transparent;
   border: transparent;
-  color: white;
+  color: var(--mycolor-primary-lightTheme);
   font-size: 1.2rem;
   cursor: pointer;
   border-radius: 50%;
   transition: var(--transition);
+}
+.icon-mousedown-effect{
+  background: var(--mycolor-hover-lighter-darkTheme);
+}
+.icon-mouseup-effect{
+  animation: mouseup-effect 1s ease-out;
+}
+.section-video-filter-btn-light-theme{
+  color: var(--mycolor-primary-darkThemee);
+}
+.show-section-video-filter-btn-div{
+  display: grid;
 }
 /* 
 =======================
@@ -1172,6 +1206,50 @@ Section Video container
   visibility: hidden;
 }
 
+/* Notification */
+.notification{
+  background: #3EA6FF;
+  position: absolute;
+  bottom: 5%;
+  right: 3%;
+  z-index: 5;
+  border-radius: 0.5rem;
+  display: flex;
+  overflow: hidden;
+  color: red;
+  align-items: center;
+  padding: 1rem;
+  transform: translateX(120%);
+  transition: transform 0.2s ease-in, color 0.2s ease-in;
+}
+.show-notification{
+  transform: translateX(0);
+}
+.notification-online{
+  color: green;
+}
+.notification-img-offline{
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+  border: 2px solid red;
+  background-image: url('../images/offline.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1);
+  transition: background-image 0.2s ease-in, border-color 0.2s ease-in;
+}
+.notification-img-online{
+  background-image: url('../images/online.jpg');
+  border-color: green;
+  transform: scale(1.2);
+}
+.notification-text-offline{
+  width: 14rem;
+  font-size: 1.5rem;
+}
 
 @media screen and (max-width: 1320px) {
   .section-menus {

@@ -1,5 +1,4 @@
-{
-  "navigationMenusList": [
+[
     {
       "id": 1,
       "logo": "fas fa-home fa-fw",
@@ -66,5 +65,5 @@
       "text": "see less",
       "status": ""
     }
-  ]
-}
+]
+
