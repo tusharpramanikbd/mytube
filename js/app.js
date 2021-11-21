@@ -1,7 +1,7 @@
 import { FetchedData } from "./myStaticClass.js";
 import { initInternetStatusCheck } from "./internetStatusCheck.js";
 import { initFetchData } from "./fetchData.js";
-import { initApplicationTheme } from "./applicationTheme.js";
+import { initApplicationTheme, setCurrentTheme } from "./applicationTheme.js";
 import { initFilterVideoSection } from "./filterVideoSection/filterVideoSection.js";
 
 // step 0 -> document state check
@@ -16,6 +16,8 @@ if( document.readyState !== 'loading' ) {
         cacheAllFetcheddata(result);
         // step 4 -> initialize application theme
         initApplicationTheme()
+        // temporary code
+        setCurrentTheme("light")
         // step 5 -> initialize all the components
         initAllComponents();
     }

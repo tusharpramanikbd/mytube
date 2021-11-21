@@ -25,4 +25,4 @@ function isDarkThemeActivated(){
     return false;
 }
 
-export { initApplicationTheme, isDarkThemeActivated };
+export { initApplicationTheme, isDarkThemeActivated, setCurrentTheme, getCurrentTheme };

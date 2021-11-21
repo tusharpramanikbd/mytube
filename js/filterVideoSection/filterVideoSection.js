@@ -7,11 +7,13 @@ import {
   btnRight,
   filterContainer,
   filterContainerBtn
-} from "../staticVariables/svFilterSection.js";
+} from "../staticVariables/svFilterVideoSection.js";
 import { isDarkThemeActivated } from "../applicationTheme.js";
 
 // Dynamic elements variable
 let btnFilterList;
+let clickedBtnId = "1";
+
 
 // Initialize filter video section by adding dynamic elements to filter btn container
 function initFilterVideoSection() {
@@ -25,8 +27,8 @@ function initFilterVideoSection() {
     })
     .join("");
   filterContainerBtn.innerHTML = filterBtnList;
-  initFilterVideoSectionTheme();
   getDynamicElements();
+  initFilterVideoSectionTheme();
   initEventListeners();
 }
 
@@ -82,6 +84,7 @@ function btnFilterClickEventHandler(event, btnFilter){
 
   // setting the clicked button as active
   const clickedBtn = event.target;
+  clickedBtnId = clickedBtn.dataset.id;
   if (btnFilter.dataset.id === clickedBtn.dataset.id) {
     if(isDarkThemeActivated()){
       clickedBtn.classList.add("active-btn-filter");
@@ -154,12 +157,7 @@ function getSelecetedThemeClass(){
 
 // Initialize filter video section theme
 function initFilterVideoSectionTheme(){
-  if(!isDarkThemeActivated()){
-    btnLeftDiv.classList.add("section-video-filter-btn-left-div-light-theme");
-    btnRightDiv.classList.add("section-video-filter-btn-right-div-light-theme");
-    btnLeft.classList.add("section-video-filter-btn-light-theme");
-    btnRight.classList.add("section-video-filter-btn-light-theme");
-  }
+  selectFilterVideoSectionTheme();
 }
 
 // get all the dynamic elements
@@ -177,6 +175,7 @@ function hideButtonDisplay(btn) {
   btn.classList.remove("show-section-video-filter-btn-div");
 }
 
+// scroll to left or right with given value
 function scroll(scrollValue){
   filterContainer.scrollBy({
     left: scrollValue,
@@ -184,4 +183,51 @@ function scroll(scrollValue){
   });
 }
 
-export { initFilterVideoSection }
+function setFilterVideoSectionTheme(){
+  selectFilterVideoSectionTheme();
+}
+
+function selectFilterVideoSectionTheme(){
+  if(isDarkThemeActivated()){
+    addDarkTheme(clickedBtnId)
+  }
+  else{
+    addLightTheme(clickedBtnId)
+  }
+}
+
+function addLightTheme(){
+  filterContainer.classList.add("section-video-filter-light-theme");
+  btnFilterList.forEach((btnFilter)=>{
+    if(btnFilter.dataset.id === clickedBtnId){
+      btnFilter.classList.remove("active-btn-filter")
+      btnFilter.classList.add("active-btn-filter-light-theme")
+    }
+    else{
+      btnFilter.classList.add("btn-filter-light-theme")
+    }
+  })
+  btnLeftDiv.classList.add("section-video-filter-btn-left-div-light-theme");
+  btnRightDiv.classList.add("section-video-filter-btn-right-div-light-theme");
+  btnLeft.classList.add("section-video-filter-btn-light-theme");
+  btnRight.classList.add("section-video-filter-btn-light-theme");
+}
+
+function addDarkTheme(){
+  filterContainer.classList.remove("section-video-filter-light-theme");
+  btnFilterList.forEach((btnFilter)=>{
+    if(btnFilter.dataset.id === clickedBtnId){
+      btnFilter.classList.remove("active-btn-filter-light-theme")
+      btnFilter.classList.add("active-btn-filter")
+    }
+    else{
+      btnFilter.classList.remove("btn-filter-light-theme")
+    }
+  })
+  btnLeftDiv.classList.remove("section-video-filter-btn-left-div-light-theme");
+  btnRightDiv.classList.remove("section-video-filter-btn-right-div-light-theme");
+  btnLeft.classList.remove("section-video-filter-btn-light-theme");
+  btnRight.classList.remove("section-video-filter-btn-light-theme");
+}
+
+export { initFilterVideoSection, setFilterVideoSectionTheme }
