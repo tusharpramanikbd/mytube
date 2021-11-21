@@ -13,11 +13,11 @@ if( document.readyState !== 'loading' ) {
         // step 2 -> fetch data
         const result = await initFetchData();
         // step 3 -> cache data
-        cacheAllFetcheddata(result);
+        cacheAllFetchedData(result);
         // step 4 -> initialize application theme
         initApplicationTheme()
         // temporary code
-        setCurrentTheme("light")
+        setCurrentTheme("dark")
         // step 5 -> initialize all the components
         initAllComponents();
     }
@@ -28,12 +28,14 @@ else {
 
         // step 1 -> internet connection check
         if(await initInternetStatusCheck()){
-             // step 2 -> fetch data
+            // step 2 -> fetch data
             const result = await initFetchData();
             // step 3 -> cache data
-            cacheAllFetcheddata(result);
+            cacheAllFetchedData(result);
             // step 4 -> initialize application theme
             initApplicationTheme()
+            // temporary code
+            setCurrentTheme("dark")
             // step 5 -> initialize all the components
             initAllComponents();
         }
@@ -41,7 +43,7 @@ else {
 }
 
 // caching all the fetched data to a static class
-function cacheAllFetcheddata(values){
+function cacheAllFetchedData(values){
     FetchedData.setFilterDataList(values[0]);
     FetchedData.setNavigationMenuDataList(values[1]);
     FetchedData.setSubscriptionDataList(values[2]);
@@ -55,6 +57,7 @@ function cacheAllFetcheddata(values){
 function initAllComponents(){
     console.log("Initializing all components");
     initFilterVideoSection();
+    console.log("Filter Video Section Initialized");
 }
 
 
