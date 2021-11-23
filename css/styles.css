@@ -910,16 +910,16 @@ Section Video container
 
 .video-option-menu-div-item-top {
   width: 100%;
-  padding: 0.5rem 0;
+  padding: 0.25rem 0;
 }
 .video-option-menu-div-item-bottom {
   width: 100%;
   border-top: 0.5px solid rgb(77, 77, 77);
-  padding: 0.5rem 0;
+  padding: 0.25rem 0;
 }
 .video-option-menu-item {
   width: 100%;
-  height: 40px;
+  height: 35px;
   display: flex;
   align-items: center;
   color: white;

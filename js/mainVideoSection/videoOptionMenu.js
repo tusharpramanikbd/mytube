@@ -41,15 +41,15 @@ function createVideoOptionMenuDiv(element, event){
     videoOptionMenuDiv.classList.add("video-option-menu-div");
     videoOptionMenuDiv.setAttribute("data-id", clickedElementId);
 
-    if (heightDifference < 600) {
-      videoOptionMenuDiv.style.top = `-250px`;
+    if (heightDifference < 1070) {
+      videoOptionMenuDiv.style.top = `-230px`;
     } 
     else {
       videoOptionMenuDiv.style.top = `35px`;
     }
   
     if (widthDifference < 150) {
-      videoOptionMenuDiv.style.left = `-25px`;
+      videoOptionMenuDiv.style.left = `-15px`;
     } 
     else {
       videoOptionMenuDiv.style.left = `255px`;
