@@ -3,6 +3,8 @@ import { initInternetStatusCheck } from "./internetStatusCheck.js";
 import { initFetchData } from "./fetchData.js";
 import { initApplicationTheme, setCurrentTheme } from "./applicationTheme.js";
 import { initFilterVideoSection } from "./filterVideoSection/filterVideoSection.js";
+import { initMainVideoSection } from "./mainVideoSection/mainVideoSection.js";
+import { initDocumentClickEventListener } from "./documentClickEvent.js";
 
 // step 0 -> document state check
 if( document.readyState !== 'loading' ) {
@@ -55,9 +57,14 @@ function cacheAllFetchedData(values){
 
 // initialize all the components
 function initAllComponents(){
-    console.log("Initializing all components");
+    console.log("Initializing filter video section");
     initFilterVideoSection();
-    console.log("Filter Video Section Initialized");
+    
+    console.log("Initializing main video section");
+    initMainVideoSection();
+
+    console.log("Initializing document click event listener");
+    initDocumentClickEventListener();
 }
 
 

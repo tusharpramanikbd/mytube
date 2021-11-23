@@ -320,18 +320,7 @@ Navbar Right
   display: grid;
   place-items: center;
 }
-@keyframes mouseup-effect {
-  0%{
-    background: var(--mycolor-hover-lighter-darkTheme);
-    border: 1px solid var(--mycolor-border-lighter-darktheme);
-  }
-  30%{
-    background: transparent;
-  }
-  100%{
-    border: transparent;
-  }
-}
+
 .icon-light-theme{
   color: var(--mycolor-primary-darkTheme);
 }
@@ -393,9 +382,7 @@ Navbar Right
   place-items: center;
   display: none;
 }
-.show-element {
-  display: grid;
-}
+
 .changed-navbar-middle-form {
   flex: 1;
   margin-left: 0;
@@ -719,12 +706,7 @@ Section Video Filter
   border-radius: 50%;
   transition: var(--transition);
 }
-.icon-mousedown-effect{
-  background: var(--mycolor-hover-lighter-darkTheme);
-}
-.icon-mouseup-effect{
-  animation: mouseup-effect 1s ease-out;
-}
+
 .section-video-filter-btn-light-theme{
   color: var(--mycolor-primary-darkThemee);
 }
@@ -752,8 +734,8 @@ Section Video container
   margin-bottom: 2rem;
 }
 .div-video-item:hover {
-  background: var(--clr-primary);
-  border-radius: 5px;
+  /* background: var(--clr-primary); */
+  /* border-radius: 5px; */
   cursor: pointer;
 }
 
@@ -776,34 +758,54 @@ Section Video container
   bottom: 5px;
   border-radius: 2px;
 }
+
+.watch-later{
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: flex;
+}
+
 .video-item-overlay-icon-watchlater {
   height: 28px;
   width: 28px;
   background: rgba(0, 0, 0, 0.6);
   border: transparent;
-  color: white;
-  position: absolute;
+  color: var(--mycolor-primary-lightTheme);
   border-radius: 2px;
-  top: 4px;
-  right: 4px;
   font-size: 1.2rem;
-  display: grid;
   place-items: center;
   cursor: pointer;
   display: none;
+}
+.hide-watch-later {
+  height: 28px;
+  width: 110px;
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--mycolor-primary-lightTheme);
+  border-radius: 2px;
+  display: grid;
+  place-items: center;
+  padding: 0 0.5rem;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.2s ease-out;
+}
+.add-to-queue{
+  position: absolute;
+  top: 36px;
+  right: 4px;
+  display: flex;
 }
 .video-item-overlay-icon-queue {
   height: 28px;
   width: 28px;
   background: rgba(0, 0, 0, 0.6);
   border: transparent;
-  color: white;
-  position: absolute;
+  color: var(--mycolor-primary-lightTheme);
   border-radius: 2px;
-  top: 36px;
-  right: 4px;
   font-size: 1.2rem;
-  display: grid;
   place-items: center;
   cursor: pointer;
   display: none;
@@ -813,43 +815,16 @@ Section Video container
   width: 110px;
   font-size: 0.9rem;
   background: rgba(0, 0, 0, 0.6);
-  color: white;
-  position: absolute;
-  top: 36px;
-  right: 32px;
+  color: var(--mycolor-primary-lightTheme);
   border-radius: 2px;
   display: grid;
   place-items: center;
   padding: 0 0.5rem;
-  transition: all 0.2s linear;
   transform-origin: right;
   transform: scaleX(0);
+  transition: transform 0.2s ease-out;
 }
-.show-add-to-queue {
-  transition: all 0.1s linear;
-  transform-origin: right;
-  transform: scaleX(1);
-}
-.hide-watch-later {
-  height: 28px;
-  width: 110px;
-  font-size: 0.9rem;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  position: absolute;
-  top: 4px;
-  right: 32px;
-  border-radius: 2px;
-  display: grid;
-  place-items: center;
-  padding: 0 0.5rem;
-  transition: all 0.2s linear;
-  transform-origin: right;
-  transform: scaleX(0);
-}
-.show-watch-later {
-  transition: all 0.1s linear;
-  transform-origin: right;
+.show-video-item-overlay-banner{
   transform: scaleX(1);
 }
 
@@ -890,18 +865,17 @@ Section Video container
   border-radius: 50%;
   background: transparent;
   border: transparent;
-  display: grid;
   place-items: center;
   position: absolute;
   top: -5px;
   right: -12px;
-  color: rgb(211, 211, 211);
+  color: var(--mycolor-hover-lighter-2-darkTheme);
   cursor: pointer;
   display: none;
 }
-.video-option-menu-show {
+/* .video-option-menu-show {
   display: grid;
-}
+} */
 .section-video-info-div-middle {
   display: flex;
   color: rgb(180, 180, 180);
@@ -924,7 +898,7 @@ Section Video container
 }
 
 .video-option-menu-div {
-  width: 260px;
+  width: 245px;
   background: var(--clr-primary);
   position: absolute;
   z-index: 6;
@@ -960,17 +934,22 @@ Section Video container
   font-weight: lighter;
 }
 .no-data-found {
-  display: block;
   position: absolute;
   left: 48%;
   top: 55%;
   display: none;
 }
 .no-data-found p {
-  color: white;
+  color: var(--mycolor-primary-lightTheme);
   font-size: 2rem;
   display: grid;
   justify-content: center;
+}
+.show-no-data-found{
+  display: block;
+}
+.no-data-found-light-theme{
+  color: var(--mycolor-primary-darkTheme);
 }
 /* Used css classes on event */
 .increase-video-filter-width {
@@ -1450,5 +1429,26 @@ Section Video container
   }
   .no-data-found p {
     font-size: 1.4rem;
+  }
+}
+.show-element {
+  display: grid;
+}
+.icon-mousedown-effect{
+  background: var(--mycolor-hover-lighter-darkTheme);
+}
+.icon-mouseup-effect{
+  animation: mouseup-effect 1s ease-out;
+}
+@keyframes mouseup-effect {
+  0%{
+    background: var(--mycolor-hover-lighter-darkTheme);
+    border: 1px solid var(--mycolor-border-lighter-darktheme);
+  }
+  30%{
+    background: transparent;
+  }
+  100%{
+    border: transparent;
   }
 }
