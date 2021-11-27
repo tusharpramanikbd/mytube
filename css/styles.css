@@ -898,7 +898,7 @@ Section Video container
 }
 
 .video-option-menu-div {
-  width: 245px;
+  width: 240px;
   background: var(--clr-primary);
   position: absolute;
   z-index: 6;
@@ -906,6 +906,8 @@ Section Video container
   display: flex;
   flex-direction: column;
   justify-content: center;
+  top: 30px;
+  /* left: 265px; */
 }
 
 .video-option-menu-div-item-top {

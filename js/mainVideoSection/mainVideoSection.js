@@ -8,9 +8,12 @@ let videoItemList;
 // Initialize main video section
 function initMainVideoSection() {
   videoItemList = FetchedData.getVideoDataList();
+  setVideoData(videoItemList);
+}
 
-  if(toggleNoDataFound()){
-    const videoListHtml = videoItemList
+function setVideoData(videoDataList){
+  if(toggleNoDataFound(videoDataList)){
+    const videoListHtml = videoDataList
     .map((video) => {
       const {
         id,
@@ -66,17 +69,20 @@ function initMainVideoSection() {
     sectionVideos.innerHTML = videoListHtml;
     // calculate and display video created time
     // start refreshing time mechanism
-    startTimeCalculation( videoItemList.map((item) => {
+    startTimeCalculation( videoDataList.map((item) => {
         return { id: item.id, created: item.created };
       })
     );
     // initializeEventListeners();
     initVideoItemEvenListeners();
   }
+  else{
+    sectionVideos.innerHTML = "";
+  }
 }
 
-function toggleNoDataFound(){
-  if(videoItemList.length === 0){
+function toggleNoDataFound(videoDataList){
+  if(videoDataList.length === 0){
     noDataFound.classList.add("show-no-data-found");
     return false;
   }
@@ -86,4 +92,4 @@ function toggleNoDataFound(){
   }
 }
 
-export { initMainVideoSection };
+export { initMainVideoSection, setVideoData };

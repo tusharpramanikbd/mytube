@@ -34,25 +34,25 @@ function createVideoOptionMenuDiv(element, event){
     sectionVideoInfoDivTop = element.parentElement;
 
     // calculating the height and width of clicked position
-    const widthDifference = sectionVideos.offsetWidth - event.clientX;
-    const heightDifference = sectionVideos.offsetHeight - event.clientY;
+    const widthDifference = document.body.offsetWidth - event.clientX;
+    const heightDifference = document.body.offsetHeight - event.clientY;
 
     const videoOptionMenuDiv = document.createElement("div");
     videoOptionMenuDiv.classList.add("video-option-menu-div");
     videoOptionMenuDiv.setAttribute("data-id", clickedElementId);
 
-    if (heightDifference < 1070) {
-      videoOptionMenuDiv.style.top = `-230px`;
-    } 
-    else {
-      videoOptionMenuDiv.style.top = `35px`;
+    const divVideoItem = getElement(".div-video-item");
+    const videoItemWidth = parseInt(window.getComputedStyle(divVideoItem).width);
+    const videoItemHeight = parseInt(window.getComputedStyle(divVideoItem).height);
+
+    if(widthDifference < 110){
+      videoOptionMenuDiv.style.left = `${videoItemWidth - 255}px`;
     }
-  
-    if (widthDifference < 150) {
-      videoOptionMenuDiv.style.left = `-15px`;
-    } 
-    else {
-      videoOptionMenuDiv.style.left = `255px`;
+    else{
+      videoOptionMenuDiv.style.left = `${videoItemWidth + 10}px`;
+    }
+    if(heightDifference < 110){
+      videoOptionMenuDiv.style.top = `${videoItemHeight - (videoItemHeight + 230)}px`;;
     }
 
     // append to video option menu

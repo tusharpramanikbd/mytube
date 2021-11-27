@@ -9,6 +9,7 @@ import {
   filterContainerBtn
 } from "../staticVariables/svFilterVideoSection.js";
 import { isDarkThemeActivated } from "../applicationTheme.js";
+import { setVideoData } from "../mainVideoSection/mainVideoSection.js";
 
 // Dynamic elements variable
 let btnFilterList;
@@ -92,8 +93,23 @@ function btnFilterClickEventHandler(event, btnFilter){
     else{
       clickedBtn.classList.add("active-btn-filter-light-theme");
     }
-    // initializeUpdatingVideoItemData(clickedBtn);
+    updateVideoData(clickedBtn);
   }
+}
+
+function updateVideoData(clickedBtn) {
+  const videoDataList = FetchedData.getVideoDataList();
+  let dataList = [];
+  if (clickedBtn.innerText.toLowerCase() === "all") {
+    dataList = videoDataList;
+  } else {
+    dataList = videoDataList.filter((data) => {
+      if (data.tag === clickedBtn.innerText.toLowerCase()) {
+        return data;
+      }
+    });
+  }
+  setVideoData(dataList);
 }
 
 // Right btn click event handler
