@@ -835,10 +835,13 @@ Section Video container
 }
 .section-video-info-div-top {
   display: flex;
-  color: white;
+  color: var(--mycolor-primary-lightTheme);
   align-items: center;
   padding-bottom: 0.5rem;
   position: relative;
+}
+.section-video-info-div-top-light-theme{
+  color: var(--mycolor-primary-darkTheme);
 }
 .section-video-info-avater {
   width: 2.4rem;
@@ -873,15 +876,20 @@ Section Video container
   cursor: pointer;
   display: none;
 }
+.video-option-menu-light-theme{
+  color: var(--mycolor-primary-darkTheme);
+}
 /* .video-option-menu-show {
   display: grid;
 } */
 .section-video-info-div-middle {
   display: flex;
-  color: rgb(180, 180, 180);
+  color: var(--mycolor-hover-lightTheme);
   align-items: center;
 }
-
+.section-video-info-div-middle-light-theme{
+  color: var(--mycolor-border-darktheme);
+}
 .section-video-info-div-middle p {
   font-size: 0.9rem;
   margin-left: calc(36px + 0.9rem);
@@ -891,15 +899,18 @@ Section Video container
   margin-left: 0.5rem;
 }
 .section-video-info-div-bottom-title {
-  color: rgb(180, 180, 180);
+  color: var(--mycolor-hover-lightTheme);;
   font-size: 0.9rem;
   margin-left: calc(36px + 0.9rem);
   text-transform: lowercase;
 }
-
+.section-video-info-div-bottom-title-light-theme{
+  color: var(--mycolor-border-darktheme);
+}
 .video-option-menu-div {
   width: 240px;
-  background: var(--clr-primary);
+  background: var(--mycolor-primary-darkTheme);
+  color: var(--mycolor-primary-lightTheme);
   position: absolute;
   z-index: 6;
   border-radius: 5px;
@@ -907,28 +918,36 @@ Section Video container
   flex-direction: column;
   justify-content: center;
   top: 30px;
-  /* left: 265px; */
+  box-shadow: 0 0 2px var(--mycolor-primary-darkTheme);
 }
-
+.video-option-menu-div-light-theme{
+  background: var(--mycolor-primary-lightTheme);
+  color: var(--mycolor-primary-darkTheme);
+}
 .video-option-menu-div-item-top {
   width: 100%;
   padding: 0.25rem 0;
 }
 .video-option-menu-div-item-bottom {
   width: 100%;
-  border-top: 0.5px solid rgb(77, 77, 77);
+  border-top: 0.5px solid var(--mycolor-border-darktheme);
   padding: 0.25rem 0;
+}
+.video-option-menu-div-item-bottom-light-theme{
+  border-color: var(--mycolor-border-lighter-darktheme);
 }
 .video-option-menu-item {
   width: 100%;
   height: 35px;
   display: flex;
   align-items: center;
-  color: white;
   padding-left: 1rem;
 }
-.video-option-menu-item:hover {
-  background: rgb(77, 77, 77);
+.video-option-menu-item-hover-dark {
+  background: var(--mycolor-hover-darkTheme);
+}
+.video-option-menu-item-hover-light {
+  background: var(--mycolor-hover-lighter-2-darkTheme);
 }
 .video-option-menu-item p {
   padding-left: 1rem;

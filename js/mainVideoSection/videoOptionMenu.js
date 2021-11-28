@@ -1,9 +1,10 @@
+import { isDarkThemeActivated } from "../applicationTheme.js";
 import { FetchedData, MyStaticClass } from "../myStaticClass.js";
 import { sectionVideos, mainSection } from "../staticVariables/svMainVideoSection.js";
-import { addPreventDefault, getElementAll, getElement } from "../utils.js";
+import { addPreventDefault, getElementAll, getElement, getAllElementFromElement } from "../utils.js";
 import { removeVideoOptionMenuIcon } from "./videoItem.js";
 
-let videoOptionMenuItemDataTop, videoOptionMenuItemDataBottom, sectionVideoInfoDivTop, clickedElementId;
+let videoOptionMenuItemDataTop, videoOptionMenuItemDataBottom, sectionVideoInfoDivTop, clickedElementId, videoOptionMenuDiv;
 
 // ===============================================
 // Clear previously saved data on global variables
@@ -13,6 +14,43 @@ function clearPreviousData(){
   videoOptionMenuItemDataBottom = [];
   sectionVideoInfoDivTop = null;
   clickedElementId = -1;
+}
+
+function setVideoOptionMenuTheme(){
+  if(isDarkThemeActivated()){
+    videoOptionMenuDiv.classList.remove("video-option-menu-div-light-theme");
+    videoOptionMenuDiv.children[1].classList.remove("video-option-menu-div-item-bottom-light-theme");
+  }
+  else{
+    videoOptionMenuDiv.classList.add("video-option-menu-div-light-theme");
+    videoOptionMenuDiv.children[1].classList.add("video-option-menu-div-item-bottom-light-theme");
+  }
+}
+
+function initVideoOptionMenuHoverEventListener(){
+  const menus = getAllElementFromElement(videoOptionMenuDiv, ".video-option-menu-item");
+  menus.forEach((menu)=>{
+    menu.addEventListener("mouseenter", onMouseEnterMenu);
+    menu.addEventListener("mouseleave", onMouseLeaveMenu);
+  })
+}
+
+function onMouseEnterMenu(e){
+  if(isDarkThemeActivated()){
+    e.currentTarget.classList.add("video-option-menu-item-hover-dark");
+  }
+  else{
+    e.currentTarget.classList.add("video-option-menu-item-hover-light");
+  }
+}
+
+function onMouseLeaveMenu(e){
+  if(isDarkThemeActivated()){
+    e.currentTarget.classList.remove("video-option-menu-item-hover-dark");
+  }
+  else{
+    e.currentTarget.classList.remove("video-option-menu-item-hover-light");
+  }
 }
 
 // ============================
@@ -37,7 +75,7 @@ function createVideoOptionMenuDiv(element, event){
     const widthDifference = document.body.offsetWidth - event.clientX;
     const heightDifference = document.body.offsetHeight - event.clientY;
 
-    const videoOptionMenuDiv = document.createElement("div");
+    videoOptionMenuDiv = document.createElement("div");
     videoOptionMenuDiv.classList.add("video-option-menu-div");
     videoOptionMenuDiv.setAttribute("data-id", clickedElementId);
 
@@ -72,6 +110,12 @@ function displayVideoOptionMenuData(videoOptionMenuDiv) {
     // append to video option menu div
     videoOptionMenuDiv.appendChild(videoOptionMenuDivTop);
     videoOptionMenuDiv.appendChild(videoOptionMenuDivBottom);
+
+    // Initalizing video option menu div theme
+    setVideoOptionMenuTheme();
+
+    // Initializing video option menus hover event listener
+    initVideoOptionMenuHoverEventListener();
 }
 
 // ============================

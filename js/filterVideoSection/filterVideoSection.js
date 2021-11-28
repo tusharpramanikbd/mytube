@@ -197,10 +197,10 @@ function scroll(scrollValue){
 // set filter video section theme
 function setFilterVideoSectionTheme(){
   if(isDarkThemeActivated()){
-    addDarkTheme(clickedBtnId)
+    addDarkTheme()
   }
   else{
-    addLightTheme(clickedBtnId)
+    addLightTheme()
   }
 }
 

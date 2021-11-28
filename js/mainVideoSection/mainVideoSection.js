@@ -2,13 +2,54 @@ import { convertHMS, startTimeCalculation, calculateTimeFromDate } from "../time
 import { FetchedData } from "../myStaticClass.js";
 import { noDataFound, sectionVideos } from "../staticVariables/svMainVideoSection.js";
 import { initVideoItemEvenListeners } from "./videoItem.js";
+import { isDarkThemeActivated } from "../applicationTheme.js";
+import { getAllElementFromElement } from "../utils.js"
 
 let videoItemList;
+const documentBody = document.body;
+
+// change color theme
+function initMainVideoSectionTheme(){
+  if(isDarkThemeActivated()){
+    documentBody.classList.remove("body-light-theme");
+  }
+  else{
+    documentBody.classList.add("body-light-theme");
+  }
+}
+
+function setMainVideoSectionTheme(){
+  if(isDarkThemeActivated()){
+    documentBody.classList.remove("body-light-theme");
+  }
+  else{
+    documentBody.classList.add("body-light-theme");
+  }
+
+  const videoItemList = getAllElementFromElement(sectionVideos, ".div-video-item");
+  videoItemList.map((item)=>{
+    if(isDarkThemeActivated()){
+      item.children[1].children[0].classList.remove("section-video-info-div-top-light-theme")
+      item.children[1].children[1].classList.remove("section-video-info-div-middle-light-theme")
+      item.children[1].children[2].classList.remove("section-video-info-div-bottom-title-light-theme")
+      item.children[1].children[0].children[2].classList.remove("video-option-menu-light-theme")
+    }
+    else{
+      item.children[1].children[0].classList.add("section-video-info-div-top-light-theme")
+      item.children[1].children[1].classList.add("section-video-info-div-middle-light-theme")
+      item.children[1].children[2].classList.add("section-video-info-div-bottom-title-light-theme")
+      item.children[1].children[0].children[2].classList.add("video-option-menu-light-theme")
+    }
+    return item;
+  })
+}
 
 // Initialize main video section
 function initMainVideoSection() {
+  initMainVideoSectionTheme();
   videoItemList = FetchedData.getVideoDataList();
   setVideoData(videoItemList);
+  // setMainVideoSectionTheme();
 }
 
 function setVideoData(videoDataList){
@@ -44,20 +85,20 @@ function setVideoData(videoDataList){
             </div>
           </div>
           <div class="section-video-info-div">
-            <div class="section-video-info-div-top">
+            <div class="section-video-info-div-top ${isDarkThemeActivated()? "" : "section-video-info-div-top-light-theme"}">
               <img
                 src="${avater}"
                 class="section-video-info-avater"
                 alt="${name}"
               />
               <h1>${title}</h1>
-              <i class="fas fa-ellipsis-v fa-fw video-option-menu" data-id="${id}"></i>
+              <i class="fas fa-ellipsis-v fa-fw video-option-menu ${isDarkThemeActivated()? "" : "video-option-menu-light-theme"}" data-id="${id}"></i>
             </div>
-            <div class="section-video-info-div-middle">
+            <div class="section-video-info-div-middle ${isDarkThemeActivated()? "" : "section-video-info-div-middle-light-theme"}">
               <p>${name}</p>
               <i class="fas fa-check-circle fa-fw"></i>
             </div>
-            <p class="section-video-info-div-bottom-title">
+            <p class="section-video-info-div-bottom-title ${isDarkThemeActivated()? "" : "section-video-info-div-bottom-title-light-theme"}">
               ${views} views &middot;
               <span class="created-time" data-id="${id}">${calculateTimeFromDate( created )}</span>
             </p>

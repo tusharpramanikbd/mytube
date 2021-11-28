@@ -19,7 +19,7 @@ if( document.readyState !== 'loading' ) {
         // step 4 -> initialize application theme
         initApplicationTheme()
         // temporary code
-        setCurrentTheme("dark")
+        setCurrentTheme("light")
         // step 5 -> initialize all the components
         initAllComponents();
     }

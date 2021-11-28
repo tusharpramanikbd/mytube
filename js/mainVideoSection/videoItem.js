@@ -1,8 +1,9 @@
 // import { getElement, getElementAll, changeColorFast, getElementFromElement, addPreventDefault } from "./utils.js";
 // import { videoOptionMenuItemDataTop, videoOptionMenuItemDataBottom } from "../asset/videoOptionMenuItemData.js";
 import { MyStaticClass } from "../myStaticClass.js";
-import { getElementAll, getElementFromElement } from "../utils.js";
+import { getElement, getElementAll, getElementFromElement } from "../utils.js";
 import { createVideoOptionMenuDiv, removeVideoOptionMenuDiv } from "./videoOptionMenu.js";
+import { isDarkThemeActivated } from "../applicationTheme.js";
 
 let videoOptionMenuId = -1;
 
