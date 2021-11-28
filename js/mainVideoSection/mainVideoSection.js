@@ -46,6 +46,7 @@ function setMainVideoSectionTheme(){
 
 // Initialize main video section
 function initMainVideoSection() {
+  console.log("Initializing main video section");
   initMainVideoSectionTheme();
   videoItemList = FetchedData.getVideoDataList();
   setVideoData(videoItemList);

@@ -997,7 +997,7 @@ Section Video container
   background: var(--mycolor-primary-darkTheme);
   position: absolute;
   top: 0.5rem;
-  right: 5rem;
+  right: 4rem;
   z-index: 6;
   border: 1px solid var(--mycolor-border-darktheme);
   display: flex;

@@ -18,6 +18,7 @@ let clickedBtnId = "1";
 
 // Initialize filter video section by adding dynamic elements to filter btn container
 function initFilterVideoSection() {
+  console.log("Initializing filter video section");
   const filterBtnList = FetchedData.getFilterDataList()
     .map((item) => {
       return `<button type="button" class="btn-filter ${

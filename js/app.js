@@ -5,6 +5,7 @@ import { initApplicationTheme, setCurrentTheme } from "./applicationTheme.js";
 import { initFilterVideoSection } from "./filterVideoSection/filterVideoSection.js";
 import { initMainVideoSection } from "./mainVideoSection/mainVideoSection.js";
 import { initDocumentClickEventListener } from "./documentClickEvent.js";
+import { initNavbarSection } from "./navbarSection/navbarSection.js";
 
 // step 0 -> document state check
 if( document.readyState !== 'loading' ) {
@@ -19,7 +20,7 @@ if( document.readyState !== 'loading' ) {
         // step 4 -> initialize application theme
         initApplicationTheme()
         // temporary code
-        setCurrentTheme("light")
+        setCurrentTheme("dark")
         // step 5 -> initialize all the components
         initAllComponents();
     }
@@ -57,14 +58,14 @@ function cacheAllFetchedData(values){
 
 // initialize all the components
 function initAllComponents(){
-    console.log("Initializing filter video section");
+    
     initFilterVideoSection();
     
-    console.log("Initializing main video section");
     initMainVideoSection();
-
-    console.log("Initializing document click event listener");
+    
     initDocumentClickEventListener();
+
+    initNavbarSection();
 }
 
 
