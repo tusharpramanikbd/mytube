@@ -114,7 +114,7 @@ function onMouseLeaveEffect(){
 // ==============================================================================
 function onClickAppearanceInUserMenu(event){
   if(event.target.parentElement.dataset.id === "appearance"){
-    user.classList.toggle("show-user");
+    user.classList.remove("show-user");
     appearance.classList.add("show-appearance");
     setTickMark(getCurrentTheme());
   }
