@@ -110,7 +110,7 @@ Navbar Section
   display: grid;
   grid-template-columns: 210px 1fr 230px;
   z-index: 5;
-  color: white;
+  color: var(--mycolor-primary-lightTheme);
 }
 .section-navbar-light-theme{
   background: var(--mycolor-primary-lightTheme);
@@ -133,14 +133,14 @@ Navbar Left
   border-radius: 50%;
   background: transparent;
   border-color: transparent;
-  color: white;
+  color: var(--mycolor-primary-lightTheme);
   font-size: 1.2rem;
   cursor: pointer;
   margin-left: 1.2rem;
   transition: var(--transition);
 }
 .navbar-toggle-btn-light-theme{
-  color: var(--clr-primary);
+  color: var(--mycolor-primary-darkTheme);
 }
 .navbar-logo-container {
   display: flex;
@@ -216,7 +216,7 @@ Navbar Middle
 .navbar-search-light-theme{
   background: var(--mycolor-primary-lightTheme);
   color: var(--mycolor-secondary-darkTheme);
-  border: 1px solid var(--mycolor-border-lighter-darktheme);
+  border: 1px solid var(--mycolor-hover-lighter-2-darkTheme);
 }
 .navbar-search:focus {
   outline: none;
@@ -255,6 +255,9 @@ Navbar Middle
 .navbar-btn-search-light-theme{
   background: var(--mycolor-secondary-lightTheme);
   color: var(--mycolor-primary-darkTheme);
+  border-top: 1px solid var(--mycolor-hover-lighter-2-darkTheme);
+  border-right: 1px solid var(--mycolor-hover-lighter-2-darkTheme);
+  border-bottom: 1px solid var(--mycolor-hover-lighter-2-darkTheme);
 }
 .navbar-btn-search-click-effect-light-theme{
   background: var(--mycolor-secondary-lighter-lightTheme);
@@ -959,9 +962,9 @@ Section Video container
   left: 48%;
   top: 55%;
   display: none;
+  color: var(--mycolor-primary-lightTheme);
 }
 .no-data-found p {
-  color: var(--mycolor-primary-lightTheme);
   font-size: 2rem;
   display: grid;
   justify-content: center;
@@ -999,7 +1002,7 @@ Section Video container
   top: 0.5rem;
   right: 4rem;
   z-index: 6;
-  border: 1px solid var(--mycolor-border-darktheme);
+  border: transparent;
   display: flex;
   flex-direction: column;
   color: var(--mycolor-primary-lightTheme);
@@ -1009,15 +1012,16 @@ Section Video container
   overflow: hidden;
   transition: opacity 0.1s ease-out;
 }
-.user-light-theme{
-  background: var(--mycolor-primary-lightTheme);
-  color: var(--mycolor-primary-darkTheme);
-  border: 1px solid var(--mycolor-border-lighter-darktheme);
-}
 .show-user{
   opacity: 0.98;
   height: calc(100vh - 0.5rem);
   transition: opacity 0.1s ease-in;
+  border: 1px solid var(--mycolor-border-darktheme);
+}
+.user-light-theme{
+  background: var(--mycolor-primary-lightTheme);
+  color: var(--mycolor-primary-darkTheme);
+  border: 1px solid var(--mycolor-border-lighter-darktheme);
 }
 .user-header{
   display: flex;
@@ -1128,7 +1132,7 @@ Section Video container
   top: 3rem;
   right: 1.5rem;
   z-index: 6;
-  border: 1px solid var(--mycolor-border-darktheme);
+  border: transparent;
   display: flex;
   flex-direction: column;
   color: var(--mycolor-primary-lightTheme);
@@ -1138,15 +1142,16 @@ Section Video container
   overflow: hidden;
   transition: opacity 0.1s ease-out;
 }
-.appearance-light-theme{
-  background: var(--mycolor-primary-lightTheme);
-  color: var(--mycolor-primary-darkTheme);
-  border: 1px solid var(--mycolor-border-lighter-darktheme);
-}
 .show-appearance{
   opacity: 0.98;
   height: auto;
   transition: opacity 0.1s ease-in;
+  border: 1px solid var(--mycolor-border-darktheme);
+}
+.appearance-light-theme{
+  background: var(--mycolor-primary-lightTheme);
+  color: var(--mycolor-primary-darkTheme);
+  border: 1px solid var(--mycolor-border-lighter-darktheme);
 }
 .appearance-header{
   display: flex;

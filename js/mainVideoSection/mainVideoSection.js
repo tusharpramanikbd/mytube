@@ -1,14 +1,25 @@
 import { convertHMS, startTimeCalculation, calculateTimeFromDate } from "../timeDateCalculation.js";
 import { FetchedData } from "../myStaticClass.js";
-import { noDataFound, sectionVideos } from "../staticVariables/svMainVideoSection.js";
+import { noDataFound, sectionVideos, documentBody } from "../staticVariables/svMainVideoSection.js";
 import { initVideoItemEvenListeners } from "./videoItem.js";
 import { isDarkThemeActivated } from "../applicationTheme.js";
 import { getAllElementFromElement } from "../utils.js"
 
 let videoItemList;
-const documentBody = document.body;
 
-// change color theme
+// =============================
+// Initialize main video section
+// =============================
+function initMainVideoSection() {
+  console.log("Initializing main video section");
+  initMainVideoSectionTheme();
+  videoItemList = FetchedData.getVideoDataList();
+  setVideoData(videoItemList);
+}
+
+// ==============================================
+// Initializing theme color when stating the page
+// ==============================================
 function initMainVideoSectionTheme(){
   if(isDarkThemeActivated()){
     documentBody.classList.remove("body-light-theme");
@@ -18,41 +29,9 @@ function initMainVideoSectionTheme(){
   }
 }
 
-function setMainVideoSectionTheme(){
-  if(isDarkThemeActivated()){
-    documentBody.classList.remove("body-light-theme");
-  }
-  else{
-    documentBody.classList.add("body-light-theme");
-  }
-
-  const videoItemList = getAllElementFromElement(sectionVideos, ".div-video-item");
-  videoItemList.map((item)=>{
-    if(isDarkThemeActivated()){
-      item.children[1].children[0].classList.remove("section-video-info-div-top-light-theme")
-      item.children[1].children[1].classList.remove("section-video-info-div-middle-light-theme")
-      item.children[1].children[2].classList.remove("section-video-info-div-bottom-title-light-theme")
-      item.children[1].children[0].children[2].classList.remove("video-option-menu-light-theme")
-    }
-    else{
-      item.children[1].children[0].classList.add("section-video-info-div-top-light-theme")
-      item.children[1].children[1].classList.add("section-video-info-div-middle-light-theme")
-      item.children[1].children[2].classList.add("section-video-info-div-bottom-title-light-theme")
-      item.children[1].children[0].children[2].classList.add("video-option-menu-light-theme")
-    }
-    return item;
-  })
-}
-
-// Initialize main video section
-function initMainVideoSection() {
-  console.log("Initializing main video section");
-  initMainVideoSectionTheme();
-  videoItemList = FetchedData.getVideoDataList();
-  setVideoData(videoItemList);
-  // setMainVideoSectionTheme();
-}
-
+// ======================================
+// Set video item data on video container
+// ======================================
 function setVideoData(videoDataList){
   if(toggleNoDataFound(videoDataList)){
     const videoListHtml = videoDataList
@@ -115,7 +94,6 @@ function setVideoData(videoDataList){
         return { id: item.id, created: item.created };
       })
     );
-    // initializeEventListeners();
     initVideoItemEvenListeners();
   }
   else{
@@ -123,15 +101,61 @@ function setVideoData(videoDataList){
   }
 }
 
+// ================================
+// Setting theme color on btn click
+// ================================
+function setMainVideoSectionTheme(){
+  if(isDarkThemeActivated()){
+    documentBody.classList.remove("body-light-theme");
+  }
+  else{
+    documentBody.classList.add("body-light-theme");
+  }
+
+  const videoItemList = getAllElementFromElement(sectionVideos, ".div-video-item");
+  videoItemList.map((item)=>{
+    if(isDarkThemeActivated()){
+      item.children[1].children[0].classList.remove("section-video-info-div-top-light-theme")
+      item.children[1].children[1].classList.remove("section-video-info-div-middle-light-theme")
+      item.children[1].children[2].classList.remove("section-video-info-div-bottom-title-light-theme")
+      item.children[1].children[0].children[2].classList.remove("video-option-menu-light-theme")
+    }
+    else{
+      item.children[1].children[0].classList.add("section-video-info-div-top-light-theme")
+      item.children[1].children[1].classList.add("section-video-info-div-middle-light-theme")
+      item.children[1].children[2].classList.add("section-video-info-div-bottom-title-light-theme")
+      item.children[1].children[0].children[2].classList.add("video-option-menu-light-theme")
+    }
+    return item;
+  })
+}
+
+// ===============================
+// Show or hide no data found text
+// ===============================
 function toggleNoDataFound(videoDataList){
   if(videoDataList.length === 0){
     noDataFound.classList.add("show-no-data-found");
+    setNoDataFoundTheme()
     return false;
   }
   else{
     noDataFound.classList.remove("show-no-data-found");
+    setNoDataFoundTheme()
     return true;
   }
 }
 
-export { initMainVideoSection, setVideoData };
+// =========================================
+// Set the color theme of no data found text
+// =========================================
+function setNoDataFoundTheme(){
+  if(isDarkThemeActivated()){
+    noDataFound.classList.remove("no-data-found-light-theme");
+  }
+  else{
+    noDataFound.classList.add("no-data-found-light-theme");
+  }
+}
+
+export { initMainVideoSection, setVideoData, setMainVideoSectionTheme, setNoDataFoundTheme };

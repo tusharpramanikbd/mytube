@@ -1,6 +1,7 @@
 import { MyStaticClass } from "./myStaticClass.js";
 import { createVideoOptionMenuDiv, removeVideoOptionMenuDiv} from "./mainVideoSection/videoOptionMenu.js";
 import { removeVideoOptionMenuIcon } from "./mainVideoSection/videoItem.js";
+import { hideUserMenus } from "./navbarSection/navbarRightSection.js";
 
 // ========================================
 // Initialize document click event listener
@@ -49,9 +50,13 @@ function onClickDocumentEventHandler(e){
         removeVideoOptionMenuDiv()
         removeVideoOptionMenuIcon();
       }
-      // removing previously selected video option menu btn if any
-      // removeVideoOptionMenuIcon();
     }
+  }
+
+  // if the clicked item is not user when user is showing
+  // then hide the user menus
+  if(!element.closest(".show-user") && !element.closest(".avater-img") && !element.closest(".appearance")){
+    hideUserMenus();
   }
 }
 

@@ -15,8 +15,9 @@ import { setVideoData } from "../mainVideoSection/mainVideoSection.js";
 let btnFilterList;
 let clickedBtnId = "1";
 
-
+// ==================================================================================
 // Initialize filter video section by adding dynamic elements to filter btn container
+// ==================================================================================
 function initFilterVideoSection() {
   console.log("Initializing filter video section");
   const filterBtnList = FetchedData.getFilterDataList()
@@ -51,15 +52,13 @@ function initEventListeners() {
 
   // btn right div click event listener
   btnRight.addEventListener("click", btnRightClickEventHandler);
-
-  // rightBtn.addEventListener("mousedown", onMouseDownNavbarIcon);
-  // rightBtn.addEventListener("mouseup", onMouseUpNavbarIcon);
+  btnRight.addEventListener("mousedown", onMouseDownNavbarIcon);
+  btnRight.addEventListener("mouseup", onMouseUpNavbarIcon);
 
   // btn left div click event listener
   btnLeft.addEventListener("click", btnLeftClickEventHandler);
-
-  // leftBtn.addEventListener("mousedown", onMouseDownNavbarIcon);
-  // leftBtn.addEventListener("mouseup", onMouseUpNavbarIcon);
+  btnLeft.addEventListener("mousedown", onMouseDownNavbarIcon);
+  btnLeft.addEventListener("mouseup", onMouseUpNavbarIcon);
 
   // mouse wheel event listener
   filterContainer.addEventListener("wheel", mouseWheelEventHandler);
@@ -69,12 +68,35 @@ function initEventListeners() {
 // Event Handler
 // =======================
 
+// =========================
+// On mouse down navbar icon
+// =========================
+function onMouseDownNavbarIcon(){
+  this.classList.add("icon-mousedown-effect");
+}
+
+// =======================
+// On mouse up navbar icon
+// =======================
+function onMouseUpNavbarIcon(){
+  this.classList.remove("icon-mousedown-effect");
+  this.classList.add("icon-mouseup-effect");
+        setTimeout(()=>{
+          this.classList.remove("icon-mouseup-effect");
+      }, 500)
+}
+
+// ===============================
 // Filter btns click event handler
+// ===============================
 function btnFilterClickEventHandler(event, btnFilter){
   btnFilterList.map((item) => {
     // adding btn-filter-light-theme on every element if light theme is activated
     if(!isDarkThemeActivated()){
       item.classList.add("btn-filter-light-theme");
+    }
+    else{
+      item.classList.remove("btn-filter-light-theme");
     }
 
     // removing previous active button
@@ -98,22 +120,9 @@ function btnFilterClickEventHandler(event, btnFilter){
   }
 }
 
-function updateVideoData(clickedBtn) {
-  const videoDataList = FetchedData.getVideoDataList();
-  let dataList = [];
-  if (clickedBtn.innerText.toLowerCase() === "all") {
-    dataList = videoDataList;
-  } else {
-    dataList = videoDataList.filter((data) => {
-      if (data.tag === clickedBtn.innerText.toLowerCase()) {
-        return data;
-      }
-    });
-  }
-  setVideoData(dataList);
-}
-
+// =============================
 // Right btn click event handler
+// =============================
 function btnRightClickEventHandler(){
   scroll(200);
   showButtonDisplay(btnLeftDiv);
@@ -124,7 +133,9 @@ function btnRightClickEventHandler(){
   });
 }
 
+// ============================
 // Left btn click event handler
+// ============================
 function btnLeftClickEventHandler(){
   scroll(-200);
   showButtonDisplay(btnRightDiv);
@@ -135,6 +146,9 @@ function btnLeftClickEventHandler(){
   });
 }
 
+// =========================
+// Mouse wheel event handler
+// =========================
 function mouseWheelEventHandler(event){
   event.preventDefault();
 
@@ -164,7 +178,9 @@ function mouseWheelEventHandler(event){
 // Other business logic
 // =========================
 
+// =========================================
 // Adding class according to activated theme
+// =========================================
 function getSelecetedThemeClass(){
   if(isDarkThemeActivated()){
     return "active-btn-filter";
@@ -172,22 +188,30 @@ function getSelecetedThemeClass(){
   return "active-btn-filter-light-theme";
 }
 
+// ============================
 // get all the dynamic elements
+// ============================
 function getDynamicElements(){
   btnFilterList = [...getElementAll(".btn-filter")];
 }
 
+// ======================
 // Display the hidden btn
+// ======================
 function showButtonDisplay(btn) {
   btn.classList.add("show-section-video-filter-btn-div");
 }
 
+// ======================
 // hide the displayed btn
+// ======================
 function hideButtonDisplay(btn) {
   btn.classList.remove("show-section-video-filter-btn-div");
 }
 
+// ========================================
 // scroll to left or right with given value
+// ========================================
 function scroll(scrollValue){
   filterContainer.scrollBy({
     left: scrollValue,
@@ -195,7 +219,9 @@ function scroll(scrollValue){
   });
 }
 
+// ==============================
 // set filter video section theme
+// ==============================
 function setFilterVideoSectionTheme(){
   if(isDarkThemeActivated()){
     addDarkTheme()
@@ -205,7 +231,9 @@ function setFilterVideoSectionTheme(){
   }
 }
 
+// =======================================
 // add light theme to filter video section
+// =======================================
 function addLightTheme(){
   filterContainer.classList.add("section-video-filter-light-theme");
   btnFilterList.forEach((btnFilter)=>{
@@ -223,7 +251,9 @@ function addLightTheme(){
   btnRight.classList.add("section-video-filter-btn-light-theme");
 }
 
+// ======================================
 // add dark theme to filter video section
+// ======================================
 function addDarkTheme(){
   filterContainer.classList.remove("section-video-filter-light-theme");
   btnFilterList.forEach((btnFilter)=>{
@@ -239,6 +269,24 @@ function addDarkTheme(){
   btnRightDiv.classList.remove("section-video-filter-btn-right-div-light-theme");
   btnLeft.classList.remove("section-video-filter-btn-light-theme");
   btnRight.classList.remove("section-video-filter-btn-light-theme");
+}
+
+// ============================================================
+// Updating video item list according to the clicked filter btn
+// ============================================================
+function updateVideoData(clickedBtn) {
+  const videoDataList = FetchedData.getVideoDataList();
+  let dataList = [];
+  if (clickedBtn.innerText.toLowerCase() === "all") {
+    dataList = videoDataList;
+  } else {
+    dataList = videoDataList.filter((data) => {
+      if (data.tag === clickedBtn.innerText.toLowerCase()) {
+        return data;
+      }
+    });
+  }
+  setVideoData(dataList);
 }
 
 export { initFilterVideoSection,setFilterVideoSectionTheme }
