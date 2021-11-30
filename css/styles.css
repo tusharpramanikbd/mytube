@@ -172,7 +172,7 @@ Navbar Left
   font-weight: bold;
   text-align: center;
   font-size: 1.3rem;
-  margin-left: 0.1rem;
+  margin-left: 0.3rem;
 }
 .navbar-logo-container sup {
   font-size: 0.6rem;
@@ -548,7 +548,8 @@ Section Menus Overlay
 .section-menus-overlay {
   width: 15rem;
   height: 100vh;
-  background: var(--clr-primary);
+  background: var(--mycolor-primary-darkTheme);
+  color: var(--mycolor-primary-lightTheme);
   position: absolute;
   top: 0;
   left: 0;

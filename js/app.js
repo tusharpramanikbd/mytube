@@ -6,6 +6,7 @@ import { initFilterVideoSection } from "./filterVideoSection/filterVideoSection.
 import { initMainVideoSection } from "./mainVideoSection/mainVideoSection.js";
 import { initDocumentClickEventListener } from "./documentClickEvent.js";
 import { initNavbarSection } from "./navbarSection/navbarSection.js";
+import { initLeftNavigationSection } from "./leftNavigationMenusSection/leftNavSection.js"
 
 // ====================
 // document state check
@@ -67,6 +68,8 @@ function initAllComponents(){
     initDocumentClickEventListener();
 
     initNavbarSection();
+
+    initLeftNavigationSection();
 }
 
 

@@ -1,5 +1,6 @@
 import { isDarkThemeActivated } from "../applicationTheme.js";
-import { btnNavbarToggle } from "../staticVariables/svNavbarSection.js"
+import { btnNavbarToggle } from "../staticVariables/svNavbarSection.js";
+import { toggleLeftMenusSection } from "../leftNavigationMenusSection/leftNavSection.js"
 
 // ==============================================
 // Initialize navbar left section event listeners
@@ -7,7 +8,7 @@ import { btnNavbarToggle } from "../staticVariables/svNavbarSection.js"
 function intNavbarLeftEventListeners(){
   setNavbarLeftTheme()
   // Navbar Toggle Button
-  // btnNavbarToggle.addEventListener("click", toggleLeftMenusSection);
+  btnNavbarToggle.addEventListener("click", toggleLeftMenusSection);
   btnNavbarToggle.addEventListener("mousedown", onMouseDownBtnNavbarToggle);
   btnNavbarToggle.addEventListener("mouseup", onMouseUpBtnNavbarToggle);
 }
