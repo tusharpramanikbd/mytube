@@ -1,6 +1,5 @@
 import {  
   getElement,
-  getElementAll,
   getWidth,
   getAllElementFromElement
 } from "../utils.js";
@@ -8,9 +7,6 @@ import {
   topMenuSectionOverlay,
   middleMenuSectionOverlay,
   subcriptionDivSectionOverlay,
-  sectionVideoFilter,
-  sectionVideoContainer,
-  noDataFound,
   overlay,
   sectionMenusOverlay,
   sectionMenuSmall,

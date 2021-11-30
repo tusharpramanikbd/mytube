@@ -1,7 +1,5 @@
 import {  
-  getElement,
   getElementAll,
-  getWidth,
   getAllElementFromElement
 } from "../utils.js";
 import {
