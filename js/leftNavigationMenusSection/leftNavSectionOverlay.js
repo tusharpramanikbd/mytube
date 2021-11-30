@@ -21,6 +21,7 @@ import {
   updateSelectionOnBtnClick,
   updateSectionMenuData
 } from "./leftNavSection.js";
+import { isDarkThemeActivated } from "../applicationTheme.js";
 
 window.onresize = () => {
   if (getWidth() > 1312) {
@@ -32,6 +33,7 @@ window.onresize = () => {
 // This function fetch and set the dynamic data on the section menu overlay
 // ========================================================================
 function initLeftNavSectionOverlay() {
+  setLeftNavOverlayTheme();
   topMenuSectionOverlay.innerHTML = setMenuData("top_data");
   middleMenuSectionOverlay.innerHTML = setMenuData("first_half");
   let overlayMenuDivList = getAllElementFromElement(middleMenuSectionOverlay, ".menu-div");
@@ -154,9 +156,45 @@ function hideSectionMenusOverlay() {
   sectionMenusOverlay.classList.remove("show-menus-overlay");
 }
 
+// ==========================================
+// Set theme for left navigation overlay menu
+// ==========================================
+function setLeftNavOverlayTheme(){
+  if(isDarkThemeActivated()){
+    sectionMenusOverlay.classList.remove("section-menus-overlay-light-theme")
+    overlayToggleBtn.classList.remove("overlay-toggle-btn-light-theme")
+  }
+  else{
+    sectionMenusOverlay.classList.add("section-menus-overlay-light-theme")
+    overlayToggleBtn.classList.add("overlay-toggle-btn-light-theme")
+  }
+  updateSelectedMenuTheme();
+}
+
+// ==========================
+// Update selected menu theme
+// ==========================
+function updateSelectedMenuTheme(){
+  const menuList = getAllElementFromElement(sectionMenusOverlay, ".menu-div");
+  menuList.forEach((item)=>{
+    if(item.classList.contains("menu-selected") ||
+     item.classList.contains("menu-selected-light-theme")){
+       if(isDarkThemeActivated()){
+         item.classList.remove("menu-selected-light-theme");
+         item.classList.add("menu-selected");
+       }
+       else{
+        item.classList.remove("menu-selected");
+        item.classList.add("menu-selected-light-theme");
+       }
+     }
+  })
+}
+
 export { 
   initLeftNavSectionOverlay, 
   initLeftNavOverlayEventListeners, 
   showSectionMenusOverlay, 
-  sectionOverlayMenuBtnClickEventHandler 
+  sectionOverlayMenuBtnClickEventHandler,
+  setLeftNavOverlayTheme 
 }

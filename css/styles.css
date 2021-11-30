@@ -31,12 +31,14 @@ Variables
   --mycolor-hover-lightTheme: #9c9c9c;
   --mycolor-hover-lighter-darkTheme: #4D4D4D;
   --mycolor-hover-lighter-2-darkTheme: #d8d8d8;
+  --mycolor-hover-lighter-3-darkTheme: #f0f0f0;
   --mycolor-border-darktheme: #373737;
   --mycolor-border-lighter-darktheme: #9c9c9c;
   --mycolor-border-lighter-2-darktheme: #686868;
   --mycolor-primary-lightTheme: #ffffff;
   --mycolor-secondary-lightTheme: #F0F0F0;
   --mycolor-secondary-lighter-lightTheme: #d8d8d8;
+  --mycolor-secondary-lighter-lightTheme-2: #e7e7e7;
   --transition-btn: all 0.1s linear;
 }
 /*
@@ -56,7 +58,7 @@ body {
   background: var(--mycolor-body-darkTheme);
 }
 .body-light-theme{
-  background: var(--mycolor-primary-lightTheme);
+  background: var(--mycolor-secondary-lightTheme);
 }
 ul {
   list-style-type: none;
@@ -446,6 +448,9 @@ Section Menus
   padding-bottom: 0.7rem;
   border-top: 1px solid var(--mycolor-border-darktheme);
 }
+.border-light-theme{
+  border-top: 1px solid var( --mycolor-border-lighter-darktheme);
+}
 .subscription-title {
   color: rgb(165, 165, 165);
   margin-left: 1.5rem;
@@ -470,6 +475,11 @@ Section Menus
 }
 .menu-selected {
   background: var(--mycolor-border-darktheme);
+  font-weight: bold;
+}
+.menu-selected-light-theme{
+  background: var(--mycolor-secondary-lighter-lightTheme-2);
+  font-weight: bold;
 }
 .menu-div:hover {
   /* background: #3d3a3a; */
@@ -588,10 +598,13 @@ Section Menus Overlay
   border-radius: 50%;
   background: transparent;
   border-color: transparent;
-  color: white;
+  color: var(--mycolor-primary-lightTheme);
   font-size: 1.2rem;
   cursor: pointer;
   transition: var(--transition);
+}
+.overlay-toggle-btn-light-theme{
+  color: var(--mycolor-primary-darkTheme);
 }
 .section-menus-overlay-bottom {
   width: 100%;
@@ -633,7 +646,8 @@ Section Video Filter
 .section-video-filter-light-theme{
   background: var(--mycolor-primary-lightTheme);
   color: var(--mycolor-primary-darkTheme);
-  border: 1px solid var(--mycolor-border-lighter-darktheme);
+  border-top: 1px solid var(--mycolor-secondary-lighter-lightTheme);
+  border-bottom: 1px solid var(--mycolor-secondary-lighter-lightTheme);
 }
 
 .section-video-filter::-webkit-scrollbar {
@@ -1204,7 +1218,7 @@ Section Video container
   cursor: pointer;
 }
 .appearance-hover-light-theme {
-  background: var(--mycolor-hover-lighter-2-darkTheme);
+  background: var(--mycolor-hover-lighter-3-darkTheme);
   cursor: pointer;
 }
 .appearance-theme-item i{
@@ -1475,6 +1489,9 @@ Section Video container
 }
 .icon-mousedown-effect{
   background: var(--mycolor-hover-lighter-darkTheme);
+}
+.icon-mousedown-effect-light-theme{
+  background: var(--mycolor-border-lighter-darktheme);
 }
 .icon-mouseup-effect{
   animation: mouseup-effect 1s ease-out;

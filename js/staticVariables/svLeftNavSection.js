@@ -15,6 +15,8 @@ const topMenuSectionOverlay = getElement(".section-menus-overlay-div-1");
 const middleMenuSectionOverlay = getElement(".section-menus-overlay-div-2");
 const subcriptionDivSectionOverlay = getElement(".subscription-div-container-overlay");
 const sectionOverlayMenu = getElement(".section-menus-overlay-bottom");
+const bottomMenuSection = getElement(".section-menus-div-3");
+const bottomMenuSectionOverlay = getElement(".section-menus-overlay-div-3");
 
 export {
   sectionMenusOverlay,
@@ -31,5 +33,7 @@ export {
   topMenuSectionOverlay,
   middleMenuSectionOverlay,
   subcriptionDivSectionOverlay,
-  sectionOverlayMenu
+  sectionOverlayMenu,
+  bottomMenuSection,
+  bottomMenuSectionOverlay
 }

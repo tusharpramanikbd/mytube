@@ -22,6 +22,9 @@ import { setNavbarSectionTheme } from "./navbarSection.js";
 import { setNavbarLeftTheme } from "./navbarLeftSection.js";
 import { setNavbarMiddleTheme } from "./navbarMiddleSection.js";
 import { setNoDataFoundTheme } from "../mainVideoSection/mainVideoSection.js";
+import { setLeftNavSectionTheme } from "../leftNavigationMenusSection/leftNavSection.js"
+import { setLeftNavSmallTheme } from "../leftNavigationMenusSection/leftNavSectionSmall.js"
+import { setLeftNavOverlayTheme } from "../leftNavigationMenusSection/leftNavSectionOverlay.js"
 
 // ===============================================
 // Initialize navbar right section event listeners
@@ -43,8 +46,24 @@ function initNavbarRightEventListeners(){
   userMenuItemList.forEach((item)=>{
     item.addEventListener("mouseenter", onMouseEnterEffect);
     item.addEventListener("mouseleave", onMouseLeaveEffect);
+    item.addEventListener("mousedown", onMouseDownEffect);
+    item.addEventListener("mouseup", onMouseUpEffect);
     item.addEventListener("click", onMouseLeaveEffect);
   });
+
+  function onMouseDownEffect(){
+    if(isDarkThemeActivated()){
+      this.classList.add("icon-mousedown-effect");
+    }
+    else{
+      this.classList.add("icon-mousedown-effect-light-theme");
+    }
+  }
+  
+  function onMouseUpEffect(){
+      this.classList.remove("icon-mousedown-effect");
+      this.classList.remove("icon-mousedown-effect-light-theme");
+  }
 
   // Appearance menu click event listener
   user.addEventListener("click", onClickAppearanceInUserMenu);
@@ -224,6 +243,9 @@ function setTheme(theme){
   setUserMenuTheme();
   setAppearanceTheme();
   setNoDataFoundTheme();
+  setLeftNavSectionTheme();
+  setLeftNavSmallTheme();
+  setLeftNavOverlayTheme();
   setTickMark(theme);
 }
 

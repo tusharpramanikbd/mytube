@@ -15,6 +15,9 @@ import {
   sectionVideoFilter,
   sectionVideoContainer,
   noDataFound,
+  bottomMenuSection,
+  bottomMenuSectionOverlay,
+  middleMenuSectionOverlay
 } from "../staticVariables/svLeftNavSection.js";
 import { FetchedData } from "../myStaticClass.js";
 import { 
@@ -37,7 +40,8 @@ let menusDataList;
 // Initializing async task of setting data and event listener
 // ==========================================================
 function initLeftNavigationSection() {
-  cacheNavigationMenuData()
+  cacheNavigationMenuData();
+  setLeftNavSectionTheme();
   const initLeftNavPromise = new Promise((resolve) => {
     initLeftNavSection();
     resolve();
@@ -93,6 +97,9 @@ function initLeftNavEventListeners() {
   mouserHoverEventListener();
 }
 
+// ==========================
+// Mouse hover event listener
+// ==========================
 function mouserHoverEventListener(){
   const menuList = getAllElementFromElement(sectionMenus, ".menu-div")
   menuList.forEach((menu)=>{
@@ -133,37 +140,6 @@ function mouserHoverEventListener(){
     item.addEventListener("mousedown", onMouseDownEffect);
     item.addEventListener("mouseup", onMouseUpEffect);
   })
-}
-
-function onMouseDownEffect(){
-  this.classList.add("icon-mousedown-effect");
-}
-
-function onMouseUpEffect(){
-  this.classList.remove("icon-mousedown-effect");
-}
-
-// ===================================
-// On mouse enter hover effect
-// ===================================
-function onMouseEnterEffect(){
-  if(isDarkThemeActivated()){
-    this.classList.add("appearance-hover-dark-theme");
-  }
-  else{
-    this.classList.add("appearance-hover-light-theme");
-  }
-}
-// ===================================
-// On mouse leave hover effect
-// ===================================
-function onMouseLeaveEffect(){
-  if(isDarkThemeActivated()){
-    this.classList.remove("appearance-hover-dark-theme");
-  }
-  else{
-    this.classList.remove("appearance-hover-light-theme");
-  }
 }
 
 // ==========================================
@@ -221,6 +197,50 @@ function sectionMainMenuBtnClickEventHandler(event, sectionMenus) {
   }
   else if (event.target.parentElement.classList.contains("menu-div")) {
     sectionMainBtnClickLogic(event.target.parentElement, sectionMenus);
+  }
+}
+
+// =====================
+// On mouse down effect
+// =====================
+function onMouseDownEffect(){
+  if(isDarkThemeActivated()){
+    this.classList.add("icon-mousedown-effect");
+  }
+  else{
+    this.classList.add("icon-mousedown-effect-light-theme");
+  }
+}
+
+// =====================
+// On mouse up effect
+// =====================
+function onMouseUpEffect(){
+    this.classList.remove("icon-mousedown-effect");
+    this.classList.remove("icon-mousedown-effect-light-theme");
+}
+
+// ===================================
+// On mouse enter hover effect
+// ===================================
+function onMouseEnterEffect(){
+  if(isDarkThemeActivated()){
+    this.classList.add("appearance-hover-dark-theme");
+  }
+  else{
+    this.classList.add("appearance-hover-light-theme");
+  }
+}
+
+// ===================================
+// On mouse leave hover effect
+// ===================================
+function onMouseLeaveEffect(){
+  if(isDarkThemeActivated()){
+    this.classList.remove("appearance-hover-dark-theme");
+  }
+  else{
+    this.classList.remove("appearance-hover-light-theme");
   }
 }
 
@@ -303,7 +323,7 @@ function setMenuData(tag) {
     return menusDataList
       .map((item) => {
         if (item.id < 4) {
-          return `<div class="menu-div ${item.status}" data-id="${item.id}">
+          return `<div class="menu-div ${setMenuSelectionStatus(item)}" data-id="${item.id}">
             <i class="${item.logo}"></i>
             <p>${item.text}</p>
           </div>`;
@@ -314,7 +334,7 @@ function setMenuData(tag) {
     return menusDataList
       .map((item) => {
         if (item.id > 3 && item.id < 9) {
-          return `<div class="menu-div ${item.status}" data-id="${item.id}">
+          return `<div class="menu-div ${setMenuSelectionStatus(item)}" data-id="${item.id}">
             <i class="${item.logo}"></i>
             <p>${item.text}</p>
           </div>`;
@@ -325,7 +345,7 @@ function setMenuData(tag) {
     return menusDataList
       .map((item) => {
         if (item.id > 3 && item.id !== 8) {
-          return `<div class="menu-div ${item.status}" data-id="${item.id}">
+          return `<div class="menu-div ${setMenuSelectionStatus(item)}" data-id="${item.id}">
             <i class="${item.logo}"></i>
             <p>${item.text}</p>
           </div>`;
@@ -333,6 +353,22 @@ function setMenuData(tag) {
       })
       .join("");
   }
+}
+
+// =========================
+// Set menu selection status
+// =========================
+function setMenuSelectionStatus(item){
+  let status = "";
+  if(item.status){
+    if(isDarkThemeActivated()){
+      status = "menu-selected";
+    }
+    else{
+      status = "menu-selected-light-theme";
+    }
+  }
+  return status;
 }
 
 // =========================================
@@ -390,11 +426,17 @@ function initLeftNavSection() {
 // ==================================
 function updateSelectionOnBtnClick(menuList, element){
   menuList.map((menu) => {
-    if (menu.classList.contains("menu-selected")) {
+    if (menu.classList.contains("menu-selected") || menu.classList.contains("menu-selected-light-theme")) {
       menu.classList.remove("menu-selected");
+      menu.classList.remove("menu-selected-light-theme");
     }
     if (element.dataset.id === menu.dataset.id) {
-      menu.classList.add("menu-selected");
+      if(isDarkThemeActivated()){
+        menu.classList.add("menu-selected");
+      }
+      else{
+        menu.classList.add("menu-selected-light-theme");
+      }
     }
   });
 }
@@ -405,12 +447,21 @@ function updateSelectionOnBtnClick(menuList, element){
 function updateSelectionOnBtnClickWithStoringValue(menuList, element){
   let newMenuId, previousMenuId;
   menuList.map((menu) => {
-    if (menu.classList.contains("menu-selected")) {
+    if (menu.classList.contains("menu-selected") || menu.classList.contains("menu-selected-light-theme")) {
+      
       menu.classList.remove("menu-selected");
+      menu.classList.remove("menu-selected-light-theme");
+      
       previousMenuId = menu.dataset.id;
     }
     if (element.dataset.id === menu.dataset.id) {
-      menu.classList.add("menu-selected");
+      if(isDarkThemeActivated()){
+        menu.classList.add("menu-selected");
+      }
+      else{
+        menu.classList.add("menu-selected-light-theme");
+      }
+      
       newMenuId = menu.dataset.id;
     }
   });
@@ -437,6 +488,46 @@ function updateSectionMenuData(newMenuId, previousMenuId){
   menusDataList = tmpMenusDataList;
 }
 
+// ==================================
+// Set theme for left navigation menu
+// ==================================
+function setLeftNavSectionTheme(){
+  if(isDarkThemeActivated()){
+    sectionMenus.classList.remove("section-menus-light-theme");
+    middleMenuSection.classList.remove("border-light-theme");
+    middleMenuSectionOverlay.classList.remove("border-light-theme");
+    bottomMenuSection.classList.remove("border-light-theme");
+    bottomMenuSectionOverlay.classList.remove("border-light-theme");
+  }
+  else{
+    sectionMenus.classList.add("section-menus-light-theme");
+    middleMenuSection.classList.add("border-light-theme");
+    middleMenuSectionOverlay.classList.add("border-light-theme");
+    bottomMenuSection.classList.add("border-light-theme");
+    bottomMenuSectionOverlay.classList.add("border-light-theme");
+  }
+  updateSelectedMenuTheme();
+}
+
+// ==========================
+// Update selected menu theme
+// ==========================
+function updateSelectedMenuTheme(){
+  const menuList = getAllElementFromElement(sectionMenus, ".menu-div");
+  menuList.forEach((item)=>{
+    if(item.classList.contains("menu-selected") ||
+     item.classList.contains("menu-selected-light-theme")){
+       if(isDarkThemeActivated()){
+         item.classList.remove("menu-selected-light-theme");
+         item.classList.add("menu-selected");
+       }
+       else{
+        item.classList.remove("menu-selected");
+        item.classList.add("menu-selected-light-theme");
+       }
+     }
+  })
+}
 
 export { 
   showSectionMenuSmall,
@@ -450,4 +541,6 @@ export {
   seeMoreClickEventListener,
   seeLessClickEventListener,
   fetchSubscriptionList,
+  setLeftNavSectionTheme,
+  setMenuSelectionStatus
  }

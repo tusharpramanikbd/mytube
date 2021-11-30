@@ -16,11 +16,14 @@ import {
   updateSelectionOnBtnClick,
   updateSectionMenuData
 } from "./leftNavSection.js";
+import { isDarkThemeActivated } from "../applicationTheme.js";
+import { setMenuSelectionStatus } from "./leftNavSection.js";
 
 // =============================
 // Initialize section menu small
 // =============================
 function initLeftNavSectionSmall() {
+  setLeftNavSmallTheme();
   sectionMenuSmall.innerHTML = setSectionMenuSmall();
 }
 
@@ -99,7 +102,7 @@ function setSectionMenuSmall() {
   return menusDataList
     .map((item) => {
       if (item.id < 5) {
-        return `<div class="menu-small-div ${item.status}" data-id="${item.id}">
+        return `<div class="menu-small-div ${setMenuSelectionStatus(item)}" data-id="${item.id}">
             <i class="${item.logo}"></i>
             <p>${item.text}</p>
           </div>`;
@@ -123,4 +126,42 @@ function showSectionMenuSmall() {
   });
 }
 
-export { initLeftNavSectionSmall, initLeftNavSmallEventListeners, showSectionMenuSmall }
+// ========================================
+// Set theme for left navigation small menu
+// ========================================
+function setLeftNavSmallTheme(){
+  if(isDarkThemeActivated()){
+    sectionMenuSmall.classList.remove("section-menus-small-light-theme");
+  }
+  else{
+    sectionMenuSmall.classList.add("section-menus-small-light-theme");
+  }
+  updateSelectedMenuTheme()
+}
+
+// ==========================
+// Update selected menu theme
+// ==========================
+function updateSelectedMenuTheme(){
+  const menuList = getAllElementFromElement(sectionMenuSmall, ".menu-small-div");
+  menuList.forEach((item)=>{
+    if(item.classList.contains("menu-selected") ||
+     item.classList.contains("menu-selected-light-theme")){
+       if(isDarkThemeActivated()){
+         item.classList.remove("menu-selected-light-theme");
+         item.classList.add("menu-selected");
+       }
+       else{
+        item.classList.remove("menu-selected");
+        item.classList.add("menu-selected-light-theme");
+       }
+     }
+  })
+}
+
+export { 
+  initLeftNavSectionSmall, 
+  initLeftNavSmallEventListeners, 
+  showSectionMenuSmall,
+  setLeftNavSmallTheme 
+}
