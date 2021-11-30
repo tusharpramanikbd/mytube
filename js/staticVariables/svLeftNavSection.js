@@ -4,7 +4,6 @@ const sectionMenusOverlay = getElement(".section-menus-overlay");
 const sectionVideoFilter = getElement(".section-video-filter");
 const sectionVideoContainer = getElement(".section-video-container");
 const sectionMenus = getElement(".section-menus");
-const sectionMenusSmall = getElement(".section-menus-small");
 const overlay = getElement(".overlay");
 const overlayToggleBtn = getElement(".overlay-toggle-btn");
 const noDataFound = getElement(".no-data-found");
@@ -22,7 +21,6 @@ export {
   sectionVideoFilter,
   sectionVideoContainer,
   sectionMenus,
-  sectionMenusSmall,
   overlay,
   overlayToggleBtn,
   noDataFound,

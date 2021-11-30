@@ -399,7 +399,8 @@ Section Menus
 .section-menus {
   width: 15rem;
   height: 91vh;
-  background: var(--clr-primary);
+  background: var(--mycolor-primary-darkTheme);
+  color: var(--mycolor-primary-lightTheme);
   position: fixed;
   top: 3.5rem;
   left: 0;
@@ -407,6 +408,10 @@ Section Menus
   overflow-y: scroll;
   display: block;
   z-index: 5;
+}
+.section-menus-light-theme{
+  background: var(--mycolor-primary-lightTheme);
+  color: var(--mycolor-primary-darkTheme);
 }
 .hide-element {
   display: none;
@@ -432,14 +437,14 @@ Section Menus
   width: 100%;
   padding-top: 0.7rem;
   padding-bottom: 0.7rem;
-  border-top: 1px solid #3d3a3a;
+  border-top: 1px solid var(--mycolor-border-darktheme);
 }
 .section-menus-div-3,
 .section-menus-overlay-div-3 {
   width: 100%;
   padding-top: 0.7rem;
   padding-bottom: 0.7rem;
-  border-top: 1px solid #3d3a3a;
+  border-top: 1px solid var(--mycolor-border-darktheme);
 }
 .subscription-title {
   color: rgb(165, 165, 165);
@@ -452,8 +457,8 @@ Section Menus
 .menu-div {
   display: flex;
   align-items: center;
-  color: white;
   height: 42px;
+  transition: background 0.1s ease-in;
 }
 .menu-div i {
   font-size: 1.2rem;
@@ -464,16 +469,15 @@ Section Menus
   margin-left: 1.5rem;
 }
 .menu-selected {
-  background: #3d3a3a;
+  background: var(--mycolor-border-darktheme);
 }
 .menu-div:hover {
-  background: #3d3a3a;
+  /* background: #3d3a3a; */
   cursor: pointer;
 }
 .div-subscription {
   display: flex;
   align-items: center;
-  color: white;
   height: 44px;
 }
 .div-subscription img {
@@ -486,7 +490,7 @@ Section Menus
   margin-left: 1.2rem;
 }
 .div-subscription:hover {
-  background: #3d3a3a;
+  /* background: #3d3a3a; */
   cursor: pointer;
 }
 /* 
@@ -497,13 +501,18 @@ Section Menus Small
 .section-menus-small {
   width: 4.5rem;
   min-height: 91vh;
-  background: var(--clr-primary);
+  background: var(--mycolor-primary-darkTheme);
+  color: var(--mycolor-primary-lightTheme);
   position: fixed;
   top: 3.5rem;
   left: 0;
   display: none;
   padding-top: 0.25rem;
   z-index: 5;
+}
+.section-menus-small-light-theme{
+  background: var(--mycolor-primary-lightTheme);
+  color: var(--mycolor-primary-darkTheme);
 }
 .menu-small-div {
   width: 100%;
@@ -515,7 +524,6 @@ Section Menus Small
   flex-direction: column;
   justify-content: center;
   gap: 0.6rem;
-  color: white;
 }
 .menu-small-div i {
   font-size: 1.25rem;
@@ -524,7 +532,7 @@ Section Menus Small
   font-size: 0.6rem;
 }
 .menu-small-div:hover {
-  background: #3d3a3a;
+  /* background: #3d3a3a; */
   cursor: pointer;
 }
 /* 
@@ -562,6 +570,10 @@ Section Menus Overlay
 .show-menus-overlay {
   transform: translateX(0);
   transition: var(--transition);
+}
+.section-menus-overlay-light-theme{
+  background: var(--mycolor-primary-lightTheme);
+  color: var(--mycolor-primary-darkTheme);
 }
 .section-menus-overlay-top {
   width: 100%;

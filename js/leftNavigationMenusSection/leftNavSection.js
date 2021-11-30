@@ -1,5 +1,4 @@
 import {  
-  getElement,
   getElementAll,
   getWidth,
   getAllElementFromElement
@@ -9,8 +8,6 @@ import {
   middleMenuSection,
   subcriptionDivSection,
   sectionMenuSmall,
-  topMenuSectionOverlay,
-  middleMenuSectionOverlay,
   subcriptionDivSectionOverlay,
   sectionOverlayMenu,
   sectionMenus,
@@ -18,8 +15,6 @@ import {
   sectionVideoFilter,
   sectionVideoContainer,
   noDataFound,
-  overlay,
-  overlayToggleBtn
 } from "../staticVariables/svLeftNavSection.js";
 import { FetchedData } from "../myStaticClass.js";
 import { 
@@ -33,6 +28,7 @@ import {
   showSectionMenusOverlay,
   sectionOverlayMenuBtnClickEventHandler
 } from "./leftNavSectionOverlay.js";
+import { isDarkThemeActivated } from "../applicationTheme.js"
 
 // Global data list for caching mechanism
 let menusDataList;
@@ -94,6 +90,80 @@ function initLeftNavEventListeners() {
   sectionMenusOverlay.addEventListener("click", (event2) => {
     sectionOverlayMenuBtnClickEventHandler(event2, sectionOverlayMenu);
   });
+  mouserHoverEventListener();
+}
+
+function mouserHoverEventListener(){
+  const menuList = getAllElementFromElement(sectionMenus, ".menu-div")
+  menuList.forEach((menu)=>{
+    menu.addEventListener("mouseenter", onMouseEnterEffect);
+    menu.addEventListener("mouseleave", onMouseLeaveEffect);
+    menu.addEventListener("mousedown", onMouseDownEffect);
+    menu.addEventListener("mouseup", onMouseUpEffect);
+  })
+
+  const subscriberList = getAllElementFromElement(subcriptionDivSection, ".div-subscription");
+  subscriberList.forEach((item)=>{
+    item.addEventListener("mouseenter", onMouseEnterEffect);
+    item.addEventListener("mouseleave", onMouseLeaveEffect);
+    item.addEventListener("mousedown", onMouseDownEffect);
+    item.addEventListener("mouseup", onMouseUpEffect);
+  })
+
+  const smallMenuList = getAllElementFromElement(sectionMenuSmall, ".menu-small-div");
+  smallMenuList.forEach((item)=>{
+    item.addEventListener("mouseenter", onMouseEnterEffect);
+    item.addEventListener("mouseleave", onMouseLeaveEffect);
+    item.addEventListener("mousedown", onMouseDownEffect);
+    item.addEventListener("mouseup", onMouseUpEffect);
+  })
+
+  const overlayMenuList = getAllElementFromElement(sectionMenusOverlay, ".menu-div");
+  overlayMenuList.forEach((item)=>{
+    item.addEventListener("mouseenter", onMouseEnterEffect);
+    item.addEventListener("mouseleave", onMouseLeaveEffect);
+    item.addEventListener("mousedown", onMouseDownEffect);
+    item.addEventListener("mouseup", onMouseUpEffect);
+  })
+
+  const overlaySubscriberList = getAllElementFromElement(subcriptionDivSectionOverlay, ".div-subscription");
+  overlaySubscriberList.forEach((item)=>{
+    item.addEventListener("mouseenter", onMouseEnterEffect);
+    item.addEventListener("mouseleave", onMouseLeaveEffect);
+    item.addEventListener("mousedown", onMouseDownEffect);
+    item.addEventListener("mouseup", onMouseUpEffect);
+  })
+}
+
+function onMouseDownEffect(){
+  this.classList.add("icon-mousedown-effect");
+}
+
+function onMouseUpEffect(){
+  this.classList.remove("icon-mousedown-effect");
+}
+
+// ===================================
+// On mouse enter hover effect
+// ===================================
+function onMouseEnterEffect(){
+  if(isDarkThemeActivated()){
+    this.classList.add("appearance-hover-dark-theme");
+  }
+  else{
+    this.classList.add("appearance-hover-light-theme");
+  }
+}
+// ===================================
+// On mouse leave hover effect
+// ===================================
+function onMouseLeaveEffect(){
+  if(isDarkThemeActivated()){
+    this.classList.remove("appearance-hover-dark-theme");
+  }
+  else{
+    this.classList.remove("appearance-hover-light-theme");
+  }
 }
 
 // ==========================================
@@ -103,6 +173,7 @@ function seeMoreClickEventListener(menuList) {
   menuList.forEach((menu) => {
     menu.addEventListener("click", seeMoreClickEventHandler);
   });
+  mouserHoverEventListener();
 }
 
 // ==========================================
@@ -112,6 +183,7 @@ function seeLessClickEventListener(menuList) {
   menuList.forEach((menu) => {
     menu.addEventListener("click", seeLessClickEventHandler);
   });
+  mouserHoverEventListener();
 }
 
 // ===============================
