@@ -1,4 +1,4 @@
-import { convertHMS, startTimeCalculation, calculateTimeFromDate } from "../timeDateCalculation.js";
+import { convertToHMS, startVideoUploadDateCalculation, calculateTimeFromDate } from "../timeDateCalculation.js";
 import { FetchedData } from "../myStaticClass.js";
 import { noDataFound, sectionVideos, documentBody } from "../staticVariables/svMainVideoSection.js";
 import { initVideoItemEvenListeners } from "./videoItem.js";
@@ -53,7 +53,7 @@ function setVideoData(videoDataList){
               class="section-video-img"
               alt="${name}"
             />
-            <h5>${convertHMS( duration )}</h5>
+            <h5>${convertToHMS( duration )}</h5>
 
             <div class="watch-later">
               <h4 class="hide-watch-later">watch later</h4>
@@ -90,7 +90,7 @@ function setVideoData(videoDataList){
     sectionVideos.innerHTML = videoListHtml;
     // calculate and display video created time
     // start refreshing time mechanism
-    startTimeCalculation( videoDataList.map((item) => {
+    startVideoUploadDateCalculation( videoDataList.map((item) => {
         return { id: item.id, created: item.created };
       })
     );

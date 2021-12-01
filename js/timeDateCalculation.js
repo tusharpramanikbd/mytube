@@ -2,10 +2,15 @@ import { createdTimeList } from "./staticVariables/svMainVideoSection.js";
 
 const refreshTimeIntervalInSeconds = 120;
 
-function convertHMS(sec) {
-  let hours = Math.floor(sec / 3600);
-  let minutes = Math.floor((sec - hours * 3600) / 60);
-  let seconds = sec - hours * 3600 - minutes * 60;
+/**
+ * Convert seconds into HH:MM:SS format
+ * @param {Number} totalTimeInSeconds
+ * @returns {String} - Time in HH:MM:SS string format
+ */
+function convertToHMS(totalTimeInSeconds) {
+  let hours = Math.floor(totalTimeInSeconds / 3600);
+  let minutes = Math.floor((totalTimeInSeconds - hours * 3600) / 60);
+  let seconds = totalTimeInSeconds - hours * 3600 - minutes * 60;
 
   if (hours < 10) {
     hours = "0" + hours;
@@ -24,9 +29,14 @@ function convertHMS(sec) {
   }
 }
 
-function calculateCreationDate(time) {
-  const timeArray = time.split(":");
-  if (time.length < 8) {
+/**
+ * Calculate video upload date in minute, hour, day, month, year from formatted time
+ * @param {String} timeInHHMMSS - Time in HH:MM:SS string format
+ * @returns {String} - Return strings like minutes/hours/days/months/years ago
+ */
+function calculateVideoUploadDate(timeInHHMMSS) {
+  const timeArray = timeInHHMMSS.split(":");
+  if (timeInHHMMSS.length < 8) {
     let arr = new Array(...timeArray[0]);
     if (arr[0] === "0") {
       if (arr[1] === "0") {
@@ -67,16 +77,16 @@ function calculateCreationDate(time) {
   }
 }
 
-/* 
-=======================================
-Video Create Time Related functionality
-=======================================
+/**
+ * This method refresh the calculated date every 1 second to get updated upload date
+ * @param {Array} videoUploadDateList 
+ * @return {void}
  */
-function startTimeCalculation(savedVideoCreatedTimeList) {
-  console.log("started refreshing");
+function startVideoUploadDateCalculation(videoUploadDateList) {
+  console.log("Started refreshing video upload date");
   setInterval(() => {
     createdTimeList.map((item) => {
-      savedVideoCreatedTimeList.forEach((videoItem) => {
+      videoUploadDateList.forEach((videoItem) => {
         if (item.dataset.id === videoItem.id.toString()) {
           item.textContent = calculateTimeFromDate(videoItem.created);
         }
@@ -85,16 +95,21 @@ function startTimeCalculation(savedVideoCreatedTimeList) {
   }, refreshTimeIntervalInSeconds * 1000);
 }
 
+/**
+ * Generate how much time before this video uploaded  
+ * @param {String} creationDate - The date and time the video uploaded
+ * @returns {String} - Returns string as like minutes/hours/days/months/years ago
+ */
 function calculateTimeFromDate(creationDate) {
   const date = new Date(creationDate);
   const timeDifferenceInMilliseconds = Date.now() - date.getTime();
-  const timeInSecons = Math.floor(timeDifferenceInMilliseconds / 1000);
-  return calculateCreationDate(convertHMS(timeInSecons));
+  const timeInSeconds = Math.floor(timeDifferenceInMilliseconds / 1000);
+  return calculateVideoUploadDate(convertToHMS(timeInSeconds));
 }
 
 export {
-  convertHMS,
-  calculateCreationDate,
-  startTimeCalculation,
+  convertToHMS,
+  calculateVideoUploadDate,
+  startVideoUploadDateCalculation,
   calculateTimeFromDate,
 };
