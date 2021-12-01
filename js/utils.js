@@ -1,3 +1,8 @@
+/**
+ * Return an element matching selection inside document
+ * @param {String} selection - Class name or id of target element
+ * @returns {HTMLElement} 
+ */
 const getElement = (selection) => {
   const element = document.querySelector(selection);
   if (element) return element;
@@ -6,6 +11,12 @@ const getElement = (selection) => {
   );
 };
 
+/**
+ * Return a child element matching selection inside a parent element
+ * @param {HTMLElement} element - Parent element
+ * @param {String} selection - Class name or id of target element
+ * @returns {HTMLElement}
+ */
 const getElementFromElement = (element, selection) => {
   const childElement = element.querySelector(selection);
   if (childElement) return childElement;
@@ -14,6 +25,12 @@ const getElementFromElement = (element, selection) => {
   );
 };
 
+/**
+ * Returns all child elements matching selection inside a parent element
+ * @param {HTMLElement} element - Parent element
+ * @param {String} selection - Class name or id of target element
+ * @returns {Array} - ArrayList of all child elements matching the selection
+ */
 const getAllElementFromElement = (element, selection) => {
   const childElement = element.querySelectorAll(selection);
   if (childElement) return [...childElement];
@@ -22,6 +39,11 @@ const getAllElementFromElement = (element, selection) => {
   );
 };
 
+/**
+ * Returns all child elements matching selection inside document
+ * @param {String} selection - Class name or id of target element
+ * @returns {HTMLElement}
+ */
 const getElementAll = (selection) => {
   const element = document.querySelectorAll(selection);
   if (element) return element;
@@ -30,6 +52,11 @@ const getElementAll = (selection) => {
   );
 };
 
+/**
+ * Returns width of the screen
+ * @author <https://stackoverflow.com/>
+ * @returns {Number}
+ */
 function getWidth() {
   return Math.max(
     document.body.scrollWidth,
@@ -40,72 +67,62 @@ function getWidth() {
   );
 }
 
-function changeColor(element) {
-  element.style.backgroundColor = "#5f5e5e";
-  setTimeout(() => {
-    element.style.backgroundColor = "transparent";
-  }, 400);
-}
-
-function changeColorFast(element, color) {
-  element.style.backgroundColor = "#5f5e5e";
-  setTimeout(() => {
-    if (color) {
-      element.style.backgroundColor = color;
-    } else {
-      element.style.backgroundColor = "transparent";
-    }
-  }, 100);
-}
-
-function isVisible(elem) {
-  if (!(elem instanceof Element))
-    throw Error("DomUtil: elem is not an element.");
-  const style = getComputedStyle(elem);
+/**
+ * Find a given element is visible to user or not
+ * @author <https://stackoverflow.com/>
+ * @param {HTMLElement} element - Target element
+ * @returns {Boolean} - If element visible then true else false
+ */
+function isVisible(element) {
+  if (!(element instanceof Element))
+    throw Error("DomUtil: element is not an HTML Element.");
+  const style = getComputedStyle(element);
   if (style.display === "none") return false;
   if (style.visibility !== "visible") return false;
   if (style.opacity < 0.1) return false;
   if (
-    elem.offsetWidth +
-      elem.offsetHeight +
-      elem.getBoundingClientRect().height +
-      elem.getBoundingClientRect().width ===
+    element.offsetWidth +
+    element.offsetHeight +
+    element.getBoundingClientRect().height +
+    element.getBoundingClientRect().width ===
     0
   ) {
     return false;
   }
-  const elemCenter = {
-    x: elem.getBoundingClientRect().left + elem.offsetWidth / 2,
-    y: elem.getBoundingClientRect().top + elem.offsetHeight / 2,
+  const elementCenter = {
+    x: element.getBoundingClientRect().left + element.offsetWidth / 2,
+    y: element.getBoundingClientRect().top + element.offsetHeight / 2,
   };
-  if (elemCenter.x < 0) return false;
+  if (elementCenter.x < 0) return false;
   if (
-    elemCenter.x > (document.documentElement.clientWidth || window.innerWidth)
+    elementCenter.x > (document.documentElement.clientWidth || window.innerWidth)
   )
     return false;
-  if (elemCenter.y < 0) return false;
+  if (elementCenter.y < 0) return false;
   if (
-    elemCenter.y > (document.documentElement.clientHeight || window.innerHeight)
+    elementCenter.y > (document.documentElement.clientHeight || window.innerHeight)
   )
     return false;
-  let pointContainer = document.elementFromPoint(elemCenter.x, elemCenter.y);
+  let pointContainer = document.elementFromPoint(elementCenter.x, elementCenter.y);
   do {
-    if (pointContainer === elem) return true;
+    if (pointContainer === element) return true;
   } while ((pointContainer = pointContainer.parentNode));
   return false;
 }
 
-// This method add the prevent default functionality to the element
-function addPreventDefault(evt) {
-  evt.preventDefault();
+/**
+ * Add prevent default functionality to the event of targeted element
+ * @param {Event} event 
+ * @return {void}
+ */
+function addPreventDefault(event) {
+  event.preventDefault();
 }
 
 export {
   getElement,
   getElementAll,
   getWidth,
-  changeColor,
-  changeColorFast,
   isVisible,
   getElementFromElement,
   getAllElementFromElement,
