@@ -1,11 +1,13 @@
 import { showOfflineNotification, hideOfflineNotification } from "./notification.js";
 import { dummyUrl} from "./urlList.js";
 
-
+// =========================================
 // ************ Event Listener *************
+// =========================================
+
 // always check for internet status changing
 window.addEventListener('online', async () => {
-    const online = await checkOnlineStatusUsingFetch();
+    const online = checkOnlineStatusUsingFetch();
     if (online) {
         hideOfflineNotification();
         console.log('You became online')
@@ -16,17 +18,17 @@ window.addEventListener('offline', () => {
     showOfflineNotification();
 });
 
-// Initialize internet status checking functionality
-// Firstly checking if browser is connected to any network
-// If not then showing offline message
-// If yes then further checking
+/**
+ * Initialize internet status checking functionality
+ * @returns {Boolean} - True or False if browser connected to internet or not
+ */
 async function initInternetStatusCheck() {
     if(!navigator.onLine){
         console.log("You are offline");
         showOfflineNotification();
     }
     else{
-        const online = await checkOnlineStatusUsingFetch();
+        const online = checkOnlineStatusUsingFetch();
         if (online) {
             console.log("You are online");
             return true;
@@ -39,6 +41,10 @@ async function initInternetStatusCheck() {
 }
 
 // Fetching from a random addres to ensure that internet is online
+/**
+ * Fetch from a random addres to ensure that internet is online
+ * @returns {Boolean} - True or False if fetch is successful or not
+ */
 async function checkOnlineStatusUsingFetch() {
     try {
         const online = await fetch(dummyUrl + Date.now());

@@ -7,6 +7,10 @@ import {
     urlVideoOptionMenuData
 } from "./urlList.js";
 
+/**
+ * This function uses Promise.all to fetch data from multiple address 
+ * @returns {Array} - Retuns an array with the fetched values
+ */
 async function initFetchData(){
     console.log("fetching data");
 

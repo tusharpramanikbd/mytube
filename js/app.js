@@ -15,7 +15,7 @@ if( document.readyState !== 'loading' ) {
     console.log( 'document is already ready, start executing code here' );
     
     // step 1 -> internet connection check
-    if(await initInternetStatusCheck()){
+    if(initInternetStatusCheck()){
         // step 2 -> fetch data
         const result = await initFetchData();
         // step 3 -> cache data
@@ -31,7 +31,7 @@ else {
         console.log( 'document was not ready, place code here' );
 
         // step 1 -> internet connection check
-        if(await initInternetStatusCheck()){
+        if(initInternetStatusCheck()){
             // step 2 -> fetch data
             const result = await initFetchData();
             // step 3 -> cache data
