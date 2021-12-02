@@ -7,9 +7,9 @@ import { getAllElementFromElement } from "../utils.js"
 
 let videoItemList;
 
-// =============================
-// Initialize main video section
-// =============================
+/**
+ * Initialize main video section
+ */
 function initMainVideoSection() {
   console.log("Initializing main video section");
   initMainVideoSectionTheme();
@@ -17,9 +17,9 @@ function initMainVideoSection() {
   setVideoData(videoItemList);
 }
 
-// ==============================================
-// Initializing theme color when stating the page
-// ==============================================
+/**
+ * Initializing theme color when stating the page
+ */
 function initMainVideoSectionTheme(){
   if(isDarkThemeActivated()){
     documentBody.classList.remove("body-light-theme");
@@ -29,9 +29,10 @@ function initMainVideoSectionTheme(){
   }
 }
 
-// ======================================
-// Set video item data on video container
-// ======================================
+/**
+ * Set video item data on video container
+ * @param {Array} videoDataList 
+ */
 function setVideoData(videoDataList){
   if(toggleNoDataFound(videoDataList)){
     const videoListHtml = videoDataList
@@ -54,7 +55,6 @@ function setVideoData(videoDataList){
               alt="${name}"
             />
             <h5>${convertToHMS( duration )}</h5>
-
             <div class="watch-later">
               <h4 class="hide-watch-later">watch later</h4>
               <i class="far fa-clock fa-fw video-item-overlay-icon-watchlater"></i>
@@ -101,9 +101,9 @@ function setVideoData(videoDataList){
   }
 }
 
-// ================================
-// Setting theme color on btn click
-// ================================
+/**
+ * Setting theme color on btn click
+ */
 function setMainVideoSectionTheme(){
   if(isDarkThemeActivated()){
     documentBody.classList.remove("body-light-theme");
@@ -130,9 +130,11 @@ function setMainVideoSectionTheme(){
   })
 }
 
-// ===============================
-// Show or hide no data found text
-// ===============================
+/**
+ * Show or hide no data found text
+ * @param {Array} videoDataList 
+ * @returns {Boolean} - True/False
+ */
 function toggleNoDataFound(videoDataList){
   if(videoDataList.length === 0){
     noDataFound.classList.add("show-no-data-found");
@@ -146,9 +148,9 @@ function toggleNoDataFound(videoDataList){
   }
 }
 
-// =========================================
-// Set the color theme of no data found text
-// =========================================
+/**
+ * Set the color theme of no data found text
+ */
 function setNoDataFoundTheme(){
   if(isDarkThemeActivated()){
     noDataFound.classList.remove("no-data-found-light-theme");

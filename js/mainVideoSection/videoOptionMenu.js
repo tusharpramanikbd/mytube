@@ -1,32 +1,18 @@
 import { isDarkThemeActivated } from "../applicationTheme.js";
 import { FetchedData, MyStaticClass } from "../myStaticClass.js";
-import { sectionVideos, mainSection } from "../staticVariables/svMainVideoSection.js";
-import { addPreventDefault, getElementAll, getElement, getAllElementFromElement } from "../utils.js";
+import { mainSection } from "../staticVariables/svMainVideoSection.js";
+import { addPreventDefault, getElement, getAllElementFromElement } from "../utils.js";
 import { removeVideoOptionMenuIcon } from "./videoItem.js";
 
 let videoOptionMenuItemDataTop, videoOptionMenuItemDataBottom, sectionVideoInfoDivTop, clickedElementId, videoOptionMenuDiv;
 
-// ===============================================
-// Clear previously saved data on global variables
-// ===============================================
-function clearPreviousData(){
-  videoOptionMenuItemDataTop = [];
-  videoOptionMenuItemDataBottom = [];
-  sectionVideoInfoDivTop = null;
-  clickedElementId = -1;
-}
+// =========================================
+// ************ Event Listeners ************
+// =========================================
 
-function setVideoOptionMenuTheme(){
-  if(isDarkThemeActivated()){
-    videoOptionMenuDiv.classList.remove("video-option-menu-div-light-theme");
-    videoOptionMenuDiv.children[1].classList.remove("video-option-menu-div-item-bottom-light-theme");
-  }
-  else{
-    videoOptionMenuDiv.classList.add("video-option-menu-div-light-theme");
-    videoOptionMenuDiv.children[1].classList.add("video-option-menu-div-item-bottom-light-theme");
-  }
-}
-
+/**
+ * Initialize video option menu listener
+ */
 function initVideoOptionMenuHoverEventListener(){
   const menus = getAllElementFromElement(videoOptionMenuDiv, ".video-option-menu-item");
   menus.forEach((menu)=>{
@@ -35,6 +21,13 @@ function initVideoOptionMenuHoverEventListener(){
   })
 }
 
+// =========================================
+// ************ Event Handlers *************
+// =========================================
+
+/**
+ * Add effect on mouse enter
+ */
 function onMouseEnterMenu(e){
   if(isDarkThemeActivated()){
     e.currentTarget.classList.add("video-option-menu-item-hover-dark");
@@ -44,6 +37,9 @@ function onMouseEnterMenu(e){
   }
 }
 
+/**
+ * Remove effect on mouse leave
+ */
 function onMouseLeaveMenu(e){
   if(isDarkThemeActivated()){
     e.currentTarget.classList.remove("video-option-menu-item-hover-dark");
@@ -53,9 +49,15 @@ function onMouseLeaveMenu(e){
   }
 }
 
-// ============================
-// Create Video Option Menu Div
-// ============================
+// =========================================
+// ******* Business Logic Functions ********
+// =========================================
+
+/**
+ * Create Video Option Menu Div
+ * @param {HTMLElement} element 
+ * @param {Event} event 
+ */
 function createVideoOptionMenuDiv(element, event){
     clearPreviousData();
     // when video option menu icon is clicked mouse wheel mechanism is forcefully disabled
@@ -98,9 +100,10 @@ function createVideoOptionMenuDiv(element, event){
     displayVideoOptionMenuData(videoOptionMenuDiv);
 }
 
-// ==============================
-// Display Video Option Menu Data
-// ==============================
+/**
+ * Display Video Option Menu Data
+ * @param {HTMLElement} videoOptionMenuDiv 
+ */
 function displayVideoOptionMenuData(videoOptionMenuDiv) {
     prepareDataForMenuItems();
     
@@ -118,9 +121,9 @@ function displayVideoOptionMenuData(videoOptionMenuDiv) {
     initVideoOptionMenuHoverEventListener();
 }
 
-// ============================
-// Remove video option menu div
-// ============================
+/**
+ * Remove video option menu div
+ */
 function removeVideoOptionMenuDiv() {
   if(sectionVideoInfoDivTop){
     const element = sectionVideoInfoDivTop.children[3];
@@ -130,9 +133,12 @@ function removeVideoOptionMenuDiv() {
   }
 }
 
-// ===================
-// Create menu items
-// ===================
+/**
+ * Create menu items
+ * @param {String} className 
+ * @param {Array} dataList 
+ * @returns {HTMLElement}
+ */
 function createMenuItems(className, dataList) {
     const element = document.createElement("div");
     element.classList.add(className);
@@ -149,9 +155,9 @@ function createMenuItems(className, dataList) {
     return element;
 }
 
-// ========================================
-// Prepare data for video option menu items
-// ========================================
+/**
+ * Prepare data for video option menu items
+ */
 function prepareDataForMenuItems(){
     const dataList = FetchedData.getVideoOptionMenuDataList();
     dataList.forEach((item)=>{
@@ -163,6 +169,30 @@ function prepareDataForMenuItems(){
         }
     })
 
+}
+
+/**
+ * Clear previously saved data on global variables
+ */
+ function clearPreviousData(){
+  videoOptionMenuItemDataTop = [];
+  videoOptionMenuItemDataBottom = [];
+  sectionVideoInfoDivTop = null;
+  clickedElementId = -1;
+}
+
+/**
+ * Set current theme of video option menu
+ */
+function setVideoOptionMenuTheme(){
+  if(isDarkThemeActivated()){
+    videoOptionMenuDiv.classList.remove("video-option-menu-div-light-theme");
+    videoOptionMenuDiv.children[1].classList.remove("video-option-menu-div-item-bottom-light-theme");
+  }
+  else{
+    videoOptionMenuDiv.classList.add("video-option-menu-div-light-theme");
+    videoOptionMenuDiv.children[1].classList.add("video-option-menu-div-item-bottom-light-theme");
+  }
 }
 
 export { createVideoOptionMenuDiv, removeVideoOptionMenuDiv }
