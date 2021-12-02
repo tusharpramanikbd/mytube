@@ -4,9 +4,13 @@ import { initNavbarMiddleEventListeners } from "./navbarMiddleSection.js";
 import { initNavbarRightEventListeners } from "./navbarRightSection.js";
 import { sectionNavbar } from "../staticVariables/svNavbarSection.js";
 
-// ===========================
-// Initializing navbar section
-// ===========================
+// =========================================
+// ************ Event Listeners ************
+// =========================================
+
+/**
+ * Initializing navbar section
+ */
 function initNavbarSection(){
   console.log("Initalizing navbar section");
   intNavbarLeftEventListeners();
@@ -15,9 +19,13 @@ function initNavbarSection(){
   setNavbarSectionTheme();
 }
 
-// ========================
-// Set navbar section theme
-// ========================
+// =========================================
+// ******* Business Logic Functions ********
+// =========================================
+
+/**
+ * Set navbar section theme
+ */
 function setNavbarSectionTheme(){
   if(isDarkThemeActivated()){
     sectionNavbar.classList.remove("section-navbar-light-theme")

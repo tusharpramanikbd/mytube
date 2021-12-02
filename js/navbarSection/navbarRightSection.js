@@ -26,9 +26,13 @@ import { setLeftNavSectionTheme } from "../leftNavigationMenusSection/leftNavSec
 import { setLeftNavSmallTheme } from "../leftNavigationMenusSection/leftNavSectionSmall.js"
 import { setLeftNavOverlayTheme } from "../leftNavigationMenusSection/leftNavSectionOverlay.js"
 
-// ===============================================
-// Initialize navbar right section event listeners
-// ===============================================
+// =========================================
+// ************ Event Listeners ************
+// =========================================
+
+/**
+ * Initialize navbar right section event listeners
+ */
 function initNavbarRightEventListeners(){
   setNavbarRightTheme();
   setUserMenuTheme();
@@ -82,20 +86,21 @@ function initNavbarRightEventListeners(){
   btnLeftArrow.addEventListener("click", onClickAppearanceLeftArrow);
 }
 
-// ================================
-// Event Handler Function
-// ================================
+// =========================================
+// ************ Event Handlers *************
+// =========================================
 
-// ===================================
-// On mouse down btn navbar icons
-// ===================================
+/**
+ * Adding mouse down effect when mouse btn is down on navbar icons
+ */
 function onMouseDownNavbarIcon(){
   this.classList.add("icon-mousedown-effect");
 }
 
-// ===================================
-// On mouse up btn navbar icons
-// ===================================
+/**
+ * Removing mouse down effect
+ * Adding mouse up effect when mouse btn is up on navbar icons
+ */
 function onMouseUpNavbarIcon(){
   this.classList.remove("icon-mousedown-effect");
   this.classList.add("icon-mouseup-effect");
@@ -104,9 +109,9 @@ function onMouseUpNavbarIcon(){
   }, 500)
 }
 
-// ===================================
-// On mouse enter hover effect
-// ===================================
+/**
+ * Add effect according to current theme when mouse cursor over the element
+ */
 function onMouseEnterEffect(){
   if(isDarkThemeActivated()){
     this.classList.add("appearance-hover-dark-theme");
@@ -116,9 +121,10 @@ function onMouseEnterEffect(){
   }
 }
 
-// ===================================
-// On mouse leave hover effect
-// ===================================
+
+/**
+ * Remove effect according to current theme when mouse cursor leave the element
+ */
 function onMouseLeaveEffect(){
   if(isDarkThemeActivated()){
     this.classList.remove("appearance-hover-dark-theme");
@@ -128,9 +134,10 @@ function onMouseLeaveEffect(){
   }
 }
 
-// ==============================================================================
-// showing appearance overlay on appearnace menu click on user option menu overlay
-// ==============================================================================
+/**
+ * showing appearance overlay on appearnace menu click on user option menu overlay
+ * @param {Event} event 
+ */
 function onClickAppearanceInUserMenu(event){
   if(event.target.parentElement.dataset.id === "appearance"){
     user.classList.remove("show-user");
@@ -139,19 +146,20 @@ function onClickAppearanceInUserMenu(event){
   }
 }
 
-// =================================================================================
-// going back to user option menu overlay on clicking back btn on appearance overlay
-// =================================================================================
+/**
+ * going back to user option menu overlay on clicking back btn on appearance overlay
+ */
 function onClickAppearanceLeftArrow(){
   appearance.classList.remove("show-appearance");
   user.classList.add("show-user");
   setAppearanceMenuTitle();
 }
 
-// =================================
-// changing image border color
-// toggling user option menu overlay
-// =================================
+/**
+ * Changing image border color
+ * Toggling user option menu overlay
+ * @param {Event} event 
+ */
 function onClickUserImage(event){
   changeUserImgBorder(event.currentTarget);
   if(user.classList.contains("show-user")){
@@ -169,31 +177,32 @@ function onClickUserImage(event){
   appearance.classList.remove("show-appearance");
 }
 
-// =====================
-// On click light theme
-// =====================
+/**
+ * Change theme of all the component to light
+ */
 function onClickBtnLightTheme(){
   setTheme("light")
   btnLightTheme.classList.remove("appearance-hover-dark-theme")
   btnLightTheme.classList.add("appearance-hover-light-theme")
 }
 
-// =====================
-// On click dark theme
-// =====================
+/**
+ * Change theme of all the component to Dark
+ */
 function onClickBtnDarkTheme(){
   setTheme("dark")
   btnDarkTheme.classList.remove("appearance-hover-light-theme")
   btnDarkTheme.classList.add("appearance-hover-dark-theme")
 }
 
-// =========================
-// Other Business Logic
-// =========================
+// =========================================
+// ******* Business Logic Functions ********
+// =========================================
 
-// ==============================
-// Change user image border color
-// ==============================
+/**
+ * Change user image border color
+ * @param {HTMLElement} element  
+ */
 function changeUserImgBorder(element){
   element.classList.add("avater-img-click-effect");
   setTimeout(()=>{
@@ -201,25 +210,25 @@ function changeUserImgBorder(element){
   }, 300);
 }
 
-// ============================================
-// hiding user menus div on click outside of it
-// ============================================
+/**
+ * Hiding user menus div on click outside of it
+ */
 function hideUserMenus(){
   if(user.classList.contains("show-user")){
     user.classList.remove("show-user")
   }
 }
 
-// ==================================================
-// hiding appearance menus div on click outside of it
-// ==================================================
+/**
+ * Hiding appearance menus div on click outside of it
+ */
 function hideAppearanceMenus(){
   appearance.classList.remove("show-appearance")
 }
 
-// =============================
-// Setting appearance menu title
-// =============================
+/**
+ * Setting appearance menu title
+ */
 function setAppearanceMenuTitle(){
   userMenuItemList.map((menu)=>{
     if(menu.dataset.id === "appearance"){
@@ -229,9 +238,10 @@ function setAppearanceMenuTitle(){
   })
 }
 
-// ====================================
-// Set all whole navbar theme on click
-// ====================================
+/**
+ * Set all whole navbar theme on click
+ * @param {String} theme - String as light/dark 
+ */
 function setTheme(theme){
   setCurrentTheme(theme);
   setFilterVideoSectionTheme();
@@ -249,9 +259,9 @@ function setTheme(theme){
   setTickMark(theme);
 }
 
-// ==============================
-// Set navbar right section theme
-// ==============================
+/**
+ * Set navbar right section theme
+ */
 function setNavbarRightTheme(){
   allNavbarIcons.map((icon)=>{
     if(isDarkThemeActivated()){
@@ -263,9 +273,9 @@ function setNavbarRightTheme(){
   })
 }
 
-// ===========================
-// Set user menu section theme
-// ===========================
+/**
+ * Set user menu section theme
+ */
 function setUserMenuTheme(){
   if(isDarkThemeActivated()){
     user.classList.remove("user-light-theme")
@@ -281,9 +291,9 @@ function setUserMenuTheme(){
   }
 }
 
-// =================================
-// Set appearance menu section theme
-// =================================
+/**
+ * Set appearance menu section theme
+ */
 function setAppearanceTheme(){
   if(isDarkThemeActivated()){
     appearance.classList.remove("appearance-light-theme")
@@ -295,9 +305,10 @@ function setAppearanceTheme(){
   }
 }
 
-// =================================================
-// Set tick mark ok theme menu on appearance section
-// =================================================
+/**
+ * Set tick mark ok theme menu on appearance section
+ * @param {String} theme 
+ */
 function setTickMark(theme){
   if(theme === "dark"){
     // set tick mark next to dark theme

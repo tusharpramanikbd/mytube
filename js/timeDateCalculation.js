@@ -109,7 +109,6 @@ function calculateTimeFromDate(creationDate) {
 
 export {
   convertToHMS,
-  calculateVideoUploadDate,
   startVideoUploadDateCalculation,
   calculateTimeFromDate,
 };

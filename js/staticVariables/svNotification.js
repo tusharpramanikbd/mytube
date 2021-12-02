@@ -1,6 +1,4 @@
-import { getElement, getElementAll } from "../utils.js";
-
-// list of global static elements
+import { getElement } from "../utils.js";
 
 // Notification
 const notification = getElement(".notification"); 

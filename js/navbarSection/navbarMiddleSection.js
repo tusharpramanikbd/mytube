@@ -16,9 +16,13 @@ import { setVideoData } from "../mainVideoSection/mainVideoSection.js"
 import { getWidth } from "../utils.js";
 import { isDarkThemeActivated } from "../applicationTheme.js"
 
-// ================================================
-// Initialize navbar middle section event listeners
-// ================================================
+// =========================================
+// *********** Event Listeners *************
+// =========================================
+
+/**
+ * Initialize navbar middle section event listeners
+ */
 function initNavbarMiddleEventListeners(){
   setNavbarMiddleTheme();
   // Navbar Search Button
@@ -44,13 +48,14 @@ function initNavbarMiddleEventListeners(){
   btnBack.addEventListener("mouseup", onMouseUpBtnBack);
 }
 
-// =======================
-// Event Handler Functions
-// =======================
+// =========================================
+// ************ Event Handlers *************
+// =========================================
 
-// ==========================
-// On click navbar btn search
-// ==========================
+/**
+ * When window width is less than 800px, search input hides, only search btn is displayed
+ * When search btn is clicked, other elements on navbar hides, only search input gets visible
+ */
 function onClickBtnNavbarSearch(){
   const inputDisplay = window.getComputedStyle(inputFormNavbar).display;
   
@@ -66,9 +71,9 @@ function onClickBtnNavbarSearch(){
   }
 }
 
-// ===============================
-// On mouse down btn navbar search
-// ===============================
+/**
+ * Adding mouse down effect when mouse btn is down on search btn
+ */
 function onMouseDownBtnNavbarSearch(){
   if(isDarkThemeActivated()){
     this.classList.add("navbar-btn-search-click-effect");
@@ -78,9 +83,9 @@ function onMouseDownBtnNavbarSearch(){
   }
 }
 
-// ================================
-// On mouse down btn navbar search
-// ================================
+/**
+ * Removing mouse down effect when mouse btn is up
+ */
 function onMouseUpBtnNavbarSearch(){
   if(isDarkThemeActivated()){
     this.classList.remove("navbar-btn-search-click-effect");
@@ -90,16 +95,17 @@ function onMouseUpBtnNavbarSearch(){
   }
 }
 
-// ===================================
-// On mouse down btn navbar microphone
-// ===================================
+/**
+ * Adding mouse down effect when mouse btn is down on microphone btn
+ */
 function onMouseDownBtnNavbarMicrophone(){
   this.classList.add("icon-mousedown-effect");
 }
   
-// ===================================
-// On mouse up btn navbar microphone
-// ===================================
+/**
+ * Removing mouse down effect
+ * Adding mouse up effect when mouse btn is up on microphone btn
+ */
 function onMouseUpBtnNavbarMicrophone(){
   this.classList.remove("icon-mousedown-effect");
     this.classList.add("icon-mouseup-effect");
@@ -108,9 +114,9 @@ function onMouseUpBtnNavbarMicrophone(){
     }, 500)
 }
 
-// ===================
-// On keyboard key up
-// ===================
+/**
+ * Get input value when keyboard key is up and call filterSearchedVideos() function
+ */
 function onKeyUpInputFormNavbar(){
   if(!btnCross.classList.contains("show-btn-cross")){
     btnCross.classList.add("show-btn-cross");
@@ -125,24 +131,26 @@ function onKeyUpInputFormNavbar(){
   }
 }
 
-// =================================
-// On click btn cross on input field
-// =================================
+/**
+ * When btn cross is clicked, input field is cleared
+ * Set video data to it's initial form
+ */
 function onClickBtnCross(){
   navbarSearch.value = "";
   setVideoData(FetchedData.getVideoDataList());
 }
   
-// =======================
-// On mouse down btn cross
-// =======================
+/**
+ * Adding mouse down effect when mouse btn is down on cross btn
+ */
 function onMouseDownBtnCross(){
   this.classList.add("icon-mousedown-effect");
 }
   
-// =======================
-// On mouse up btn cross
-// =======================
+/**
+ * Removing mouse down effect
+ * Adding mouse up effect when mouse btn is up on cross btn
+ */
 function onMouseUpBtnCross(){
   this.classList.remove("icon-mousedown-effect");
     this.classList.add("icon-mouseup-effect");
@@ -152,25 +160,26 @@ function onMouseUpBtnCross(){
     }, 100)
 }
 
-// =================================
-// On click btn back on small screen
-// =================================
+/**
+ * When btn back is clicked input field hide and other element on navbar is shown
+ */
 function onClickBtnBack(){
   setTimeout(()=>{
     removeAddedClasses();
   }, 300);
 }
   
-// ======================================
-// On mouse down btn back on small screen
-// ======================================
+/**
+ * Adding mouse down effect when mouse btn is down on back btn
+ */
 function onMouseDownBtnBack(){
   this.classList.add("icon-mousedown-effect");
 }
 
-// ====================================
-// On mouse up btn back on small screen
-// ====================================
+/**
+ * Removing mouse down effect
+ * Adding mouse up effect when mouse btn is up on back btn
+ */
 function onMouseUpBtnBack(){
   this.classList.remove("icon-mousedown-effect");
   this.classList.add("icon-mouseup-effect");
@@ -179,13 +188,13 @@ function onMouseUpBtnBack(){
     }, 500)
 }
 
-// =========================
-// Other Business Logic
-// =========================
+// =========================================
+// ******* Business Logic Functions ********
+// =========================================
 
-// ======================================================================
-// Remove the added classes when navbar search btn clicked on smallscreen
-// ======================================================================
+/**
+ * Remove the added classes when navbar search btn clicked on smallscreen
+ */
 function removeAddedClasses() {
   inputFormNavbar.classList.remove(
     "show-navbar-middle-form",
@@ -197,9 +206,11 @@ function removeAddedClasses() {
   backBtnDiv.classList.remove("show-element");
 }
 
-// ======================
-// filter searched videos
-// ======================
+/**
+ * Filter searched videos according to the search input value 
+ * and send video list to main section to display
+ * @param {String} searchValue 
+ */
 function filterSearchedVideos(searchValue){
   const videoDataList = FetchedData.getVideoDataList();
   const videoItemList = videoDataList.filter((video)=>{
@@ -212,9 +223,9 @@ function filterSearchedVideos(searchValue){
   setVideoData(videoItemList);
 }
 
-// ===================================
-// Setting navbar middle section theme
-// ===================================
+/**
+ * Setting current theme of navbar middle section
+ */
 function setNavbarMiddleTheme(){
   if(isDarkThemeActivated()){
     navbarMiddle.classList.remove("navbar-middle-light-theme");
