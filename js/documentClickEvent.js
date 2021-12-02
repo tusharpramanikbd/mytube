@@ -3,17 +3,27 @@ import { createVideoOptionMenuDiv, removeVideoOptionMenuDiv} from "./mainVideoSe
 import { removeVideoOptionMenuIcon } from "./mainVideoSection/videoItem.js";
 import { hideUserMenus, hideAppearanceMenus } from "./navbarSection/navbarRightSection.js";
 
-// ========================================
-// Initialize document click event listener
-// ========================================
+// =========================================
+// ************ Event Listener *************
+// =========================================
+
+/**
+ * Initialize whole document click event listener
+ */
 function initDocumentClickEventListener(){
   console.log("Initializing document click event listener");
   document.addEventListener("click", onClickDocumentEventHandler);
 }
 
-// ==============================
-// Document onclick event handler
-// ==============================
+
+// =========================================
+// ************* Event Handler *************
+// =========================================
+
+/**
+ * Whhole document onclick event handler
+ * @param {Event} e 
+ */
 function onClickDocumentEventHandler(e){
   const element = e.target;
   

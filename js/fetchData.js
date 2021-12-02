@@ -21,16 +21,16 @@ async function initFetchData(){
     const videoOptionMenuData = fetch(urlVideoOptionMenuData);
 
     try {
-        const values_1 = await Promise.all([
+        const responseValueList = await Promise.all([
             filterVideoData,
             navigationMenuData,
             subscriptionData,
             videoData,
             videoOptionMenuData
         ]);
-        const values_2 = await Promise.all(values_1.map(r => r.json()));
+        const dataValueList = await Promise.all(responseValueList.map(r => r.json()));
         console.log("Data fetching successful");
-        return values_2;
+        return dataValueList;
     } catch (error) {
         console.log(error.message);
     }
