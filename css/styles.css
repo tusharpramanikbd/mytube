@@ -96,6 +96,9 @@ Main Section
   background: rgb(214, 210, 210);
   border-radius: 100vw;
 }
+.section-main::-webkit-scrollbar-thumb:hover {
+  background: rgb(190, 189, 189);
+}
 /*
 ============================================================= 
 Navbar Section
@@ -106,6 +109,7 @@ Navbar Section
   min-height: 3.5rem;
   background: var(--mycolor-primary-darkTheme);
   opacity: 0.99;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   left: 0;
@@ -307,7 +311,8 @@ Navbar Right
   height: 34px;
   border: 2px solid transparent;
   border-radius: 50%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   cursor: pointer;
   transition: border 0.3s ease-in;
 }
@@ -419,7 +424,7 @@ Section Menus
   display: none;
 }
 .section-menus::-webkit-scrollbar {
-  width: 0.75rem;
+  width: 0.5rem;
 }
 .section-menus::-webkit-scrollbar-track {
   background: #3d3a3a;
@@ -427,6 +432,9 @@ Section Menus
 .section-menus::-webkit-scrollbar-thumb {
   background: rgb(214, 210, 210);
   border-radius: 100vw;
+}
+.section-menus::-webkit-scrollbar-thumb:hover {
+  background: rgb(190, 189, 189);
 }
 .section-menus-div-1,
 .section-menus-overlay-div-1 {
@@ -622,6 +630,9 @@ Section Menus Overlay
   background: rgb(214, 210, 210);
   border-radius: 100vw;
 }
+.section-menus-overlay-bottom::-webkit-scrollbar-thumb:hover {
+  background: rgb(190, 189, 189);
+}
 /* 
 ====================
 Section Video Filter
@@ -636,7 +647,8 @@ Section Video Filter
   left: 15rem;
   display: flex;
   align-items: center;
-  overflow-x: auto;
+  overflow-x: hidden;
+  overflow-y: hidden;
   border-top: 1px solid var(--mycolor-border-darktheme);
   border-bottom: 1px solid var(--mycolor-border-darktheme);
   opacity: 0.99;
@@ -754,7 +766,8 @@ Section Video container
   position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  column-gap: 1.2rem;
+  -moz-column-gap: 1.2rem;
+       column-gap: 1.2rem;
 }
 /* Div Video Item */
 .div-video-item {
@@ -777,7 +790,8 @@ Section Video container
 .section-video-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .section-video-img-div h5 {
   background: rgba(0, 0, 0, 0.6);
@@ -877,7 +891,8 @@ Section Video container
   width: 2.4rem;
   height: 2.4rem;
   border-radius: 50%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .section-video-info-div-top h1 {
   font-size: 0.9rem;
@@ -1025,9 +1040,6 @@ Section Video container
   height: calc(100vh - 0.5rem);
   width: 20rem;
   background: var(--mycolor-primary-darkTheme);
-  position: absolute;
-  top: 0.5rem;
-  right: 4rem;
   z-index: 6;
   border: transparent;
   display: flex;
@@ -1099,6 +1111,9 @@ Section Video container
 .user-main-section::-webkit-scrollbar-thumb {
   background: rgb(214, 210, 210);
   border-radius: 100vw;
+}
+.user-main-section::-webkit-scrollbar-thumb:hover {
+  background: rgb(190, 189, 189);
 }
 .user-section-div{
   padding: 0.325rem 0;
@@ -1494,7 +1509,20 @@ Section Video container
   background: var(--mycolor-border-lighter-darktheme);
 }
 .icon-mouseup-effect{
-  animation: mouseup-effect 1s ease-out;
+  -webkit-animation: mouseup-effect 1s ease-out;
+          animation: mouseup-effect 1s ease-out;
+}
+@-webkit-keyframes mouseup-effect {
+  0%{
+    background: var(--mycolor-hover-lighter-darkTheme);
+    border: 1px solid var(--mycolor-border-lighter-darktheme);
+  }
+  30%{
+    background: transparent;
+  }
+  100%{
+    border: transparent;
+  }
 }
 @keyframes mouseup-effect {
   0%{

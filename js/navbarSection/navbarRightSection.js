@@ -25,6 +25,8 @@ import { setNoDataFoundTheme } from "../mainVideoSection/mainVideoSection.js";
 import { setLeftNavSectionTheme } from "../leftNavigationMenusSection/leftNavSection.js"
 import { setLeftNavSmallTheme } from "../leftNavigationMenusSection/leftNavSectionSmall.js"
 import { setLeftNavOverlayTheme } from "../leftNavigationMenusSection/leftNavSectionOverlay.js"
+import { sectionVideos, mainSection } from "../staticVariables/svMainVideoSection.js";
+import { addPreventDefault, getElement } from "../utils.js"
 
 // =========================================
 // ************ Event Listeners ************
@@ -165,12 +167,20 @@ function onClickUserImage(event){
   if(user.classList.contains("show-user")){
     user.classList.remove("show-user")
     user.classList.remove("user-light-theme");
+    mainSection.removeEventListener("wheel", addPreventDefault);
+    user.style.position = "absolute";
   }
   else{
     if(!isDarkThemeActivated()){
       user.classList.add("user-light-theme");
     }
     user.classList.add("show-user")
+    // when user image is clicked mouse wheel mechanism is forcefully disabled
+    mainSection.addEventListener("wheel", addPreventDefault);
+    // fixing user menu on that position so that it can not be scrolled
+    user.style.position = "fixed";
+    user.style.top = "0.5rem";
+    user.style.right = "5rem";
   }
   
   setAppearanceMenuTitle();
@@ -224,6 +234,7 @@ function hideUserMenus(){
  */
 function hideAppearanceMenus(){
   appearance.classList.remove("show-appearance")
+  mainSection.removeEventListener("wheel", addPreventDefault);
 }
 
 /**
