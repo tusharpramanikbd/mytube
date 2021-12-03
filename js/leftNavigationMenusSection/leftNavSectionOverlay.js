@@ -29,9 +29,10 @@ window.onresize = () => {
   }
 };
 
-// ========================================================================
-// This function fetch and set the dynamic data on the section menu overlay
-// ========================================================================
+/**
+ * This function fetch and set the dynamic data on the section menu overlay
+ * @returns {Object} - Return an object having two property which is a closer 
+ */
 function initLeftNavSectionOverlay() {
   setLeftNavOverlayTheme();
   topMenuSectionOverlay.innerHTML = setMenuData("top_data");
@@ -64,13 +65,13 @@ function initLeftNavSectionOverlay() {
   };
 }
 
-// ===============================
-// Event Listeners
-// ===============================
+// =========================================
+// ************ Event Listeners ************
+// =========================================
 
-// =================================================
-// Initializing section overlay click event listener
-// =================================================
+/**
+ * Initializing section overlay click event listener
+ */
 function initLeftNavOverlayEventListeners() {
   overlay.addEventListener("click", () => {
     hideSectionMenusOverlay();
@@ -81,13 +82,15 @@ function initLeftNavOverlayEventListeners() {
   });
 }
 
-// ===============================
-// Event Handlers
-// ===============================
+// =========================================
+// ************ Event Handlers *************
+// =========================================
 
-// ============================================
-// Section Menu Overlay btn click event handler
-// ============================================
+/**
+ * Section Menu Overlay btn click event handler
+ * @param {Event} event 
+ * @param {HTMLElement} sectionOverlayMenu 
+ */
 function sectionOverlayMenuBtnClickEventHandler(event, sectionOverlayMenu) {
   if (event.target.parentElement.classList.contains("menu-div")) {
     sectionOverlayBtnClickLogic(event.target.parentElement, sectionOverlayMenu);
@@ -98,12 +101,14 @@ function sectionOverlayMenuBtnClickEventHandler(event, sectionOverlayMenu) {
 }
 
 // =========================================
-// Btn click logic
+// ******* Business Logic Functions ********
 // =========================================
 
-// ====================================
-// Section Menu Overlay btn click logic
-// ====================================
+/**
+ * Section Menu Overlay btn click logic
+ * @param {HTMLElement} element 
+ * @param {HTMLElement} sectionOverlayMenu 
+ */
 function sectionOverlayBtnClickLogic(element, sectionOverlayMenu) {
   let newMenuId, previousMenuId;
 
@@ -140,25 +145,25 @@ function sectionOverlayBtnClickLogic(element, sectionOverlayMenu) {
   }
 }
 
-// =============================================
-// Show section menu overlay on toggle btn click
-// =============================================
+/**
+ * Show section menu overlay on toggle btn click
+ */
 function showSectionMenusOverlay() {
   overlay.classList.remove("hide-overlay");
   sectionMenusOverlay.classList.add("show-menus-overlay");
 }
 
-// =========================
-// Hide section menu overlay
-// =========================
+/**
+ * Hide section menu overlay
+ */
 function hideSectionMenusOverlay() {
   overlay.classList.add("hide-overlay");
   sectionMenusOverlay.classList.remove("show-menus-overlay");
 }
 
-// ==========================================
-// Set theme for left navigation overlay menu
-// ==========================================
+/**
+ * Set theme for left navigation overlay menu
+ */
 function setLeftNavOverlayTheme(){
   if(isDarkThemeActivated()){
     sectionMenusOverlay.classList.remove("section-menus-overlay-light-theme")
@@ -171,9 +176,9 @@ function setLeftNavOverlayTheme(){
   updateSelectedMenuTheme();
 }
 
-// ==========================
-// Update selected menu theme
-// ==========================
+/**
+ * Update selected menu theme
+ */
 function updateSelectedMenuTheme(){
   const menuList = getAllElementFromElement(sectionMenusOverlay, ".menu-div");
   menuList.forEach((item)=>{

@@ -19,34 +19,36 @@ import {
 import { isDarkThemeActivated } from "../applicationTheme.js";
 import { setMenuSelectionStatus } from "./leftNavSection.js";
 
-// =============================
-// Initialize section menu small
-// =============================
+/**
+ * Initialize section menu small
+ */
 function initLeftNavSectionSmall() {
   setLeftNavSmallTheme();
   sectionMenuSmall.innerHTML = setSectionMenuSmall();
 }
 
-// ===============================
-// Event Listeners
-// ===============================
+// =========================================
+// ************ Event Listeners ************
+// =========================================
 
-// ========================================================
-// Initializing Section Menu Small Btn Click Event Listener
-// ========================================================
+/**
+ * Initializing Section Menu Small Btn Click Event Listener
+ */
 function initLeftNavSmallEventListeners(){
   sectionMenuSmall.addEventListener("click", (event)=>{
     sectionMenuSmallClickEventHandler(event, sectionMenuSmall);
   })
 }
 
-// ===============================
-// Event Handlers
-// ===============================
+// =========================================
+// ************ Event Handlers *************
+// =========================================
 
-// ==========================================
-// Section Menu Small Btn Click Event Handler
-// ==========================================
+/**
+ * Section Menu Small Btn Click Event Handler
+ * @param {Event} event 
+ * @param {HTMLElement} sectionMenuSmall 
+ */
 function sectionMenuSmallClickEventHandler(event, sectionMenuSmall){
   if (event.target.classList.contains("menu-small-div")) {
     sectionMenuSmallBtnClickLogic(event.target, sectionMenuSmall);
@@ -57,12 +59,14 @@ function sectionMenuSmallClickEventHandler(event, sectionMenuSmall){
 }
 
 // =========================================
-// Btn click logic
+// ******* Business Logic Functions ********
 // =========================================
 
-// ==================================
-// Section Menu Small Btn Click Logic
-// ==================================
+/**
+ * Section Menu Small Btn Click Logic
+ * @param {HTMLElement} element 
+ * @param {HTMLElement} sectionMenuSmall 
+ */
 function sectionMenuSmallBtnClickLogic(element, sectionMenuSmall){
   let newMenuId, previousMenuId;
 
@@ -95,9 +99,10 @@ function sectionMenuSmallBtnClickLogic(element, sectionMenuSmall){
   updateSectionMenuData(newMenuId, previousMenuId);
 }
 
-// ================================
-// Fetch section menu small items
-// ================================
+/**
+ * Fetch section menu small items
+ * @returns {Array} - Menu data list
+ */
 function setSectionMenuSmall() {
   return menusDataList
     .map((item) => {
@@ -111,9 +116,9 @@ function setSectionMenuSmall() {
     .join("");
 }
 
-// =======================
-// Show section menu small
-// =======================
+/**
+ * Show section menu small
+ */
 function showSectionMenuSmall() {
   sectionMenus.classList.add("hide-element");
   sectionVideoFilter.classList.add("increase-video-filter-width");
@@ -126,9 +131,9 @@ function showSectionMenuSmall() {
   });
 }
 
-// ========================================
-// Set theme for left navigation small menu
-// ========================================
+/**
+ * Set theme for left navigation small menu
+ */
 function setLeftNavSmallTheme(){
   if(isDarkThemeActivated()){
     sectionMenuSmall.classList.remove("section-menus-small-light-theme");
@@ -139,9 +144,9 @@ function setLeftNavSmallTheme(){
   updateSelectedMenuTheme()
 }
 
-// ==========================
-// Update selected menu theme
-// ==========================
+/**
+ * Update selected menu theme
+ */
 function updateSelectedMenuTheme(){
   const menuList = getAllElementFromElement(sectionMenuSmall, ".menu-small-div");
   menuList.forEach((item)=>{

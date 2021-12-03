@@ -36,9 +36,9 @@ import { isDarkThemeActivated } from "../applicationTheme.js"
 // Global data list for caching mechanism
 let menusDataList;
 
-// ==========================================================
-// Initializing async task of setting data and event listener
-// ==========================================================
+/**
+ * Initializing async task of setting data and event listener
+ */
 function initLeftNavigationSection() {
   cacheNavigationMenuData();
   setLeftNavSectionTheme();
@@ -73,20 +73,20 @@ function initLeftNavigationSection() {
     });
 }
 
-// =============================
-// Caching the fetched menu data
-// =============================
+/**
+ * Caching the fetched menu data
+ */
 function cacheNavigationMenuData() {
   menusDataList = FetchedData.getNavigationMenuDataList();
 }
 
-// ===============================
-// Event Listeners
-// ===============================
+// =========================================
+// ************ Event Listeners ************
+// =========================================
 
-// ============================================================================
-// Initialize Section main Menu & Section Menu Overlay Btn Click Event Listener
-// ============================================================================
+/**
+ * Initialize Section main Menu & Section Menu Overlay Btn Click Event Listener
+ */
 function initLeftNavEventListeners() {
   sectionMenus.addEventListener("click", (event1) => {
     sectionMainMenuBtnClickEventHandler(event1, sectionMenus);
@@ -97,9 +97,9 @@ function initLeftNavEventListeners() {
   mouserHoverEventListener();
 }
 
-// ==========================
-// Mouse hover event listener
-// ==========================
+/**
+ * Mouse hover event listener
+ */
 function mouserHoverEventListener(){
   const menuList = getAllElementFromElement(sectionMenus, ".menu-div")
   menuList.forEach((menu)=>{
@@ -142,9 +142,10 @@ function mouserHoverEventListener(){
   })
 }
 
-// ==========================================
-// Initializing see more click event listener
-// ==========================================
+/**
+ * Initializing see more click event listener
+ * @param {Array} menuList 
+ */
 function seeMoreClickEventListener(menuList) {
   menuList.forEach((menu) => {
     menu.addEventListener("click", seeMoreClickEventHandler);
@@ -152,9 +153,10 @@ function seeMoreClickEventListener(menuList) {
   mouserHoverEventListener();
 }
 
-// ==========================================
-// Initializing see less click event listener
-// ==========================================
+/**
+ * Initializing see less click event listener
+ * @param {Array} menuList 
+ */
 function seeLessClickEventListener(menuList) {
   menuList.forEach((menu) => {
     menu.addEventListener("click", seeLessClickEventHandler);
@@ -162,13 +164,14 @@ function seeLessClickEventListener(menuList) {
   mouserHoverEventListener();
 }
 
-// ===============================
-// Event Handlers
-// ===============================
+// =========================================
+// ************ Event Handlers *************
+// =========================================
 
-// ===========================
-// See more menu event handler
-// ===========================
+/**
+ * See more menu event handler
+ * @param {Event} event 
+ */
 function seeMoreClickEventHandler(event) {
   if (event.currentTarget.innerText === "See More") {
     initLeftNavSection().setFullData(setMenuData("full_data"));
@@ -176,9 +179,10 @@ function seeMoreClickEventHandler(event) {
   }
 }
 
-// ===========================
-// See less menu event handler
-// ===========================
+/**
+ * See less menu event handler
+ * @param {Event} event 
+ */
 function seeLessClickEventHandler(event) {
   if (event.currentTarget.innerText === "See Less") {
     initLeftNavSection().setHalfData(setMenuData("first_half"));
@@ -188,9 +192,11 @@ function seeLessClickEventHandler(event) {
   }
 }
 
-// =========================================
-// Section Main Menu btn click event handler
-// =========================================
+/**
+ * Section Main Menu btn click event handler
+ * @param {Event} event 
+ * @param {HTMLElement} sectionMenus 
+ */
 function sectionMainMenuBtnClickEventHandler(event, sectionMenus) {
   if (event.target.classList.contains("menu-div")) {
     sectionMainBtnClickLogic(event.target, sectionMenus);
@@ -200,9 +206,9 @@ function sectionMainMenuBtnClickEventHandler(event, sectionMenus) {
   }
 }
 
-// =====================
-// On mouse down effect
-// =====================
+/**
+ * On mouse down effect
+ */
 function onMouseDownEffect(){
   if(isDarkThemeActivated()){
     this.classList.add("icon-mousedown-effect");
@@ -212,17 +218,17 @@ function onMouseDownEffect(){
   }
 }
 
-// =====================
-// On mouse up effect
-// =====================
+/**
+ * On mouse up effect
+ */
 function onMouseUpEffect(){
     this.classList.remove("icon-mousedown-effect");
     this.classList.remove("icon-mousedown-effect-light-theme");
 }
 
-// ===================================
-// On mouse enter hover effect
-// ===================================
+/**
+ * On mouse enter hover effect
+ */
 function onMouseEnterEffect(){
   if(isDarkThemeActivated()){
     this.classList.add("appearance-hover-dark-theme");
@@ -232,9 +238,9 @@ function onMouseEnterEffect(){
   }
 }
 
-// ===================================
-// On mouse leave hover effect
-// ===================================
+/**
+ * On mouse leave hover effect
+ */
 function onMouseLeaveEffect(){
   if(isDarkThemeActivated()){
     this.classList.remove("appearance-hover-dark-theme");
@@ -245,12 +251,14 @@ function onMouseLeaveEffect(){
 }
 
 // =========================================
-// Btn click logic
+// ******* Business Logic Functions ********
 // =========================================
 
-// =================================
-// Section Main Menu btn click logic
-// =================================
+/**
+ * Section Main Menu btn click logic
+ * @param {HTMLElement} element 
+ * @param {HTMLElement} sectionMenus 
+ */
 function sectionMainBtnClickLogic(element, sectionMenus) {
   let newMenuId, previousMenuId;
 
@@ -285,9 +293,9 @@ function sectionMainBtnClickLogic(element, sectionMenus) {
   }
 }
 
-// =====================================
-// Toggle left menu section on btn click
-// =====================================
+/**
+ * Toggle left menu section on btn click
+ */
 function toggleLeftMenusSection() {
   if (getWidth() > 1312) {
     if (window.getComputedStyle(sectionMenus).display === "none") {
@@ -300,9 +308,9 @@ function toggleLeftMenusSection() {
   }
 }
 
-// =====================
-// Show section menu big
-// =====================
+/**
+ * Show section menu big
+ */
 function showSectionMenuBig() {
   sectionMenus.classList.remove("hide-element");
   sectionVideoFilter.classList.remove("increase-video-filter-width");
@@ -315,9 +323,11 @@ function showSectionMenuBig() {
   });
 }
 
-// ==================================================
-// This function fetch menu data depending on the tag
-// ==================================================
+/**
+ * This function get menu data depending on the tag
+ * @param {String} tag
+ * @returns {Array} - Menu item list
+ */
 function setMenuData(tag) {
   if (tag === "top_data") {
     return menusDataList
@@ -358,6 +368,11 @@ function setMenuData(tag) {
 // =========================
 // Set menu selection status
 // =========================
+/**
+ * Set menu selection status
+ * @param {Object} item 
+ * @returns {String} - Status of item obj depending on the current theme
+ */
 function setMenuSelectionStatus(item){
   let status = "";
   if(item.status){
@@ -371,9 +386,10 @@ function setMenuSelectionStatus(item){
   return status;
 }
 
-// =========================================
-// This function fetch the subscription list
-// =========================================
+/**
+ * This function get the subscription list
+ * @returns {Array} - Subscription data list
+ */
 function fetchSubscriptionList() {
   return FetchedData.getSubscriptionDataList()
     .map((item) => {
@@ -389,9 +405,10 @@ function fetchSubscriptionList() {
     .join("");
 }
 
-// ================================================================
-// This function fetch and set the dynamic data on the section menu
-// ================================================================
+/**
+ * This function fetch and set the dynamic data on the section menu
+ * @returns {Object} - Return an object having two property which is a closer 
+ */
 function initLeftNavSection() {
   topMenuSection.innerHTML = setMenuData("top_data");
   middleMenuSection.innerHTML = setMenuData("first_half");
@@ -421,9 +438,11 @@ function initLeftNavSection() {
 // Update functions
 // ================
 
-// ==================================
-// Update menu selection on btn click
-// ==================================
+/**
+ * Update menu selection on btn click
+ * @param {Array} menuList 
+ * @param {HTMLElement} element 
+ */
 function updateSelectionOnBtnClick(menuList, element){
   menuList.map((menu) => {
     if (menu.classList.contains("menu-selected") || menu.classList.contains("menu-selected-light-theme")) {
@@ -441,9 +460,12 @@ function updateSelectionOnBtnClick(menuList, element){
   });
 }
 
-// ============================================================
-// Update menu selection on btn click with returning section id
-// ============================================================
+/**
+ * Update menu selection on btn click with returning section id
+ * @param {Array} menuList 
+ * @param {HTMLElement} element 
+ * @returns {Object} - Return an object having two property
+ */
 function updateSelectionOnBtnClickWithStoringValue(menuList, element){
   let newMenuId, previousMenuId;
   menuList.map((menu) => {
@@ -472,9 +494,11 @@ function updateSelectionOnBtnClickWithStoringValue(menuList, element){
   }
 }
 
-// ========================
-// Update section menu data
-// ========================
+/**
+ * Update section menu data
+ * @param {String} newMenuId 
+ * @param {String} previousMenuId 
+ */
 function updateSectionMenuData(newMenuId, previousMenuId){
   const tmpMenusDataList = menusDataList.map((item) => {
     if (item.id.toString() === newMenuId) {
@@ -488,9 +512,9 @@ function updateSectionMenuData(newMenuId, previousMenuId){
   menusDataList = tmpMenusDataList;
 }
 
-// ==================================
-// Set theme for left navigation menu
-// ==================================
+/**
+ * Set theme for left navigation menu
+ */
 function setLeftNavSectionTheme(){
   if(isDarkThemeActivated()){
     sectionMenus.classList.remove("section-menus-light-theme");
@@ -509,9 +533,9 @@ function setLeftNavSectionTheme(){
   updateSelectedMenuTheme();
 }
 
-// ==========================
-// Update selected menu theme
-// ==========================
+/**
+ * Update selected menu theme
+ */
 function updateSelectedMenuTheme(){
   const menuList = getAllElementFromElement(sectionMenus, ".menu-div");
   menuList.forEach((item)=>{
