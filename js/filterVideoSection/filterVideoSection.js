@@ -15,9 +15,9 @@ import { setVideoData } from "../mainVideoSection/mainVideoSection.js";
 let btnFilterList;
 let clickedBtnId = "1";
 
-// ==================================================================================
-// Initialize filter video section by adding dynamic elements to filter btn container
-// ==================================================================================
+/**
+ * Initialize filter video section by adding dynamic elements to filter btn container
+ */
 function initFilterVideoSection() {
   console.log("Initializing filter video section");
   const filterBtnList = FetchedData.getFilterDataList()
@@ -35,9 +35,13 @@ function initFilterVideoSection() {
   initEventListeners();
 }
 
-// =======================
-// Event Listener
-// =======================
+// =========================================
+// ************ Event Listeners ************
+// =========================================
+
+/**
+ * Initialize all the event listeners
+ */
 function initEventListeners() {
 
   // Btn filter click event listener
@@ -64,20 +68,20 @@ function initEventListeners() {
   filterContainer.addEventListener("wheel", mouseWheelEventHandler);
 }
 
-// =======================
-// Event Handler
-// =======================
+// =========================================
+// ************ Event Handlers *************
+// =========================================
 
-// =========================
-// On mouse down navbar icon
-// =========================
+/**
+ * On mouse down navbar icon
+ */
 function onMouseDownNavbarIcon(){
   this.classList.add("icon-mousedown-effect");
 }
 
-// =======================
-// On mouse up navbar icon
-// =======================
+/**
+ * On mouse up navbar icon
+ */
 function onMouseUpNavbarIcon(){
   this.classList.remove("icon-mousedown-effect");
   this.classList.add("icon-mouseup-effect");
@@ -86,9 +90,11 @@ function onMouseUpNavbarIcon(){
       }, 500)
 }
 
-// ===============================
-// Filter btns click event handler
-// ===============================
+/**
+ * Filter btns click event handler
+ * @param {Event} event 
+ * @param {HTMLElement} btnFilter 
+ */
 function btnFilterClickEventHandler(event, btnFilter){
   btnFilterList.map((item) => {
     // adding btn-filter-light-theme on every element if light theme is activated
@@ -120,9 +126,9 @@ function btnFilterClickEventHandler(event, btnFilter){
   }
 }
 
-// =============================
-// Right btn click event handler
-// =============================
+/**
+ * Right btn click event handler
+ */
 function btnRightClickEventHandler(){
   scroll(200);
   showButtonDisplay(btnLeftDiv);
@@ -133,9 +139,9 @@ function btnRightClickEventHandler(){
   });
 }
 
-// ============================
-// Left btn click event handler
-// ============================
+/**
+ * Left btn click event handler
+ */
 function btnLeftClickEventHandler(){
   scroll(-200);
   showButtonDisplay(btnRightDiv);
@@ -146,9 +152,10 @@ function btnLeftClickEventHandler(){
   });
 }
 
-// =========================
-// Mouse wheel event handler
-// =========================
+/**
+ * Mouse wheel event handler
+ * @param {Event} event 
+ */
 function mouseWheelEventHandler(event){
   event.preventDefault();
 
@@ -174,13 +181,14 @@ function mouseWheelEventHandler(event){
   });
 }
 
-// =========================
-// Other business logic
-// =========================
+// =========================================
+// ******* Business Logic Functions ********
+// =========================================
 
-// =========================================
-// Adding class according to activated theme
-// =========================================
+/**
+ * Adding class according to activated theme
+ * @returns {String} - Theme name
+ */
 function getSelecetedThemeClass(){
   if(isDarkThemeActivated()){
     return "active-btn-filter";
@@ -188,30 +196,33 @@ function getSelecetedThemeClass(){
   return "active-btn-filter-light-theme";
 }
 
-// ============================
-// get all the dynamic elements
-// ============================
+/**
+ * Get all the dynamic elements
+ */
 function getDynamicElements(){
   btnFilterList = [...getElementAll(".btn-filter")];
 }
 
-// ======================
-// Display the hidden btn
-// ======================
+/**
+ * Display the hidden btn
+ * @param {HTMLElement} btn 
+ */
 function showButtonDisplay(btn) {
   btn.classList.add("show-section-video-filter-btn-div");
 }
 
-// ======================
-// hide the displayed btn
-// ======================
+/**
+ * Hide the displayed btn
+ * @param {HTMLElement} btn 
+ */
 function hideButtonDisplay(btn) {
   btn.classList.remove("show-section-video-filter-btn-div");
 }
 
-// ========================================
-// scroll to left or right with given value
-// ========================================
+/**
+ * Scroll to left or right with given value
+ * @param {String} scrollValue 
+ */
 function scroll(scrollValue){
   filterContainer.scrollBy({
     left: scrollValue,
@@ -219,9 +230,9 @@ function scroll(scrollValue){
   });
 }
 
-// ==============================
-// set filter video section theme
-// ==============================
+/**
+ * Set filter video section theme
+ */
 function setFilterVideoSectionTheme(){
   if(isDarkThemeActivated()){
     addDarkTheme()
@@ -231,9 +242,9 @@ function setFilterVideoSectionTheme(){
   }
 }
 
-// =======================================
-// add light theme to filter video section
-// =======================================
+/**
+ * Add light theme to filter video section
+ */
 function addLightTheme(){
   filterContainer.classList.add("section-video-filter-light-theme");
   btnFilterList.forEach((btnFilter)=>{
@@ -251,9 +262,9 @@ function addLightTheme(){
   btnRight.classList.add("section-video-filter-btn-light-theme");
 }
 
-// ======================================
-// add dark theme to filter video section
-// ======================================
+/**
+ * Add dark theme to filter video section
+ */
 function addDarkTheme(){
   filterContainer.classList.remove("section-video-filter-light-theme");
   btnFilterList.forEach((btnFilter)=>{
@@ -271,9 +282,10 @@ function addDarkTheme(){
   btnRight.classList.remove("section-video-filter-btn-light-theme");
 }
 
-// ============================================================
-// Updating video item list according to the clicked filter btn
-// ============================================================
+/**
+ * Updating video item list according to the clicked filter btn
+ * @param {HTMLElement} clickedBtn 
+ */
 function updateVideoData(clickedBtn) {
   const videoDataList = FetchedData.getVideoDataList();
   let dataList = [];

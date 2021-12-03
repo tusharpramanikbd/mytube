@@ -135,7 +135,7 @@ function onMouseLeaveEffect(){
 }
 
 /**
- * showing appearance overlay on appearnace menu click on user option menu overlay
+ * Showing appearance overlay on appearnace menu click on user option menu overlay
  * @param {Event} event 
  */
 function onClickAppearanceInUserMenu(event){
@@ -147,7 +147,7 @@ function onClickAppearanceInUserMenu(event){
 }
 
 /**
- * going back to user option menu overlay on clicking back btn on appearance overlay
+ * Going back to user option menu overlay on clicking back btn on appearance overlay
  */
 function onClickAppearanceLeftArrow(){
   appearance.classList.remove("show-appearance");

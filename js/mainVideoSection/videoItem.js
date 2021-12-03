@@ -21,7 +21,7 @@ function initVideoItemEvenListeners() {
 // =========================================
 
 /**
- * video item mouse over event handler
+ * Video item mouse over event handler
  * @param {Event} event 
  */
 function mouseOverEventHandler(event) {
@@ -59,7 +59,7 @@ function mouseOverEventHandler(event) {
 }
 
 /**
- * video item mouse leave event handler
+ * Video item mouse leave event handler
  * @param {Event} event 
  */
 function mouseLeaveEventHandler(event){
@@ -105,7 +105,7 @@ function mouseLeaveEventHandler(event){
 }
 
 /**
- * watch later mouse over event handler
+ * Watch later mouse over event handler
  * @param {Event} event 
  */
 function divWatchLaterMouseOverEventHandler(event){
@@ -116,7 +116,7 @@ function divWatchLaterMouseOverEventHandler(event){
 }
 
 /**
- * watch later mouse leave event handler
+ * Watch later mouse leave event handler
  * @param {Event} event 
  */
 function divWatchLaterMouseLeaveEventHandler(event){
