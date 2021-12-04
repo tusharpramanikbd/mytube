@@ -20,6 +20,12 @@ import { isDarkThemeActivated } from "../applicationTheme.js"
 // *********** Event Listeners *************
 // =========================================
 
+window.onresize = () => {
+  if (getWidth() > 800) {
+    removeAddedClasses();
+  }
+};
+
 /**
  * Initialize navbar middle section event listeners
  */

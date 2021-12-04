@@ -56,6 +56,8 @@ Global Styles
 body {
   font-family: var(--ff-secondary);
   background: var(--mycolor-body-darkTheme);
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 .body-light-theme{
   background: var(--mycolor-secondary-lightTheme);
@@ -87,7 +89,7 @@ Main Section
   position: relative;
 }
 .section-main::-webkit-scrollbar {
-  width: 0.75rem;
+  width: 1.05rem;
 }
 .section-main::-webkit-scrollbar-track {
   background: #3d3a3a;
@@ -131,7 +133,7 @@ Navbar Left
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .navbar-toggle-btn {
   height: 34px;
@@ -151,7 +153,7 @@ Navbar Left
 .navbar-logo-container {
   display: flex;
   align-items: center;
-  margin-left: 1.2rem;
+  margin-left: 0.5rem;
 }
 .navbar-icon {
   background: transparent;
@@ -312,7 +314,7 @@ Navbar Right
   border: 2px solid transparent;
   border-radius: 50%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   cursor: pointer;
   transition: border 0.3s ease-in;
 }
@@ -343,9 +345,13 @@ Navbar Right
     width: 2.5rem;
     border-color: transparent;
     border-radius: 50%;
-    background: #202020;
+    background: var(--mycolor-secondary-darkTheme);
     cursor: pointer;
     padding: 0 0;
+  }
+  .navbar-btn-search-light-theme{
+    background: var(--mycolor-secondary-lightTheme);
+    color: var(--mycolor-secondary-darkTheme);
   }
 }
 @media screen and (max-width: 600px) {
@@ -639,7 +645,7 @@ Section Video Filter
 ====================
 */
 .section-video-filter {
-  width: calc(100% - 15.75rem);
+  width: calc(100% - (15rem + 1.05rem));
   height: 3.6rem;
   background: var(--mycolor-primary-darkTheme);
   position: fixed;
@@ -730,7 +736,7 @@ Section Video Filter
   place-items: center;
   background: linear-gradient(to left, rgba(32, 32, 32, 1), rgba(32, 32, 32, 0.99), rgba(32, 32, 32, 0.1));
   position: fixed;
-  right: 0.75rem;
+  right: 1.05rem;
   display: none;
 }
 
@@ -1019,7 +1025,7 @@ Section Video container
 }
 /* Used css classes on event */
 .increase-video-filter-width {
-  width: calc(100% - 5.25rem);
+  width: calc(100% - 5.55rem);
   left: 4.5rem;
 }
 .increase-video-container-width {
@@ -1306,7 +1312,7 @@ Section Video container
     display: block;
   }
   .section-video-filter {
-    width: calc(100% - 5.25rem);
+    width: calc(100% - 5.55rem);
     left: 4.5rem;
   }
   .section-video-container {
@@ -1430,7 +1436,7 @@ Section Video container
     display: none;
   }
   .section-video-filter {
-    width: calc(100% - 0.75rem);
+    width: calc(100% - 1.05rem);
     left: 0;
   }
   .section-video-container {
@@ -1476,13 +1482,50 @@ Section Video container
   .div-video-item {
     max-height: 15rem;
   }
+  .navbar-logo-container p{
+    font-size: 1.1rem;
+  }
 }
 @media screen and (max-width: 580px) {
   .section-video-container {
     padding: 5rem 0 0 0;
   }
+  .navbar-logo-container p{
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 530px) {
+  .section-navbar {
+    grid-template-columns: 170px 1fr 190px;
+  }
+  .changed-section-navbar {
+    grid-template-columns: 10% 1fr;
+    transition: var(--transition);
+  }
+  .navbar-logo-container p{
+    font-size: 0.85rem;
+  }
+  .navbar-toggle-btn {
+    margin-left: 0.75rem;
+  }
+  .navbar-btn-microphone{
+    margin-right: 0.5rem;
+  }
 }
 @media screen and (max-width: 500px) {
+  .section-navbar {
+    grid-template-columns: 160px 1fr 190px;
+  }
+  .changed-section-navbar {
+    grid-template-columns: 10% 1fr;
+    transition: var(--transition);
+  }
+  .navbar-toggle-btn {
+    margin-left: 0.5rem;
+  }
+  .navbar-logo-container {
+    margin-left: 0.5rem;
+  }
   .section-video-container {
     grid-template-columns: repeat(1, 1fr);
     padding-left: 5rem;
@@ -1510,7 +1553,7 @@ Section Video container
 }
 .icon-mouseup-effect{
   -webkit-animation: mouseup-effect 1s ease-out;
-          animation: mouseup-effect 1s ease-out;
+  animation: mouseup-effect 1s ease-out;
 }
 @-webkit-keyframes mouseup-effect {
   0%{
@@ -1534,5 +1577,17 @@ Section Video container
   }
   100%{
     border: transparent;
+  }
+}
+
+@supports (scrollbar-width: thin){
+  .section-menus {
+    scrollbar-width: thin;
+  }
+  .section-menus-overlay-bottom{
+    scrollbar-width: thin;
+  }
+  .user-main-section{
+    scrollbar-width: thin;
   }
 }

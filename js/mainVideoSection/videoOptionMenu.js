@@ -1,6 +1,6 @@
 import { isDarkThemeActivated } from "../applicationTheme.js";
 import { FetchedData, MyStaticClass } from "../myStaticClass.js";
-import { mainSection } from "../staticVariables/svMainVideoSection.js";
+import { mainSection, sectionVideos } from "../staticVariables/svMainVideoSection.js";
 import { addPreventDefault, getElement, getAllElementFromElement } from "../utils.js";
 import { removeVideoOptionMenuIcon } from "./videoItem.js";
 
@@ -61,7 +61,7 @@ function onMouseLeaveMenu(e){
 function createVideoOptionMenuDiv(element, event){
     clearPreviousData();
     // when video option menu icon is clicked mouse wheel mechanism is forcefully disabled
-    mainSection.addEventListener("wheel", addPreventDefault);
+    sectionVideos.addEventListener("wheel", addPreventDefault);
 
     // removing previously selected video option menu btn if any
     if(MyStaticClass.getPreviousVideoOptionMenuDiv()){
@@ -128,7 +128,7 @@ function removeVideoOptionMenuDiv() {
   if(sectionVideoInfoDivTop){
     const element = sectionVideoInfoDivTop.children[3];
     sectionVideoInfoDivTop.removeChild(element);
-    mainSection.removeEventListener("wheel", addPreventDefault);
+    sectionVideos.removeEventListener("wheel", addPreventDefault);
     MyStaticClass.setSavedVideoOptionMenuBtn(null);
   }
 }
