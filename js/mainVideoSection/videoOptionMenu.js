@@ -1,6 +1,6 @@
 import { isDarkThemeActivated } from "../applicationTheme.js";
 import { FetchedData, MyStaticClass } from "../myStaticClass.js";
-import { mainSection, sectionVideos } from "../staticVariables/svMainVideoSection.js";
+import { sectionVideos } from "../staticVariables/svMainVideoSection.js";
 import { addPreventDefault, getElement, getAllElementFromElement } from "../utils.js";
 import { removeVideoOptionMenuIcon } from "./videoItem.js";
 
