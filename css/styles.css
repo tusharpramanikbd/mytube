@@ -1537,6 +1537,23 @@ Section Video container
     font-size: 1.4rem;
   }
 }
+
+@media screen and (max-width: 470px) {
+  .section-navbar {
+    grid-template-columns: 150px 1fr 190px;
+  }
+  .changed-section-navbar {
+    grid-template-columns: 10% 1fr;
+    transition: var(--transition);
+  }
+  .navbar-toggle-btn {
+    margin-left: 0;
+  }
+  .navbar-logo-container {
+    margin-left: 0;
+  }
+}
+
 .show-element {
   display: grid;
 }

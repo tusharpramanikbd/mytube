@@ -11,7 +11,6 @@ import { getWidth } from "./utils.js"
 // =========================================
 
 window.onresize = () => {
-  console.log("hi");
   if (getWidth() > 1312) {
     hideSectionMenusOverlay();
   }
