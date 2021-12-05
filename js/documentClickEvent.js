@@ -31,6 +31,9 @@ window.onresize = () => {
  * Initialize whole document click event listener
  */
 function initDocumentClickEventListener(){
+  if(getWidth() <= 550){
+    removePageText();
+  }
   console.log("Initializing document click event listener");
   document.addEventListener("click", onClickDocumentEventHandler);
 }
