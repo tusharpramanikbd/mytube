@@ -19,7 +19,7 @@ window.onresize = () => {
     removeAddedClasses();
   }
 
-  if(getWidth() <= 500){
+  if(getWidth() <= 550){
     removePageText();
   }
   else{
