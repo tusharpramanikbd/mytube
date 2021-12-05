@@ -26,6 +26,8 @@ It will create new video option menu for then video.
 When video option menu is showing you can not scroll the video container. 
 You can click anywhere to remove the video option menu.
 
+Time calculation function added to the videos upload date. It will calculate upload duration for the given date of standard format. Function will periodically update upload duration
+
 On the video filter section, filter data is coming from json file as well. 
 So you can add or remove filter data from json file.
 If you click any filter button video item will be changed according to the type.
