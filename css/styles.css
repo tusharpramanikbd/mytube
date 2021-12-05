@@ -10,20 +10,16 @@ Variables
 ===============
 */
 :root {
-  --clr-light-theme-primary: whitesmoke;
-  --clr-primary: #2c2b2b;
-  --clr-body: rgb(32, 28, 28);
-  --clr-blueish : #3EA6FF;
-  --clr-border : rgb(99, 98, 98);
-  --clr-border-lighter : rgba(99, 98, 98, 0.5);
   --ff-primary: "Roboto", sans-serif;
   --ff-secondary: "Open Sans", sans-serif;
   --transition: all 0.3s linear;
+  --transition-btn: all 0.1s linear;
   --spacing: 0.25rem;
   --radius: 0.5rem;
   --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   /* New colors */
+  --mycolor-blueish : #3EA6FF;
   --mycolor-body-darkTheme: #181818;
   --mycolor-primary-darkTheme: #202020;
   --mycolor-secondary-darkTheme: #121212;
@@ -39,7 +35,6 @@ Variables
   --mycolor-secondary-lightTheme: #F0F0F0;
   --mycolor-secondary-lighter-lightTheme: #d8d8d8;
   --mycolor-secondary-lighter-lightTheme-2: #e7e7e7;
-  --transition-btn: all 0.1s linear;
 }
 /*
 =============== 
@@ -228,7 +223,7 @@ Navbar Middle
 }
 .navbar-search:focus {
   outline: none;
-  border: 1px solid var(--clr-blueish);
+  border: 1px solid var(--mycolor-blueish);
 }
 .btn-cross {
   height: 2rem;
@@ -319,7 +314,7 @@ Navbar Right
   transition: border 0.3s ease-in;
 }
 .avater-img-click-effect{
-  border: 2px solid var(--clr-blueish);
+  border: 2px solid var(--mycolor-blueish);
 }
 .icon {
   height: 38px;
@@ -1095,7 +1090,7 @@ Section Video container
   font-size: 1rem;
 }
 .user-info{
-  color: var(--clr-blueish);
+  color: var(--mycolor-blueish);
   font-size: 0.9rem;
 }
 .user-info p{
