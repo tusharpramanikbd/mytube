@@ -180,7 +180,8 @@ function onClickUserImage(event){
     // fixing user menu on that position so that it can not be scrolled
     user.style.position = "fixed";
     user.style.top = "0.5rem";
-    user.style.right = "5rem";
+    const value = document.body.offsetWidth - userImg.getBoundingClientRect().left;
+    user.style.right = `${value}px`;
   }
   
   setAppearanceMenuTitle();

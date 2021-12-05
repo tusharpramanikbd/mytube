@@ -1499,9 +1499,9 @@ Section Video container
     margin-left: 0.25rem;
   }
   .section-video-container {
-    grid-template-columns: repeat(1, 300px);
-    padding-left: 5rem;
-    padding-right: 5.5rem;
+    grid-template-columns: repeat(1, 1fr);
+    padding-left: 4rem;
+    padding-right: 4.5rem;
   }
   .div-video-item {
     max-height: 17.5rem;

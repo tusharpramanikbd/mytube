@@ -34,6 +34,9 @@ function initDocumentClickEventListener(){
   if(getWidth() <= 550){
     removePageText();
   }
+  else{
+    addPageText();
+  }
   console.log("Initializing document click event listener");
   document.addEventListener("click", onClickDocumentEventHandler);
 }
