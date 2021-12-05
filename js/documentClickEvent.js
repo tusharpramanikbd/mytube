@@ -2,10 +2,23 @@ import { MyStaticClass } from "./myStaticClass.js";
 import { createVideoOptionMenuDiv, removeVideoOptionMenuDiv} from "./mainVideoSection/videoOptionMenu.js";
 import { removeVideoOptionMenuIcon } from "./mainVideoSection/videoItem.js";
 import { hideUserMenus, hideAppearanceMenus } from "./navbarSection/navbarRightSection.js";
+import { hideSectionMenusOverlay } from "./leftNavigationMenusSection/leftNavSectionOverlay.js"
+import { removeAddedClasses } from "./navbarSection/navbarMiddleSection.js"
+import { getWidth } from "./utils.js"
 
 // =========================================
 // ************ Event Listener *************
 // =========================================
+
+window.onresize = () => {
+  console.log("hi");
+  if (getWidth() > 1312) {
+    hideSectionMenusOverlay();
+  }
+  if (getWidth() > 800) {
+    removeAddedClasses();
+  }
+};
 
 /**
  * Initialize whole document click event listener

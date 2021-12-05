@@ -23,12 +23,6 @@ import {
 } from "./leftNavSection.js";
 import { isDarkThemeActivated } from "../applicationTheme.js";
 
-window.onresize = () => {
-  if (getWidth() > 1312) {
-    hideSectionMenusOverlay();
-  }
-};
-
 /**
  * This function fetch and set the dynamic data on the section menu overlay
  * @returns {Object} - Return an object having two property which is a closer 
@@ -201,5 +195,6 @@ export {
   initLeftNavOverlayEventListeners, 
   showSectionMenusOverlay, 
   sectionOverlayMenuBtnClickEventHandler,
-  setLeftNavOverlayTheme 
+  setLeftNavOverlayTheme ,
+  hideSectionMenusOverlay
 }
