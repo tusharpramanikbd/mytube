@@ -84,7 +84,7 @@ Main Section
   position: relative;
 }
 .section-main::-webkit-scrollbar {
-  width: 1.05rem;
+  width: 0.7rem;
 }
 .section-main::-webkit-scrollbar-track {
   background: #3d3a3a;
@@ -302,6 +302,7 @@ Navbar Right
   width: 100%;
   height: 34px;
   justify-content: space-between;
+  -moz-column-gap: 1.5rem;
   column-gap: 1.5rem;
 }
 .avater-img {
@@ -602,7 +603,7 @@ Section Video Filter
 ====================
 */
 .section-video-filter {
-  width: calc(100% - (15rem + 1rem));
+  width: calc(100% - (15rem + 0.7rem));
   height: 3.6rem;
   background: var(--mycolor-primary-darkTheme);
   position: fixed;
@@ -692,7 +693,7 @@ Section Video Filter
   place-items: center;
   background: linear-gradient(to left, rgba(32, 32, 32, 1), rgba(32, 32, 32, 0.99), rgba(32, 32, 32, 0.1));
   position: fixed;
-  right: 1rem;
+  right: 0.7rem;
   display: none;
 }
 .section-video-filter-btn-right-div-light-theme{
@@ -717,10 +718,10 @@ Section Video Filter
 }
 @-moz-document url-prefix() {
   .section-video-filter {
-    width: calc(100% - (15rem + 1.05rem));
+    width: calc(100% - (15rem + 0.5rem));
   }
   .section-video-filter-btn-right-div {
-    right: 1.05rem;
+    right: 0.5rem;
   }
 }
 /* 
@@ -1266,7 +1267,7 @@ Section Video container
     display: block;
   }
   .section-video-filter {
-    width: calc(100% - 5.55rem);
+    width: calc(100% - 5.2rem);
     left: 4.5rem;
   }
   .section-video-container {
@@ -1277,6 +1278,11 @@ Section Video container
   }
   .no-data-found {
     left: 42%;
+  }
+  @-moz-document url-prefix() {
+    .section-video-filter {
+      width: calc(100% - 5rem);
+    }
   }
 }
 @media screen and (max-width: 1200px) {
@@ -1412,7 +1418,7 @@ Section Video container
     display: none;
   }
   .section-video-filter {
-    width: calc(100% - 1.05rem);
+    width: calc(100% - 0.7rem);
     left: 0;
   }
   .section-video-container {
@@ -1421,12 +1427,18 @@ Section Video container
   .no-data-found {
     left: 35%;
   }
+  @-moz-document url-prefix() {
+    .section-video-filter {
+      width: calc(100% - 0.5rem);
+    }
+  }
 }
 @media screen and (max-width: 750px) {
   .navbar-right{
     padding-right: 0.75rem;
   }
   .navbar-links{
+    -moz-column-gap: 1rem;
     column-gap: 1rem;
   }
 }
@@ -1449,6 +1461,7 @@ Section Video container
     padding-right: 0.5rem;
   }
   .navbar-links{
+    -moz-column-gap: 0.75rem;
     column-gap: 0.75rem;
   }
 }
@@ -1474,6 +1487,7 @@ Section Video container
     padding-right: 0.25rem;
   }
   .navbar-links{
+    -moz-column-gap: 0.5rem;
     column-gap: 0.5rem;
   }
   .navbar-toggle-btn{
@@ -1566,6 +1580,9 @@ Section Video container
     scrollbar-width: thin;
   }
   .user-main-section{
+    scrollbar-width: thin;
+  }
+  .section-main{
     scrollbar-width: thin;
   }
 }
