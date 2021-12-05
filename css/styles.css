@@ -111,7 +111,7 @@ Navbar Section
   top: 0;
   left: 0;
   display: grid;
-  grid-template-columns: 210px 1fr 230px;
+  grid-template-columns: auto 1fr auto;
   z-index: 5;
   color: var(--mycolor-primary-lightTheme);
 }
@@ -191,7 +191,6 @@ Navbar Middle
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-right: 0.5rem;
   background: var(--mycolor-primary-darkTheme);
 }
 .navbar-middle-light-theme{
@@ -291,8 +290,9 @@ Navbar Right
 .navbar-right {
   height: 100%;
   display: grid;
-  place-items: center;
-  padding: 0 1.2rem;
+  align-items: center;
+  /* padding: 0 1.2rem; */
+  padding-right: 1rem;
 }
 .navbar-links {
   display: flex;
@@ -300,7 +300,7 @@ Navbar Right
   width: 100%;
   height: 34px;
   justify-content: space-between;
-  margin-right: 0.5rem;
+  column-gap: 1.5rem;
 }
 .avater-img {
   width: 34px;
@@ -349,7 +349,7 @@ Navbar Right
   }
 }
 @media screen and (max-width: 600px) {
-  .navbar-btn-microphone {
+  /* .navbar-btn-microphone {
     margin-left: 0.25rem;
   }
   .section-navbar {
@@ -362,7 +362,7 @@ Navbar Right
   .navbar-middle {
     padding-right: 0.05rem;
     padding-left: 0.95rem;
-  }
+  } */
 }
 
 /* Modified element css on small screen */
@@ -1440,6 +1440,14 @@ Section Video container
     left: 35%;
   }
 }
+@media screen and (max-width: 750px) {
+  .navbar-right{
+    padding-right: 0.75rem;
+  }
+  .navbar-links{
+    column-gap: 1rem;
+  }
+}
 @media screen and (max-width: 740px) {
   .div-video-item {
     max-height: 17rem;
@@ -1454,6 +1462,12 @@ Section Video container
   }
   .no-data-found p {
     font-size: 1.6rem;
+  }
+  .navbar-right{
+    padding-right: 0.5rem;
+  }
+  .navbar-links{
+    column-gap: 0.75rem;
   }
 }
 @media screen and (max-width: 650px) {
@@ -1471,32 +1485,44 @@ Section Video container
   .no-data-found p {
     font-size: 1.5rem;
   }
+  .navbar-logo-container p{
+    font-size: 1.1rem;
+  }
+  .navbar-right{
+    padding-right: 0.25rem;
+  }
+  .navbar-links{
+    column-gap: 0.5rem;
+  }
+  /* .navbar-middle{
+    padding-right: 0;
+  } */
 }
 @media screen and (max-width: 550px) {
   .div-video-item {
     max-height: 15rem;
   }
-  .navbar-logo-container p{
+  /* .navbar-logo-container p{
     font-size: 1.1rem;
-  }
+  } */
 }
 @media screen and (max-width: 580px) {
   .section-video-container {
     padding: 5rem 0 0 0;
   }
-  .navbar-logo-container p{
+  /* .navbar-logo-container p{
     font-size: 1rem;
-  }
+  } */
 }
 @media screen and (max-width: 530px) {
-  .section-navbar {
+  /* .section-navbar {
     grid-template-columns: 170px 1fr 190px;
-  }
-  .changed-section-navbar {
+  } */
+  /* .changed-section-navbar {
     grid-template-columns: 10% 1fr;
     transition: var(--transition);
-  }
-  .navbar-logo-container p{
+  } */
+  /* .navbar-logo-container p{
     font-size: 0.85rem;
   }
   .navbar-toggle-btn {
@@ -1504,10 +1530,10 @@ Section Video container
   }
   .navbar-btn-microphone{
     margin-right: 0.5rem;
-  }
+  } */
 }
 @media screen and (max-width: 500px) {
-  .section-navbar {
+  /* .section-navbar {
     grid-template-columns: 160px 1fr 190px;
   }
   .changed-section-navbar {
@@ -1519,6 +1545,9 @@ Section Video container
   }
   .navbar-logo-container {
     margin-left: 0.5rem;
+  } */
+  .navbar-logo-container{
+    margin-left: 0.25rem;
   }
   .section-video-container {
     grid-template-columns: repeat(1, 1fr);
@@ -1538,7 +1567,7 @@ Section Video container
 }
 
 @media screen and (max-width: 470px) {
-  .section-navbar {
+  /* .section-navbar {
     grid-template-columns: 150px 1fr 190px;
   }
   .changed-section-navbar {
@@ -1550,13 +1579,16 @@ Section Video container
   }
   .navbar-logo-container {
     margin-left: 0;
-  }
+  } */
 }
 
 @media screen and (max-width: 450px) {
-  .section-navbar {
-    grid-template-columns: auto 1fr auto;
+  .navbar-logo-container{
+    margin-left: 0.175rem;
   }
+  /* .section-navbar {
+    grid-template-columns: auto 1fr auto;
+  } */
   /* .navbar-toggle-btn{
     height: 24px;
     width: 24px;
@@ -1569,10 +1601,10 @@ Section Video container
     width: 10px;
     height: 10px;
   } */
-  .navbar-links{
+  /* .navbar-links{
     justify-content: center;
     margin-right: 0.5rem;
-  }
+  } */
 }
 
 .show-element {
