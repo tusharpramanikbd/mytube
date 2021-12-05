@@ -34,7 +34,7 @@ function initDocumentClickEventListener(){
 // =========================================
 
 /**
- * Whhole document onclick event handler
+ * Whole document onclick event handler
  * @param {Event} e 
  */
 function onClickDocumentEventHandler(e){
