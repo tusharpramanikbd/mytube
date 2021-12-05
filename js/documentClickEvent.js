@@ -5,6 +5,7 @@ import { hideUserMenus, hideAppearanceMenus } from "./navbarSection/navbarRightS
 import { hideSectionMenusOverlay } from "./leftNavigationMenusSection/leftNavSectionOverlay.js"
 import { removeAddedClasses } from "./navbarSection/navbarMiddleSection.js"
 import { getWidth } from "./utils.js"
+import { removePageText, addPageText } from "./navbarSection/navbarLeftSection.js";
 
 // =========================================
 // ************ Event Listener *************
@@ -16,6 +17,13 @@ window.onresize = () => {
   }
   if (getWidth() > 800) {
     removeAddedClasses();
+  }
+
+  if(getWidth() < 450){
+    removePageText();
+  }
+  if(getWidth() > 450){
+    addPageText();
   }
 };
 

@@ -171,7 +171,6 @@ Navbar Left
   z-index: -1;
 }
 .navbar-logo-container p {
-  /* color: white; */
   font-weight: bold;
   text-align: center;
   font-size: 1.3rem;
@@ -1556,26 +1555,24 @@ Section Video container
 
 @media screen and (max-width: 450px) {
   .section-navbar {
-    grid-template-columns: auto 1fr 190px;
+    grid-template-columns: auto 1fr auto;
   }
-  .navbar-toggle-btn{
+  /* .navbar-toggle-btn{
     height: 24px;
     width: 24px;
-  }
-  .navbar-icon {
+  } */
+  /* .navbar-icon {
     font-size: 1.2rem;
+    margin-left: 0.25rem;
+  } */
+  /* .navbar-icon::before {
+    width: 10px;
+    height: 10px;
+  } */
+  .navbar-links{
+    justify-content: center;
+    margin-right: 0.5rem;
   }
-  .navbar-icon::before {
-    font-size: 1.2rem;
-  }
-  .navbar-logo-container p {
-    font-size: 1rem;
-    margin-left: 0.3rem;
-  }
-  .navbar-logo-container sup {
-    font-size: 0.4rem;
-  }
-
 }
 
 .show-element {

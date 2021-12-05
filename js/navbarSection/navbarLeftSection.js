@@ -1,5 +1,5 @@
 import { isDarkThemeActivated } from "../applicationTheme.js";
-import { btnNavbarToggle } from "../staticVariables/svNavbarSection.js";
+import { btnNavbarToggle, navbarLogoContainer } from "../staticVariables/svNavbarSection.js";
 import { toggleLeftMenusSection } from "../leftNavigationMenusSection/leftNavSection.js"
 
 // =========================================
@@ -56,4 +56,14 @@ function setNavbarLeftTheme(){
   }
 }
 
-export { intNavbarLeftEventListeners, setNavbarLeftTheme }
+function removePageText(){
+  const pageTextElement = navbarLogoContainer.children[1];
+  pageTextElement.textContent = "";
+}
+
+function addPageText(){
+  const pageTextElement = navbarLogoContainer.children[1];
+  pageTextElement.innerHTML = "MyTube <sup>BD</sup>";
+}
+
+export { intNavbarLeftEventListeners, setNavbarLeftTheme, removePageText, addPageText }

@@ -26,6 +26,7 @@ const userHeader = getElement(".user-header")
 const userMenuDiv2 = getElement(".user-main-section-div-2")
 const userMenuDiv3 = getElement(".user-main-section-div-3")
 const appearanceTop = getElement(".appearance-top")
+const navbarLogoContainer = getElement(".navbar-logo-container");
 
 export {
     sectionNavbar,
@@ -53,5 +54,6 @@ export {
     userHeader,
     userMenuDiv2,
     userMenuDiv3,
-    appearanceTop
+    appearanceTop,
+    navbarLogoContainer
 }
