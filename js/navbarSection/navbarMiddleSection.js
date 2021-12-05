@@ -68,6 +68,7 @@ function onClickBtnNavbarSearch(){
     navbarLeft.classList.add("hide-element");
     navbarRight.classList.add("hide-element");
     backBtnDiv.classList.add("show-element");
+    btnNavbarMicrophone.classList.add("navbar-btn-microphone-small-screen");
   }
 }
 
@@ -204,6 +205,7 @@ function removeAddedClasses() {
   navbarLeft.classList.remove("hide-element");
   navbarRight.classList.remove("hide-element");
   backBtnDiv.classList.remove("show-element");
+  btnNavbarMicrophone.classList.remove("navbar-btn-microphone-small-screen");
 }
 
 /**

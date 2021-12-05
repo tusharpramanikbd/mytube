@@ -282,6 +282,9 @@ Navbar Middle
   background: var(--mycolor-secondary-lightTheme);
   color: var(--mycolor-secondary-darkTheme);
 }
+.navbar-btn-microphone-small-screen{
+  margin-right: 0.5rem;
+}
 /*
 ============
 Navbar Right 
@@ -1386,6 +1389,10 @@ Section Video container
   .navbar-middle-form {
     display: none;
   }
+  .show-navbar-middle-form {
+    display: block;
+    margin-right: 0.5rem;
+  }
   .navbar-btn-search {
     height: 2.5rem;
     width: 2.5rem;
@@ -1476,6 +1483,10 @@ Section Video container
 @media screen and (max-width: 580px) {
   .section-video-container {
     padding: 5rem 0 0 0;
+  }
+  .changed-section-navbar {
+    grid-template-columns: 10% 1fr;
+    transition: var(--transition);
   }
 }
 @media screen and (max-width: 550px) {
