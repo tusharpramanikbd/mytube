@@ -14,7 +14,7 @@ function initMainVideoSection() {
   console.log("Initializing main video section");
   initMainVideoSectionTheme();
   videoItemList = FetchedData.getVideoDataList();
-  setVideoData(videoItemList);
+  // setVideoData(videoItemList);
 }
 
 /**
