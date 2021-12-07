@@ -86,12 +86,12 @@ function createVideoOptionMenuDiv(element, event){
     const videoItemHeight = parseInt(window.getComputedStyle(divVideoItem).height);
 
     if(widthDifference < 110){
-      videoOptionMenuDiv.style.left = `${videoItemWidth - 255}px`;
+      videoOptionMenuDiv.style.left = `-235px`;
     }
     else{
-      videoOptionMenuDiv.style.left = `${videoItemWidth + 10}px`;
+      videoOptionMenuDiv.style.left = `34px`;
     }
-    if(heightDifference < 110){
+    if(heightDifference < 250){
       videoOptionMenuDiv.style.top = `${videoItemHeight - (videoItemHeight + 230)}px`;;
     }
 
@@ -126,7 +126,7 @@ function displayVideoOptionMenuData(videoOptionMenuDiv) {
  */
 function removeVideoOptionMenuDiv() {
   if(sectionVideoInfoDivTop){
-    const element = sectionVideoInfoDivTop.children[3];
+    const element = sectionVideoInfoDivTop.children[1];
     sectionVideoInfoDivTop.removeChild(element);
     sectionVideos.removeEventListener("wheel", addPreventDefault);
     MyStaticClass.setSavedVideoOptionMenuBtn(null);
