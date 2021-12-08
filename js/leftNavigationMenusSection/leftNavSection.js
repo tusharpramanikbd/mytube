@@ -31,7 +31,7 @@ import {
   showSectionMenusOverlay,
   sectionOverlayMenuBtnClickEventHandler
 } from "./leftNavSectionOverlay.js";
-import { isDarkThemeActivated } from "../applicationTheme.js"
+import { isDarkThemeActivated } from "../applicationTheme.js";
 
 // Global data list for caching mechanism
 let menusDataList;
@@ -91,6 +91,8 @@ function initLeftNavEventListeners() {
   sectionMenus.addEventListener("click", (event1) => {
     sectionMainMenuBtnClickEventHandler(event1, sectionMenus);
   });
+  sectionMenus.addEventListener("mouseenter", onMouseEnterSectionMenusEventHandler);
+  sectionMenus.addEventListener("mouseleave", onMouseLeaveSectionMenusEventHandler);
   sectionMenusOverlay.addEventListener("click", (event2) => {
     sectionOverlayMenuBtnClickEventHandler(event2, sectionOverlayMenu);
   });

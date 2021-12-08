@@ -4,7 +4,7 @@ import { initFetchData } from "./fetchData.js";
 import { initApplicationTheme } from "./applicationTheme.js";
 import { initFilterVideoSection } from "./filterVideoSection/filterVideoSection.js";
 import { initMainVideoSection } from "./mainVideoSection/mainVideoSection.js";
-import { initDocumentClickEventListener } from "./documentClickEvent.js";
+import { initDocumentClickEventListener } from "./documentEvents.js";
 import { initNavbarSection } from "./navbarSection/navbarSection.js";
 import { initLeftNavigationSection } from "./leftNavigationMenusSection/leftNavSection.js";
 
