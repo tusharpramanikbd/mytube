@@ -66,10 +66,12 @@ function initLeftNavigationSection() {
       initLeftNavEventListeners();
       initLeftNavSmallEventListeners();
       initLeftNavOverlayEventListeners();
+      console.log("Tushar");
       console.log("Navigation menus functionality initialized...");
     })
-    .catch(() => {
+    .catch((err) => {
       console.log("Something bad happend...");
+      console.log(err.message);
     });
 }
 
@@ -91,8 +93,6 @@ function initLeftNavEventListeners() {
   sectionMenus.addEventListener("click", (event1) => {
     sectionMainMenuBtnClickEventHandler(event1, sectionMenus);
   });
-  sectionMenus.addEventListener("mouseenter", onMouseEnterSectionMenusEventHandler);
-  sectionMenus.addEventListener("mouseleave", onMouseLeaveSectionMenusEventHandler);
   sectionMenusOverlay.addEventListener("click", (event2) => {
     sectionOverlayMenuBtnClickEventHandler(event2, sectionOverlayMenu);
   });
